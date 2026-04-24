@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payments Fix Report — Middle East &amp; Emerging Markets | Last 6 Months</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f8f8f6;
+    --white: #ffffff;
+    --border: #e2e2de;
+    --text: #1a1a18;
+    --muted: #6b7068;
+    --dim: #9a9d98;
+    --red: #c0392b;
+    --amber: #d97706;
+    --green: #16a34a;
+    --blue: #1d4ed8;
+    --red-bg: #fef2f2;
+    --amber-bg: #fffbeb;
+    --green-bg: #f0fdf4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-size: 13px; line-height: 1.5; }
+  .page { max-width: 960px; margin: 0 auto; padding: 48px 32px; }
+
+  /* ── HEADER ── */
+  .report-header { border-bottom: 2px solid var(--text); padding-bottom: 20px; margin-bottom: 32px; }
+  .report-header h1 { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .report-meta { display: flex; gap: 20px; font-family: 'DM Mono', monospace; font-size: 11px; color: var(--muted); flex-wrap: wrap; }
+  .report-meta span { display: flex; align-items: center; gap: 4px; }
+
+  /* ── GLOBAL METRICS ── */
+  .global-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); margin-bottom: 40px; }
+  .metric-cell { background: var(--white); padding: 16px; }
+  .metric-cell .val { font-size: 20px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 2px; }
+  .metric-cell .lbl { font-size: 10px; font-family: 'DM Mono', monospace; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .val.red { color: var(--red); }
+  .val.green { color: var(--green); }
+  .val.amber { color: var(--amber); }
+
+  /* ── OPPORTUNITY RANKING ── */
+  .section-title { font-size: 10px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid var(--border); }
+  .ranking-table { width: 100%; border-collapse: collapse; margin-bottom: 40px; }
+  .ranking-table th { text-align: left; padding: 8px 10px; font-size: 10px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); border-bottom: 1px solid var(--border); }
+  .ranking-table td { padding: 9px 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  .ranking-table tr:last-child td { border-bottom: none; }
+  .rank-num { font-family: 'DM Mono', monospace; color: var(--dim); font-size: 12px; }
+  .country-name { font-weight: 600; }
+  .ar-pill { display: inline-block; padding: 2px 7px; border-radius: 3px; font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; }
+  .ar-crit { background: var(--red-bg); color: var(--red); }
+  .ar-mid  { background: var(--amber-bg); color: var(--amber); }
+  .ar-near { background: var(--green-bg); color: var(--green); }
+  .gain-val { font-weight: 600; color: var(--text); font-family: 'DM Mono', monospace; }
+  .gain-bar-wrap { display: flex; align-items: center; gap: 8px; }
+  .gain-bar { height: 4px; border-radius: 2px; background: #e5e7eb; flex: 1; overflow: hidden; }
+  .gain-bar-fill { height: 100%; border-radius: 2px; }
+
+  /* ── COUNTRY SECTIONS ── */
+  .country-block { margin-bottom: 48px; border: 1px solid var(--border); background: var(--white); }
+  .country-header { display: grid; grid-template-columns: auto 1fr repeat(4, auto); align-items: center; gap: 0; border-bottom: 1px solid var(--border); background: var(--text); color: white; padding: 12px 16px; gap: 12px; }
+  .country-rank { font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.4); }
+  .country-title { font-size: 15px; font-weight: 600; }
+  .ch-stat { text-align: right; }
+  .ch-stat .v { font-size: 15px; font-weight: 600; font-family: 'DM Mono', monospace; }
+  .ch-stat .l { font-size: 9px; text-transform: uppercase; letter-spacing: 0.06em; color: rgba(255,255,255,0.5); margin-top: 1px; }
+
+  .tables-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-bottom: 1px solid var(--border); }
+  .table-panel { padding: 16px; }
+  .table-panel + .table-panel { border-left: 1px solid var(--border); }
+  .table-label { font-size: 9px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 10px; }
+
+  .data-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .data-table th { text-align: left; padding: 4px 6px; font-size: 10px; font-family: 'DM Mono', monospace; color: var(--dim); font-weight: 400; border-bottom: 1px solid var(--border); }
+  .data-table th.r { text-align: right; }
+  .data-table td { padding: 5px 6px; border-bottom: 1px solid #f0f0ee; }
+  .data-table td.r { text-align: right; font-family: 'DM Mono', monospace; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .ar-tag { font-family: 'DM Mono', monospace; font-size: 11px; font-weight: 500; }
+  .ar-tag.r { color: var(--red); }
+  .ar-tag.a { color: var(--amber); }
+  .ar-tag.g { color: var(--green); }
+  .name-cell { font-weight: 500; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ── DIAGNOSIS SECTION ── */
+  .diag-section { padding: 16px; }
+  .diag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .diag-box { padding: 12px 14px; border-radius: 2px; }
+  .diag-box.problem { background: var(--red-bg); border-left: 3px solid var(--red); }
+  .diag-box.fix { background: var(--green-bg); border-left: 3px solid var(--green); }
+  .diag-box .diag-title { font-size: 9px; font-family: 'DM Mono', monospace; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 6px; }
+  .diag-box p { font-size: 12px; line-height: 1.5; color: var(--text); }
+  .fix-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+  .tag { font-size: 10px; font-family: 'DM Mono', monospace; padding: 2px 7px; border-radius: 2px; font-weight: 500; }
+  .tag.p { background: #dbeafe; color: var(--blue); }
+  .tag.s { background: #f3f4f6; color: var(--muted); }
+
+  /* ── PAGE BREAK HINT ── */
+  @media print { .country-block { break-inside: avoid; } }
+
+  /* ── FOOTER ── */
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--dim); }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="report-header">
+    <h1>Middle East &amp; Emerging Markets — Payments Fix Report</h1>
+    <div class="report-meta">
+      <span>CEO Office · Capital.com</span>
+      <span>Source: Tableau rep_transactions_v_updated</span>
+      <span>Period: Last 6 months</span>
+      <span>Deposits only · Test users excluded</span>
+      <span>Generated: April 2026</span>
+    </div>
+  </div>
+
+  <!-- GLOBAL METRICS -->
+  <div class="section-title">Global Deposit Metrics — Last 6 Months</div>
+  <div class="global-grid">
+    <div class="metric-cell">
+      <div class="val">$484M</div>
+      <div class="lbl">Total attempted</div>
+    </div>
+    <div class="metric-cell">
+      <div class="val green">$282M</div>
+      <div class="lbl">Processed</div>
+    </div>
+    <div class="metric-cell">
+      <div class="val red">$202M</div>
+      <div class="lbl">Declined</div>
+    </div>
+    <div class="metric-cell">
+      <div class="val amber">58.3%</div>
+      <div class="lbl">Blended AR</div>
+    </div>
+    <div class="metric-cell">
+      <div class="val red">$72.4M</div>
+      <div class="lbl">Recoverable @ +10pp (top 10)</div>
+    </div>
+  </div>
+
+  <!-- RANKING TABLE -->
+  <div class="section-title">Top 10 Countries — Gain from +10pp AR Lift (ranked by $ impact)</div>
+  <table class="ranking-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Country</th>
+        <th>Current AR</th>
+        <th>AR after +10pp</th>
+        <th>Total vol. attempted</th>
+        <th>Declined vol.</th>
+        <th>Gain at +10pp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="rank-num">01</td>
+        <td class="country-name">UAE <span style="font-size:9px;font-family:'DM Mono',monospace;color:var(--muted)">(all licences)</span></td>
+        <td><span class="ar-pill ar-near">74.3%</span></td>
+        <td>84.3%</td>
+        <td class="r" style="font-family:monospace">$422.0M</td>
+        <td class="r" style="font-family:monospace;color:var(--red)">$108.5M</td>
+        <td><div class="gain-bar-wrap"><span class="gain-val">$42.2M</span><div class="gain-bar"><div class="gain-bar-fill" style="width:100%;background:#16a34a"></div></div></div></td>
+      </tr>
+      <tr>
+        <td class="rank-num">02</td>
+        <td class="country-name">Switzerland</td>
+        <td><span class="ar-pill ar-near">72.3%</span></td>
+        <td>82.3%</td>
+        <td class="r" style="font-family:monospace">$77.2M</td>
+        <td class="r" style="font-family:monospace;color:var(--red)">$21.4M</td>
+        <td><div class="gain-bar-wrap"><span class="gain-val">$7.7M</span><div class="gain-bar"><div class="gain-bar-fill" style="width:18%;background:#16a34a"></div></div></div></td>
+      </tr>
+      <tr>
+        <td class="rank-num">03</td>
+        <td class="country-name">Saudi Arabia</td>
+        <td><span class="ar-pill ar-crit">39.7%</span></td>
+        <td>49.7%</td>
+        <td class="r" style="font-family:monospace">$51.8M</td>
+        <td class="r" style="font-family:monospace;color:var(--red)">$31.2M</td>
+        <td><div class="gain-bar-wrap"><span class="gain-val">$5.2M</span><div class="gain-bar"><div class="gain-bar-fill" style="width:12%;background:#c0392b"></div></div></div></td>
+      </tr>
+      <tr>
+        <td class="rank-num">04</td>
+        <td class="country-name">Qatar</td>
+        <td><span class="ar-pill ar-near">69.8%</span></td>
+        <td>79.8%</td>
+        <td class="r" style="font-family:monospace">$32.8M</td>
+        <td class="r" style="font-family:monospace;color:var(--red)">$9.9M</td>
+        <td><div class="gain-bar-wrap"><span class="gain-val">$3.3M</span><div class="gain-bar"><div class="gain-bar-fill" style="width:43%;background:#16a34a"></div></div></div></td>
+      </tr>
+      <tr>
+        <td class="rank-num">05</td>
+        <td class="country-name">Hong Kong</td>
+        <td><span class="ar-pill ar-near">72.5%</span></td>
+        <td>82.5%</td>
+        <td class="r" style="font-family:monospace">$25.3M</td>
+        <td class="r" style="font-family:monospace;color:var(--red)">$7.0M</td>
+        <td><div class="gain-bar-wrap"><span class="gain-val">$2.5M</span><div class="gain-bar"><div class="gain-bar-fill" style="width:33%;background:#16a34a"></div></div></div></td>
+      </tr>
+      <tr>
+        <td class="rank-num">06</td>
+        <td class="country-name">Kuwait</td>
+        <td><span class="ar-pill ar-near">71.2%</span></td>
+        <td>81.2%</td>
+        <td class="r" style="font-family:monospace">$24.9M</td>
+        <td class="r" style="font-family:monospace;color:var(--red)">$7.2M</td>
+        <td><div class="gain-bar-wrap"><span class="gain-val">$2.5M</span><div class="gain-bar"><div class="gain-bar-fill" style="width:32%;background:#16a34a"></div></div></div></td>
+      </tr>
+      <tr>
+        <td class="rank-num">07</td>
+        <td class="country-name">Kazakhstan</td>
+        <td><span class="ar-pill ar-mid">56.3%</span></td>
+        <td>66.3%</td>
+        <td class="r" style="font-family:monospace">$22.5M</td>
+        <td class="r" style="font-family:monospace;color:var(--red)">$9.8M</td>
+        <td><div class="gain-bar-wrap"><span class="gain-val">$2.2M</span><div class="gain-bar"><div class="gain-bar-fill" style="width:29%;background:#d97706"></div></div></div></td>
+      </tr>
+      <tr>
+        <td class="rank-num">08</td>
+        <td class="country-name">Mexico</td>
+        <td><span class="ar-pill ar-crit">44.4%</span></td>
+        <td>54.4%</td>
+        <td class="r" style="font-family:monospace">$20.2M</td>
+        <td class="r" style="font-family:monospace;color:var(--red)">$11.2M</td>
+        <td><div class="gain-bar-wrap"><span class="gain-val">$2.0M</span><div class="gain-bar"><div class="gain-bar-fill" style="width:26%;background:#c0392b"></div></div></div></td>
+      </tr>
+      <tr>
+        <td class="rank-num">09</td>
+        <td class="country-name">Oman</td>
+        <td><span class="ar-pill ar-near">69.1%</span></td>
+        <td>79.1%</td>
+        <td class="r" style="font-family:monospace">$17.1M</td>
+        <td class="r" style="font-family:monospace;color:var(--red)">$5.3M</td>
+        <td><div class="gain-bar-wrap"><span class="gain-val">$1.7M</span><div class="gain-bar"><div class="gain-bar-fill" style="width:22%;background:#16a34a"></div></div></div></td>
+      </tr>
+      <tr>
+        <td class="rank-num">10</td>
+        <td class="country-name">Chile</td>
+        <td><span class="ar-pill ar-crit">28.1%</span></td>
+        <td>38.1%</td>
+        <td class="r" style="font-family:monospace">$13.6M</td>
+        <td class="r" style="font-family:monospace;color:var(--red)">$9.8M</td>
+        <td><div class="gain-bar-wrap"><span class="gain-val">$1.4M</span><div class="gain-bar"><div class="gain-bar-fill" style="width:18%;background:#c0392b"></div></div></div></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ════════════════════════════════════ COUNTRY 1 (moved): UAE ════ -->
+  <div class="country-block">
+    <div class="country-header">
+      <span class="country-rank">#01</span>
+      <span class="country-title">United Arab Emirates <span style="font-size:11px;font-weight:400;opacity:0.6">(all licences)</span></span>
+      <div class="ch-stat"><div class="v">74.3%</div><div class="l">Current AR</div></div>
+      <div class="ch-stat"><div class="v">$422.0M</div><div class="l">Total Vol</div></div>
+      <div class="ch-stat"><div class="v" style="color:#f87171">$108.5M</div><div class="l">Declined</div></div>
+      <div class="ch-stat"><div class="v" style="color:#4ade80">$42.2M</div><div class="l">Gain @ +10pp</div></div>
+    </div>
+    <div class="tables-row">
+      <div class="table-panel">
+        <div class="table-label">Payment Methods</div>
+        <table class="data-table">
+          <thead><tr><th>Method</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">APPLEPAY</td><td class="r"><span class="ar-tag a">74%</span></td><td class="r">$160.53M</td><td class="r">$118.05M</td><td class="r">$42.48M</td></tr>
+            <tr><td class="name-cell">VISA</td><td class="r"><span class="ar-tag a">72%</span></td><td class="r">$83.35M</td><td class="r">$60.05M</td><td class="r">$23.30M</td></tr>
+            <tr><td class="name-cell">LEAN</td><td class="r"><span class="ar-tag a">77%</span></td><td class="r">$79.85M</td><td class="r">$61.35M</td><td class="r">$18.50M</td></tr>
+            <tr><td class="name-cell">MASTERCARD</td><td class="r"><span class="ar-tag a">68%</span></td><td class="r">$68.55M</td><td class="r">$46.58M</td><td class="r">$21.97M</td></tr>
+            <tr><td class="name-cell">BANK</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$25.22M</td><td class="r">$25.22M</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">GOOGLEPAY_REF</td><td class="r"><span class="ar-tag a">60%</span></td><td class="r">$3.38M</td><td class="r">$2.04M</td><td class="r">$1.34M</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$843.8K</td><td class="r">$1.7K</td><td class="r">$842.1K</td></tr>
+            <tr><td class="name-cell">CRYPTO</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$267.0K</td><td class="r">$267.0K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">MAESTRO</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$34.5K</td><td class="r">$0</td><td class="r">$34.5K</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag r">59%</span></td><td class="r">$8.8K</td><td class="r">$5.2K</td><td class="r">$3.6K</td></tr>
+            <tr><td class="name-cell">BLOCKCHAIN</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$3.1K</td><td class="r">$3.1K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">ERIP</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$203</td><td class="r">$203</td><td class="r">$0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-panel">
+        <div class="table-label">PSPs</div>
+        <table class="data-table">
+          <thead><tr><th>PSP</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">CHECKOUT</td><td class="r"><span class="ar-tag a">75%</span></td><td class="r">$295.26M</td><td class="r">$222.63M</td><td class="r">$72.63M</td></tr>
+            <tr><td class="name-cell">LEAN</td><td class="r"><span class="ar-tag a">77%</span></td><td class="r">$79.85M</td><td class="r">$61.35M</td><td class="r">$18.50M</td></tr>
+            <tr><td class="name-cell">CAPITAL_PAYMENT</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$25.22M</td><td class="r">$25.22M</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">ECOMMPAY</td><td class="r"><span class="ar-tag r">20%</span></td><td class="r">$18.87M</td><td class="r">$3.70M</td><td class="r">$15.17M</td></tr>
+            <tr><td class="name-cell">CREDORAX</td><td class="r"><span class="ar-tag r">24%</span></td><td class="r">$1.60M</td><td class="r">$380.6K</td><td class="r">$1.21M</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$843.8K</td><td class="r">$1.7K</td><td class="r">$842.1K</td></tr>
+            <tr><td class="name-cell">ECOMMPAY_ITEZ</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$267.0K</td><td class="r">$267.0K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">STRIPE</td><td class="r"><span class="ar-tag r">4%</span></td><td class="r">$83.4K</td><td class="r">$3.2K</td><td class="r">$80.3K</td></tr>
+            <tr><td class="name-cell">WEBPAY</td><td class="r"><span class="ar-tag r">14%</span></td><td class="r">$15.3K</td><td class="r">$2.1K</td><td class="r">$13.2K</td></tr>
+            <tr><td class="name-cell">MY_FATOORAH</td><td class="r"><span class="ar-tag r">33%</span></td><td class="r">$13.3K</td><td class="r">$4.4K</td><td class="r">$8.9K</td></tr>
+            <tr><td class="name-cell">BLOCKCHAIN</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$3.1K</td><td class="r">$3.1K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">ERIP</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$203</td><td class="r">$203</td><td class="r">$0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-grid">
+        <div class="diag-box problem">
+          <div class="diag-title">Diagnosis — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>EcommPay: $18.9M at 20% AR — $15.2M declined through a single PSP</li>
+            <li>Checkout: $295.3M at 75% — primary PSP, 1pp below benchmark, $72.6M declined</li>
+            <li>Mastercard: 68% AR on $68.6M — dragging blended rate down</li>
+            <li>Lean live at 77% on $79.8M — not set as default</li>
+            <li>Neteller: 0.20% AR on $844K — dead</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(192,57,43,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Diagnosis — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>EcommPay: 80.39% decline rate — wrong routing</li>
+            <li>Credorax: 76.14% decline rate — misconfigured</li>
+            <li>Neteller: 99.80% decline rate — dead</li>
+            <li>Stripe: 96.22% decline rate — dead</li>
+          </ul>
+        </div>
+        <div class="diag-box fix">
+          <div class="diag-title">Actions — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>LEAN</strong> — 78.07% AR — <span class="tag p" style="background:#eff6ff;color:#1d4ed8;border:1px solid #93c5fd;">Make default</span></li>
+            <li><strong>NETELLER</strong> — 0.20% AR — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li>Re-route Mastercard to a better acquirer</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(22,163,74,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Actions — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>ECOMMPAY</strong> — 80.39% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate &amp; reroute</span></li>
+            <li><strong>CREDORAX</strong> — 76.14% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate &amp; reroute</span></li>
+            <li><strong>NETELLER</strong> — 99.80% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>STRIPE</strong> — 96.22% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ COUNTRY 2: SWITZERLAND ════ -->
+  <div class="country-block">
+    <div class="country-header">
+      <span class="country-rank">#02</span>
+      <span class="country-title">Switzerland</span>
+      <div class="ch-stat"><div class="v">72.3%</div><div class="l">Current AR</div></div>
+      <div class="ch-stat"><div class="v">$77.2M</div><div class="l">Total Vol</div></div>
+      <div class="ch-stat"><div class="v" style="color:#f87171">$21.4M</div><div class="l">Declined</div></div>
+      <div class="ch-stat"><div class="v" style="color:#4ade80">$7.7M</div><div class="l">Gain @ +10pp</div></div>
+    </div>
+    <div class="tables-row">
+      <div class="table-panel">
+        <div class="table-label">Payment Methods</div>
+        <table class="data-table">
+          <thead><tr><th>Method</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">APPLEPAY</td><td class="r"><span class="ar-tag a">67%</span></td><td class="r">$23.43M</td><td class="r">$15.77M</td><td class="r">$7.65M</td></tr>
+            <tr><td class="name-cell">MASTERCARD</td><td class="r"><span class="ar-tag a">67%</span></td><td class="r">$18.21M</td><td class="r">$12.26M</td><td class="r">$5.95M</td></tr>
+            <tr><td class="name-cell">VISA</td><td class="r"><span class="ar-tag a">66%</span></td><td class="r">$18.14M</td><td class="r">$12.01M</td><td class="r">$6.13M</td></tr>
+            <tr><td class="name-cell">BANK</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$15.19M</td><td class="r">$15.19M</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">GOOGLEPAY_REF</td><td class="r"><span class="ar-tag r">55%</span></td><td class="r">$2.42M</td><td class="r">$1.33M</td><td class="r">$1.09M</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag r">10%</span></td><td class="r">$703.3K</td><td class="r">$68.6K</td><td class="r">$634.7K</td></tr>
+            <tr><td class="name-cell">MAESTRO</td><td class="r"><span class="ar-tag r">18%</span></td><td class="r">$242.5K</td><td class="r">$42.6K</td><td class="r">$200.0K</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">7%</span></td><td class="r">$57.2K</td><td class="r">$3.9K</td><td class="r">$53.3K</td></tr>
+            <tr><td class="name-cell">BLOCKCHAIN</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$1.6K</td><td class="r">$1.6K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">PAYPAL</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$116</td><td class="r">$116</td><td class="r">$0</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-panel">
+        <div class="table-label">PSPs</div>
+        <table class="data-table">
+          <thead><tr><th>PSP</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">CHECKOUT</td><td class="r"><span class="ar-tag a">69%</span></td><td class="r">$55.40M</td><td class="r">$38.28M</td><td class="r">$17.12M</td></tr>
+            <tr><td class="name-cell">CAPITAL_PAYMENT</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$15.19M</td><td class="r">$15.19M</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">CREDORAX</td><td class="r"><span class="ar-tag r">48%</span></td><td class="r">$3.62M</td><td class="r">$1.73M</td><td class="r">$1.89M</td></tr>
+            <tr><td class="name-cell">ECOMMPAY</td><td class="r"><span class="ar-tag r">41%</span></td><td class="r">$3.32M</td><td class="r">$1.37M</td><td class="r">$1.95M</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag r">10%</span></td><td class="r">$703.3K</td><td class="r">$68.6K</td><td class="r">$634.7K</td></tr>
+            <tr><td class="name-cell">STRIPE</td><td class="r"><span class="ar-tag r">36%</span></td><td class="r">$88.8K</td><td class="r">$31.6K</td><td class="r">$57.2K</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">7%</span></td><td class="r">$57.2K</td><td class="r">$3.9K</td><td class="r">$53.3K</td></tr>
+            <tr><td class="name-cell">BLOCKCHAIN</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$1.6K</td><td class="r">$1.6K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">PAYPAL</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$116</td><td class="r">$116</td><td class="r">$0</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-grid">
+        <div class="diag-box problem">
+          <div class="diag-title">Diagnosis — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>Apple Pay, Mastercard, Visa all at 66–67% AR — cards underperforming</li>
+            <li>Google Pay: 54.89% AR — investigate</li>
+            <li>Bank Transfer: 100% AR on $15M — underused</li>
+            <li>Skrill, Maestro, Neteller all high decline rates</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(192,57,43,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Diagnosis — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>Checkout: $54.5M at 69% AR — primary PSP, $16.8M declined</li>
+            <li>Credorax: 52.19% decline rate — needs rerouting</li>
+            <li>EcommPay: 58.92% decline rate — needs rerouting</li>
+            <li>Skrill, Stripe, Neteller: all high decline rates</li>
+          </ul>
+        </div>
+        <div class="diag-box fix">
+          <div class="diag-title">Actions — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>APPLEPAY</strong> — 67.46% AR — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate</span></li>
+            <li><strong>GOOGLEPAY_REF</strong> — 54.89% AR — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate</span></li>
+            <li><strong>SKRILL</strong> — 90.30% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>MAESTRO</strong> — 82.45% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>NETELLER</strong> — 93.24% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li>Push Bank Transfer (100% AR) for larger tickets</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(22,163,74,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Actions — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>CREDORAX</strong> — 52.19% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate &amp; reroute</span></li>
+            <li><strong>ECOMMPAY</strong> — 58.92% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate &amp; reroute</span></li>
+            <li><strong>SKRILL</strong> — 90.30% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>STRIPE</strong> — 63.90% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>NETELLER</strong> — 93.24% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ COUNTRY 3: SAUDI ARABIA ════ -->
+  <div class="country-block">
+    <div class="country-header">
+      <span class="country-rank">#03</span>
+      <span class="country-title">Saudi Arabia</span>
+      <div class="ch-stat"><div class="v">39.7%</div><div class="l">Current AR</div></div>
+      <div class="ch-stat"><div class="v">$51.8M</div><div class="l">Total Vol</div></div>
+      <div class="ch-stat"><div class="v" style="color:#f87171">$31.2M</div><div class="l">Declined</div></div>
+      <div class="ch-stat"><div class="v" style="color:#4ade80">$5.2M</div><div class="l">Gain @ +10pp</div></div>
+    </div>
+    <div class="tables-row">
+      <div class="table-panel">
+        <div class="table-label">Payment Methods</div>
+        <table class="data-table">
+          <thead><tr><th>Method</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">VISA</td><td class="r"><span class="ar-tag r">48%</span></td><td class="r">$33.52M</td><td class="r">$16.04M</td><td class="r">$17.48M</td></tr>
+            <tr><td class="name-cell">APPLEPAY</td><td class="r"><span class="ar-tag r">28%</span></td><td class="r">$6.90M</td><td class="r">$1.94M</td><td class="r">$4.95M</td></tr>
+            <tr><td class="name-cell">MASTERCARD</td><td class="r"><span class="ar-tag r">28%</span></td><td class="r">$5.99M</td><td class="r">$1.68M</td><td class="r">$4.31M</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$3.13M</td><td class="r">$8.7K</td><td class="r">$3.12M</td></tr>
+            <tr><td class="name-cell">GOOGLEPAY_REF</td><td class="r"><span class="ar-tag r">2%</span></td><td class="r">$1.21M</td><td class="r">$28.9K</td><td class="r">$1.18M</td></tr>
+            <tr><td class="name-cell">CRYPTO</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$574.5K</td><td class="r">$574.5K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag r">39%</span></td><td class="r">$342.7K</td><td class="r">$132.4K</td><td class="r">$210.3K</td></tr>
+            <tr><td class="name-cell">BANK</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$203.1K</td><td class="r">$203.1K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">BLOCKCHAIN</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$6.9K</td><td class="r">$6.9K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">MAESTRO</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$6.9K</td><td class="r">$0</td><td class="r">$6.9K</td></tr>
+            <tr><td class="name-cell">PAYPAL</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$4.1K</td><td class="r">$4.1K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">TRUSTLY</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$2.0K</td><td class="r">$0</td><td class="r">$2.0K</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-panel">
+        <div class="table-label">PSPs</div>
+        <table class="data-table">
+          <thead><tr><th>PSP</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">MY_FATOORAH</td><td class="r"><span class="ar-tag r">54%</span></td><td class="r">$27.82M</td><td class="r">$15.09M</td><td class="r">$12.73M</td></tr>
+            <tr><td class="name-cell">CHECKOUT</td><td class="r"><span class="ar-tag r">33%</span></td><td class="r">$12.61M</td><td class="r">$4.11M</td><td class="r">$8.50M</td></tr>
+            <tr><td class="name-cell">CREDORAX</td><td class="r"><span class="ar-tag r">8%</span></td><td class="r">$5.67M</td><td class="r">$453.0K</td><td class="r">$5.22M</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$3.13M</td><td class="r">$8.7K</td><td class="r">$3.12M</td></tr>
+            <tr><td class="name-cell">ECOMMPAY</td><td class="r"><span class="ar-tag r">2%</span></td><td class="r">$1.44M</td><td class="r">$31.7K</td><td class="r">$1.41M</td></tr>
+            <tr><td class="name-cell">ECOMMPAY_ITEZ</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$574.5K</td><td class="r">$574.5K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag r">39%</span></td><td class="r">$342.7K</td><td class="r">$132.4K</td><td class="r">$210.3K</td></tr>
+            <tr><td class="name-cell">CAPITAL_PAYMENT</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$203.1K</td><td class="r">$203.1K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">STRIPE</td><td class="r"><span class="ar-tag r">9%</span></td><td class="r">$84.7K</td><td class="r">$7.2K</td><td class="r">$77.4K</td></tr>
+            <tr><td class="name-cell">BLOCKCHAIN</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$6.9K</td><td class="r">$6.9K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">PAYPAL</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$4.1K</td><td class="r">$4.1K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">TRUSTLY</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$2.0K</td><td class="r">$0</td><td class="r">$2.0K</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-grid">
+        <div class="diag-box problem">
+          <div class="diag-title">Diagnosis — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>Visa: 48.07% AR on $33.5M — Saudi banks blocking international CFD</li>
+            <li>Apple Pay and Mastercard both at 28% AR — high decline</li>
+            <li>Neteller: 0.28% AR on $3.1M — dead</li>
+            <li>Google Pay: 2.38% AR — dead</li>
+            <li>Crypto: 100% AR on $574K — underused</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(192,57,43,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Diagnosis — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>My Fatoorah: $27.8M at 54% AR — primary PSP, $12.7M declined</li>
+            <li>Checkout: 67.29% decline rate on $12.6M — needs rerouting</li>
+            <li>Credorax: 91.99% decline rate on $5.7M — near failure</li>
+            <li>Neteller: 99.72%, EcommPay: 97.80%, Stripe: 91.43%, Trustly: 100% — all dead</li>
+          </ul>
+        </div>
+        <div class="diag-box fix">
+          <div class="diag-title">Actions — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>VISA</strong> — 48.07% AR — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate</span></li>
+            <li><strong>APPLEPAY</strong> — 28.18% AR — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>MASTERCARD</strong> — 28.32% AR — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate</span></li>
+            <li><strong>NETELLER</strong> — 0.28% AR — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>GOOGLEPAY_REF</strong> — 2.38% AR — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>CRYPTO</strong> — 100% AR — <span class="tag p" style="background:#f0fdf4;color:#16a34a;border:1px solid #86efac;">Promote</span></li>
+            <li><strong>SKRILL</strong> — 61.36% AR — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate</span></li>
+            <li><strong>MAESTRO</strong> — 100% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>TRUSTLY</strong> — 100% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(22,163,74,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Actions — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>CHECKOUT</strong> — 67.29% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate &amp; reroute</span></li>
+            <li><strong>CREDORAX</strong> — 91.99% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate &amp; reroute</span></li>
+            <li><strong>NETELLER</strong> — 99.72% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>ECOMMPAY</strong> — 97.80% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>SKRILL</strong> — 61.36% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate</span></li>
+            <li><strong>STRIPE</strong> — 91.43% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>TRUSTLY</strong> — 100% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ COUNTRY 4: QATAR ════ -->
+  <div class="country-block">
+    <div class="country-header">
+      <span class="country-rank">#04</span>
+      <span class="country-title">Qatar</span>
+      <div class="ch-stat"><div class="v">69.8%</div><div class="l">Current AR</div></div>
+      <div class="ch-stat"><div class="v">$32.8M</div><div class="l">Total Vol</div></div>
+      <div class="ch-stat"><div class="v" style="color:#f87171">$9.9M</div><div class="l">Declined</div></div>
+      <div class="ch-stat"><div class="v" style="color:#4ade80">$3.3M</div><div class="l">Gain @ +10pp</div></div>
+    </div>
+    <div class="tables-row">
+      <div class="table-panel">
+        <div class="table-label">Payment Methods</div>
+        <table class="data-table">
+          <thead><tr><th>Method</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">APPLEPAY</td><td class="r"><span class="ar-tag r">60%</span></td><td class="r">$14.67M</td><td class="r">$8.78M</td><td class="r">$5.89M</td></tr>
+            <tr><td class="name-cell">VISA</td><td class="r"><span class="ar-tag a">77%</span></td><td class="r">$10.00M</td><td class="r">$7.72M</td><td class="r">$2.28M</td></tr>
+            <tr><td class="name-cell">MASTERCARD</td><td class="r"><span class="ar-tag a">77%</span></td><td class="r">$6.42M</td><td class="r">$4.93M</td><td class="r">$1.48M</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag g">97%</span></td><td class="r">$603.1K</td><td class="r">$583.4K</td><td class="r">$19.7K</td></tr>
+            <tr><td class="name-cell">CRYPTO</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$461.4K</td><td class="r">$461.4K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">GOOGLEPAY_REF</td><td class="r"><span class="ar-tag a">76%</span></td><td class="r">$403.3K</td><td class="r">$305.2K</td><td class="r">$98.1K</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">25%</span></td><td class="r">$182.4K</td><td class="r">$45.2K</td><td class="r">$137.2K</td></tr>
+            <tr><td class="name-cell">BANK</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$105.0K</td><td class="r">$105.0K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">MAESTRO</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$13.9K</td><td class="r">$0</td><td class="r">$13.9K</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-panel">
+        <div class="table-label">PSPs</div>
+        <table class="data-table">
+          <thead><tr><th>PSP</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">CHECKOUT</td><td class="r"><span class="ar-tag a">61%</span></td><td class="r">$17.22M</td><td class="r">$10.53M</td><td class="r">$6.68M</td></tr>
+            <tr><td class="name-cell">CREDORAX</td><td class="r"><span class="ar-tag a">80%</span></td><td class="r">$13.62M</td><td class="r">$10.89M</td><td class="r">$2.73M</td></tr>
+            <tr><td class="name-cell">ECOMMPAY</td><td class="r"><span class="ar-tag r">50%</span></td><td class="r">$612.9K</td><td class="r">$305.3K</td><td class="r">$307.6K</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag g">97%</span></td><td class="r">$603.1K</td><td class="r">$583.4K</td><td class="r">$19.7K</td></tr>
+            <tr><td class="name-cell">ECOMMPAY_ITEZ</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$461.4K</td><td class="r">$461.4K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">25%</span></td><td class="r">$182.4K</td><td class="r">$45.2K</td><td class="r">$137.2K</td></tr>
+            <tr><td class="name-cell">CAPITAL_PAYMENT</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$105.0K</td><td class="r">$105.0K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">STRIPE</td><td class="r"><span class="ar-tag r">20%</span></td><td class="r">$39.1K</td><td class="r">$7.9K</td><td class="r">$31.2K</td></tr>
+            <tr><td class="name-cell">MY_FATOORAH</td><td class="r"><span class="ar-tag r">41%</span></td><td class="r">$11.1K</td><td class="r">$4.5K</td><td class="r">$6.6K</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-grid">
+        <div class="diag-box problem">
+          <div class="diag-title">Diagnosis — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>Apple Pay: highest-volume method at $14.7M, only 60% AR — $5.9M declined</li>
+            <li>Visa and Mastercard both at 77% AR — performing well</li>
+            <li>Crypto: 100% AR on $461K — underused</li>
+            <li>Neteller: 75.10% decline rate — should be off</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(192,57,43,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Diagnosis — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>Checkout: $17.2M at 61% AR vs Credorax $13.6M at 80% — wrong routing</li>
+            <li>EcommPay: 50.19% decline rate — underperforming</li>
+            <li>Neteller: 75.10% decline, Stripe: 79.53% decline</li>
+          </ul>
+        </div>
+        <div class="diag-box fix">
+          <div class="diag-title">Actions — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>APPLEPAY</strong> — 59.87% AR — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate</span></li>
+            <li><strong>CRYPTO</strong> — 100% AR — <span class="tag p" style="background:#f0fdf4;color:#16a34a;border:1px solid #86efac;">Promote</span></li>
+            <li><strong>NETELLER</strong> — 75.10% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>MAESTRO</strong> — 100% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(22,163,74,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Actions — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>ECOMMPAY</strong> — 50.19% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate</span></li>
+            <li><strong>NETELLER</strong> — 75.10% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>STRIPE</strong> — 79.53% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li>Route Apple Pay traffic to Credorax (80% AR) away from Checkout (61%)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ COUNTRY 5: HONG KONG ════ -->
+  <div class="country-block">
+    <div class="country-header">
+      <span class="country-rank">#05</span>
+      <span class="country-title">Hong Kong</span>
+      <div class="ch-stat"><div class="v">72.5%</div><div class="l">Current AR</div></div>
+      <div class="ch-stat"><div class="v">$25.3M</div><div class="l">Total Vol</div></div>
+      <div class="ch-stat"><div class="v" style="color:#f87171">$7.0M</div><div class="l">Declined</div></div>
+      <div class="ch-stat"><div class="v" style="color:#4ade80">$2.5M</div><div class="l">Gain @ +10pp</div></div>
+    </div>
+    <div class="tables-row">
+      <div class="table-panel">
+        <div class="table-label">Payment Methods</div>
+        <table class="data-table">
+          <thead><tr><th>Method</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">MASTERCARD</td><td class="r"><span class="ar-tag a">72%</span></td><td class="r">$8.80M</td><td class="r">$6.32M</td><td class="r">$2.47M</td></tr>
+            <tr><td class="name-cell">APPLEPAY</td><td class="r"><span class="ar-tag a">61%</span></td><td class="r">$6.96M</td><td class="r">$4.22M</td><td class="r">$2.74M</td></tr>
+            <tr><td class="name-cell">VISA</td><td class="r"><span class="ar-tag a">80%</span></td><td class="r">$6.72M</td><td class="r">$5.37M</td><td class="r">$1.35M</td></tr>
+            <tr><td class="name-cell">BANK</td><td class="r"><span class="ar-tag g">93%</span></td><td class="r">$1.88M</td><td class="r">$1.75M</td><td class="r">$127.6K</td></tr>
+            <tr><td class="name-cell">CRYPTO</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$517.9K</td><td class="r">$517.9K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">GOOGLEPAY_REF</td><td class="r"><span class="ar-tag a">63%</span></td><td class="r">$222.0K</td><td class="r">$139.2K</td><td class="r">$82.8K</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$167.7K</td><td class="r">$20</td><td class="r">$167.6K</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag a">78%</span></td><td class="r">$28.6K</td><td class="r">$22.4K</td><td class="r">$6.2K</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-panel">
+        <div class="table-label">PSPs</div>
+        <table class="data-table">
+          <thead><tr><th>PSP</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">CHECKOUT</td><td class="r"><span class="ar-tag a">73%</span></td><td class="r">$21.17M</td><td class="r">$15.36M</td><td class="r">$5.82M</td></tr>
+            <tr><td class="name-cell">CAPITAL_PAYMENT</td><td class="r"><span class="ar-tag g">93%</span></td><td class="r">$1.88M</td><td class="r">$1.75M</td><td class="r">$127.6K</td></tr>
+            <tr><td class="name-cell">CREDORAX</td><td class="r"><span class="ar-tag r">43%</span></td><td class="r">$900.4K</td><td class="r">$384.4K</td><td class="r">$516.0K</td></tr>
+            <tr><td class="name-cell">ECOMMPAY_ITEZ</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$517.9K</td><td class="r">$517.9K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">STRIPE</td><td class="r"><span class="ar-tag r">42%</span></td><td class="r">$395.4K</td><td class="r">$167.9K</td><td class="r">$227.5K</td></tr>
+            <tr><td class="name-cell">ECOMMPAY</td><td class="r"><span class="ar-tag a">61%</span></td><td class="r">$226.6K</td><td class="r">$139.2K</td><td class="r">$87.4K</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$167.7K</td><td class="r">$20</td><td class="r">$167.6K</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag a">78%</span></td><td class="r">$28.6K</td><td class="r">$22.4K</td><td class="r">$6.2K</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-grid">
+        <div class="diag-box problem">
+          <div class="diag-title">Diagnosis — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>Checkout: $21.2M at 73% AR — primary PSP, $5.8M declined</li>
+            <li>Apple Pay: 60.57% AR on $7M — significant drag</li>
+            <li>Visa: 80% AR on $6.7M — best card method</li>
+            <li>Neteller: 99.99% decline rate — dead</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(192,57,43,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Diagnosis — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>Checkout: $21.2M at 73% — primary lever</li>
+            <li>Credorax: 57.31% decline rate on $900K — needs rerouting</li>
+            <li>Stripe: 57.53% decline rate on $395K — needs rerouting</li>
+            <li>Neteller: 99.99% decline rate — dead</li>
+          </ul>
+        </div>
+        <div class="diag-box fix">
+          <div class="diag-title">Actions — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>APPLEPAY</strong> — 60.57% AR — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate</span></li>
+            <li><strong>CRYPTO</strong> — 100% AR — <span class="tag p" style="background:#f0fdf4;color:#16a34a;border:1px solid #86efac;">Promote</span></li>
+            <li><strong>NETELLER</strong> — 99.99% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li>Route Apple Pay to Capital Payment (100% AR)</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(22,163,74,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Actions — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>CREDORAX</strong> — 57.31% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate &amp; reroute</span></li>
+            <li><strong>STRIPE</strong> — 57.53% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate &amp; reroute</span></li>
+            <li><strong>NETELLER</strong> — 99.99% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ COUNTRY 6: KUWAIT ════ -->
+  <div class="country-block">
+    <div class="country-header">
+      <span class="country-rank">#06</span>
+      <span class="country-title">Kuwait</span>
+      <div class="ch-stat"><div class="v">71.2%</div><div class="l">Current AR</div></div>
+      <div class="ch-stat"><div class="v">$24.9M</div><div class="l">Total Vol</div></div>
+      <div class="ch-stat"><div class="v" style="color:#f87171">$7.2M</div><div class="l">Declined</div></div>
+      <div class="ch-stat"><div class="v" style="color:#4ade80">$2.5M</div><div class="l">Gain @ +10pp</div></div>
+    </div>
+    <div class="tables-row">
+      <div class="table-panel">
+        <div class="table-label">Payment Methods</div>
+        <table class="data-table">
+          <thead><tr><th>Method</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">APPLEPAY</td><td class="r"><span class="ar-tag a">74%</span></td><td class="r">$10.35M</td><td class="r">$7.63M</td><td class="r">$2.73M</td></tr>
+            <tr><td class="name-cell">VISA</td><td class="r"><span class="ar-tag a">69%</span></td><td class="r">$9.71M</td><td class="r">$6.68M</td><td class="r">$3.03M</td></tr>
+            <tr><td class="name-cell">MASTERCARD</td><td class="r"><span class="ar-tag a">75%</span></td><td class="r">$3.14M</td><td class="r">$2.37M</td><td class="r">$770.6K</td></tr>
+            <tr><td class="name-cell">BANK</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$926.2K</td><td class="r">$926.2K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">GOOGLEPAY_REF</td><td class="r"><span class="ar-tag r">50%</span></td><td class="r">$612.4K</td><td class="r">$308.1K</td><td class="r">$304.2K</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$275.7K</td><td class="r">$150</td><td class="r">$275.6K</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag r">4%</span></td><td class="r">$131.3K</td><td class="r">$5.0K</td><td class="r">$126.3K</td></tr>
+            <tr><td class="name-cell">MAESTRO</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$13.0K</td><td class="r">$0</td><td class="r">$13.0K</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-panel">
+        <div class="table-label">PSPs</div>
+        <table class="data-table">
+          <thead><tr><th>PSP</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">CHECKOUT</td><td class="r"><span class="ar-tag a">76%</span></td><td class="r">$21.50M</td><td class="r">$16.34M</td><td class="r">$5.16M</td></tr>
+            <tr><td class="name-cell">ECOMMPAY</td><td class="r"><span class="ar-tag r">28%</span></td><td class="r">$1.22M</td><td class="r">$342.3K</td><td class="r">$882.4K</td></tr>
+            <tr><td class="name-cell">CREDORAX</td><td class="r"><span class="ar-tag r">24%</span></td><td class="r">$985.4K</td><td class="r">$232.0K</td><td class="r">$753.4K</td></tr>
+            <tr><td class="name-cell">CAPITAL_PAYMENT</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$926.2K</td><td class="r">$926.2K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$275.7K</td><td class="r">$150</td><td class="r">$275.6K</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag r">4%</span></td><td class="r">$131.3K</td><td class="r">$5.0K</td><td class="r">$126.3K</td></tr>
+            <tr><td class="name-cell">STRIPE</td><td class="r"><span class="ar-tag r">60%</span></td><td class="r">$99.2K</td><td class="r">$59.1K</td><td class="r">$40.1K</td></tr>
+            <tr><td class="name-cell">MY_FATOORAH</td><td class="r"><span class="ar-tag r">28%</span></td><td class="r">$9.0K</td><td class="r">$2.6K</td><td class="r">$6.4K</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-grid">
+        <div class="diag-box problem">
+          <div class="diag-title">Diagnosis — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>Checkout: $21.2M at 76% AR — solid primary, $5.1M declined</li>
+            <li>Apple Pay: 74% AR on $10.2M — just below benchmark</li>
+            <li>Google Pay: 50.32% AR on $612K — underperforming</li>
+            <li>Neteller, Skrill, Maestro all near-zero AR</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(192,57,43,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Diagnosis — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>Checkout: $21.2M at 76% — primary PSP performing well</li>
+            <li>EcommPay: 72.05% decline rate on $1.2M — misconfigured</li>
+            <li>Credorax: 76.48% decline rate on $985K — misconfigured</li>
+            <li>Neteller: 99.95%, Skrill: 96.21% — dead</li>
+          </ul>
+        </div>
+        <div class="diag-box fix">
+          <div class="diag-title">Actions — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>GOOGLEPAY_REF</strong> — 50.32% AR — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate</span></li>
+            <li><strong>NETELLER</strong> — 99.95% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>SKRILL</strong> — 96.21% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>MAESTRO</strong> — 100% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(22,163,74,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Actions — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>ECOMMPAY</strong> — 72.05% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate &amp; reroute</span></li>
+            <li><strong>CREDORAX</strong> — 76.48% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate &amp; reroute</span></li>
+            <li><strong>NETELLER</strong> — 99.95% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>SKRILL</strong> — 96.21% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li>Consolidate secondary traffic on Checkout</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ COUNTRY 7: KAZAKHSTAN ════ -->
+  <div class="country-block">
+    <div class="country-header">
+      <span class="country-rank">#07</span>
+      <span class="country-title">Kazakhstan</span>
+      <div class="ch-stat"><div class="v">56.3%</div><div class="l">Current AR</div></div>
+      <div class="ch-stat"><div class="v">$22.5M</div><div class="l">Total Vol</div></div>
+      <div class="ch-stat"><div class="v" style="color:#f87171">$9.8M</div><div class="l">Declined</div></div>
+      <div class="ch-stat"><div class="v" style="color:#4ade80">$2.2M</div><div class="l">Gain @ +10pp</div></div>
+    </div>
+    <div class="tables-row">
+      <div class="table-panel">
+        <div class="table-label">Payment Methods</div>
+        <table class="data-table">
+          <thead><tr><th>Method</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">VISA</td><td class="r"><span class="ar-tag r">54%</span></td><td class="r">$16.57M</td><td class="r">$8.97M</td><td class="r">$7.60M</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">54%</span></td><td class="r">$2.89M</td><td class="r">$1.57M</td><td class="r">$1.32M</td></tr>
+            <tr><td class="name-cell">BANK</td><td class="r"><span class="ar-tag g">92%</span></td><td class="r">$1.31M</td><td class="r">$1.21M</td><td class="r">$98.5K</td></tr>
+            <tr><td class="name-cell">MASTERCARD</td><td class="r"><span class="ar-tag r">55%</span></td><td class="r">$754.1K</td><td class="r">$414.2K</td><td class="r">$339.9K</td></tr>
+            <tr><td class="name-cell">APPLEPAY</td><td class="r"><span class="ar-tag r">51%</span></td><td class="r">$743.0K</td><td class="r">$376.9K</td><td class="r">$366.1K</td></tr>
+            <tr><td class="name-cell">CRYPTO</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$112.4K</td><td class="r">$112.4K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">GOOGLEPAY_REF</td><td class="r"><span class="ar-tag r">7%</span></td><td class="r">$100.2K</td><td class="r">$6.8K</td><td class="r">$93.4K</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag r">5%</span></td><td class="r">$17.4K</td><td class="r">$846</td><td class="r">$16.5K</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-panel">
+        <div class="table-label">PSPs</div>
+        <table class="data-table">
+          <thead><tr><th>PSP</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">CREDORAX</td><td class="r"><span class="ar-tag a">61%</span></td><td class="r">$13.98M</td><td class="r">$8.49M</td><td class="r">$5.49M</td></tr>
+            <tr><td class="name-cell">CHECKOUT</td><td class="r"><span class="ar-tag r">38%</span></td><td class="r">$3.31M</td><td class="r">$1.27M</td><td class="r">$2.04M</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">54%</span></td><td class="r">$2.89M</td><td class="r">$1.57M</td><td class="r">$1.32M</td></tr>
+            <tr><td class="name-cell">CAPITAL_PAYMENT</td><td class="r"><span class="ar-tag g">92%</span></td><td class="r">$1.31M</td><td class="r">$1.21M</td><td class="r">$98.5K</td></tr>
+            <tr><td class="name-cell">ECOMMPAY</td><td class="r"><span class="ar-tag r">1%</span></td><td class="r">$875.2K</td><td class="r">$9.7K</td><td class="r">$865.5K</td></tr>
+            <tr><td class="name-cell">ECOMMPAY_ITEZ</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$112.4K</td><td class="r">$112.4K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag r">5%</span></td><td class="r">$17.4K</td><td class="r">$846</td><td class="r">$16.5K</td></tr>
+            <tr><td class="name-cell">STRIPE</td><td class="r"><span class="ar-tag r">19%</span></td><td class="r">$4.8K</td><td class="r">$900</td><td class="r">$3.9K</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-grid">
+        <div class="diag-box problem">
+          <div class="diag-title">Diagnosis — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>Visa: $16.5M at 54% AR — dominant method, structural issuer blocks</li>
+            <li>Credorax: 61% AR on $14M — best PSP but still underperforming</li>
+            <li>Checkout: 38% AR on $3.3M — misconfigured</li>
+            <li>EcommPay: 1% AR on $872K — near-total failure</li>
+            <li>No local Kazakh payment method (Kaspi) available</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(192,57,43,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Diagnosis — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>Credorax: primary PSP at 61% AR — best option but room to improve</li>
+            <li>Checkout: 61.66% decline rate on $3.3M — wrong config</li>
+            <li>EcommPay: 98.90% decline rate — dead</li>
+            <li>Skrill: 95.13%, Stripe: 81.07% — dead</li>
+          </ul>
+        </div>
+        <div class="diag-box fix">
+          <div class="diag-title">Actions — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>GOOGLEPAY_REF</strong> — 93.20% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>SKRILL</strong> — 95.13% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li>Integrate Kaspi local rail</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(22,163,74,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Actions — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>CHECKOUT</strong> — 61.66% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate &amp; reroute</span></li>
+            <li><strong>ECOMMPAY</strong> — 98.90% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>SKRILL</strong> — 95.13% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>STRIPE</strong> — 81.07% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li>Route Visa to Credorax as primary</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ COUNTRY 8: MEXICO ════ -->
+  <div class="country-block">
+    <div class="country-header">
+      <span class="country-rank">#08</span>
+      <span class="country-title">Mexico</span>
+      <div class="ch-stat"><div class="v">44.4%</div><div class="l">Current AR</div></div>
+      <div class="ch-stat"><div class="v">$20.2M</div><div class="l">Total Vol</div></div>
+      <div class="ch-stat"><div class="v" style="color:#f87171">$11.2M</div><div class="l">Declined</div></div>
+      <div class="ch-stat"><div class="v" style="color:#4ade80">$2.0M</div><div class="l">Gain @ +10pp</div></div>
+    </div>
+    <div class="tables-row">
+      <div class="table-panel">
+        <div class="table-label">Payment Methods</div>
+        <table class="data-table">
+          <thead><tr><th>Method</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">MASTERCARD</td><td class="r"><span class="ar-tag r">39%</span></td><td class="r">$6.53M</td><td class="r">$2.53M</td><td class="r">$3.99M</td></tr>
+            <tr><td class="name-cell">VISA</td><td class="r"><span class="ar-tag r">23%</span></td><td class="r">$5.49M</td><td class="r">$1.27M</td><td class="r">$4.22M</td></tr>
+            <tr><td class="name-cell">SPEI</td><td class="r"><span class="ar-tag a">80%</span></td><td class="r">$4.43M</td><td class="r">$3.53M</td><td class="r">$903.9K</td></tr>
+            <tr><td class="name-cell">GOOGLEPAY_REF</td><td class="r"><span class="ar-tag r">3%</span></td><td class="r">$1.04M</td><td class="r">$26.7K</td><td class="r">$1.01M</td></tr>
+            <tr><td class="name-cell">CRYPTO</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$820.9K</td><td class="r">$820.9K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">BANK</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$596.5K</td><td class="r">$596.5K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag r">10%</span></td><td class="r">$564.7K</td><td class="r">$56.0K</td><td class="r">$508.7K</td></tr>
+            <tr><td class="name-cell">APPLEPAY</td><td class="r"><span class="ar-tag r">26%</span></td><td class="r">$519.5K</td><td class="r">$133.3K</td><td class="r">$386.1K</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">3%</span></td><td class="r">$216.5K</td><td class="r">$7.2K</td><td class="r">$209.3K</td></tr>
+            <tr><td class="name-cell">MAESTRO</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$3.0K</td><td class="r">$0</td><td class="r">$3.0K</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-panel">
+        <div class="table-label">PSPs</div>
+        <table class="data-table">
+          <thead><tr><th>PSP</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">CHECKOUT</td><td class="r"><span class="ar-tag r">35%</span></td><td class="r">$8.79M</td><td class="r">$3.05M</td><td class="r">$5.74M</td></tr>
+            <tr><td class="name-cell">D24</td><td class="r"><span class="ar-tag g">81%</span></td><td class="r">$4.34M</td><td class="r">$3.50M</td><td class="r">$839.3K</td></tr>
+            <tr><td class="name-cell">ECOMMPAY</td><td class="r"><span class="ar-tag r">10%</span></td><td class="r">$3.48M</td><td class="r">$354.8K</td><td class="r">$3.12M</td></tr>
+            <tr><td class="name-cell">CREDORAX</td><td class="r"><span class="ar-tag r">43%</span></td><td class="r">$1.23M</td><td class="r">$533.8K</td><td class="r">$694.6K</td></tr>
+            <tr><td class="name-cell">ECOMMPAY_ITEZ</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$820.9K</td><td class="r">$820.9K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">CAPITAL_PAYMENT</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$596.5K</td><td class="r">$596.5K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag r">10%</span></td><td class="r">$564.7K</td><td class="r">$56.0K</td><td class="r">$508.7K</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">3%</span></td><td class="r">$216.5K</td><td class="r">$7.2K</td><td class="r">$209.3K</td></tr>
+            <tr><td class="name-cell">PAY_RETAILERS</td><td class="r"><span class="ar-tag r">32%</span></td><td class="r">$94.4K</td><td class="r">$29.9K</td><td class="r">$64.6K</td></tr>
+            <tr><td class="name-cell">STRIPE</td><td class="r"><span class="ar-tag r">20%</span></td><td class="r">$66.7K</td><td class="r">$13.4K</td><td class="r">$53.3K</td></tr>
+            <tr><td class="name-cell">WEBPAY</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$4.5K</td><td class="r">$4.5K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">MY_FATOORAH</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$1.0K</td><td class="r">$0</td><td class="r">$1.0K</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-grid">
+        <div class="diag-box problem">
+          <div class="diag-title">Diagnosis — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>EcommPay: $3.5M at 10% AR — $3.1M declined</li>
+            <li>Checkout: $8.8M at 35% AR — primary PSP underperforming</li>
+            <li>D24: 81% AR on $4.3M — best PSP, underused</li>
+            <li>D24: 81% AR on $4.3M — best PSP, underused relative to Checkout</li>
+            <li>Visa at 23%, Mastercard at 39% — cards dragging overall AR</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(192,57,43,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Diagnosis — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>EcommPay: 89.79% decline rate on $3.5M — dead</li>
+            <li>Checkout: 35% AR on $8.8M — primary but underperforming vs D24</li>
+            <li>Credorax: 56.55% decline rate on $1.2M — needs rerouting</li>
+            <li>Skrill: 90.08%, Neteller: 96.69%, PAY_RETAILERS: 68.52%, Stripe: 79.87% — turn off</li>
+          </ul>
+        </div>
+        <div class="diag-box fix">
+          <div class="diag-title">Actions — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>GOOGLEPAY_REF</strong> — 97.42% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>SKRILL</strong> — 90.08% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>APPLEPAY</strong> — 74.34% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>NETELLER</strong> — 96.69% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>MAESTRO</strong> — 100% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li>Route cards to D24 (81% AR) — away from Checkout and EcommPay</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(22,163,74,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Actions — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>ECOMMPAY</strong> — 89.79% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>CREDORAX</strong> — 56.55% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate &amp; reroute</span></li>
+            <li><strong>SKRILL</strong> — 90.08% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>NETELLER</strong> — 96.69% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>PAY_RETAILERS</strong> — 68.52% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>STRIPE</strong> — 79.87% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li>Route cards to D24 (81% AR) away from Checkout</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ COUNTRY 9: OMAN ════ -->
+  <div class="country-block">
+    <div class="country-header">
+      <span class="country-rank">#09</span>
+      <span class="country-title">Oman</span>
+      <div class="ch-stat"><div class="v">69.1%</div><div class="l">Current AR</div></div>
+      <div class="ch-stat"><div class="v">$17.1M</div><div class="l">Total Vol</div></div>
+      <div class="ch-stat"><div class="v" style="color:#f87171">$5.3M</div><div class="l">Declined</div></div>
+      <div class="ch-stat"><div class="v" style="color:#4ade80">$1.7M</div><div class="l">Gain @ +10pp</div></div>
+    </div>
+    <div class="tables-row">
+      <div class="table-panel">
+        <div class="table-label">Payment Methods</div>
+        <table class="data-table">
+          <thead><tr><th>Method</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">VISA</td><td class="r"><span class="ar-tag a">71%</span></td><td class="r">$11.55M</td><td class="r">$8.22M</td><td class="r">$3.32M</td></tr>
+            <tr><td class="name-cell">APPLEPAY</td><td class="r"><span class="ar-tag a">76%</span></td><td class="r">$4.45M</td><td class="r">$3.38M</td><td class="r">$1.07M</td></tr>
+            <tr><td class="name-cell">MASTERCARD</td><td class="r"><span class="ar-tag r">34%</span></td><td class="r">$704.2K</td><td class="r">$238.2K</td><td class="r">$466.0K</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$468.4K</td><td class="r">$0</td><td class="r">$468.4K</td></tr>
+            <tr><td class="name-cell">GOOGLEPAY_REF</td><td class="r"><span class="ar-tag a">65%</span></td><td class="r">$106.9K</td><td class="r">$69.6K</td><td class="r">$37.4K</td></tr>
+            <tr><td class="name-cell">CRYPTO</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$58.9K</td><td class="r">$58.9K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">BANK</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$11.4K</td><td class="r">$11.4K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">MAESTRO</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$10.1K</td><td class="r">$0</td><td class="r">$10.1K</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag r">3%</span></td><td class="r">$3.3K</td><td class="r">$93</td><td class="r">$3.2K</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-panel">
+        <div class="table-label">PSPs</div>
+        <table class="data-table">
+          <thead><tr><th>PSP</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">CHECKOUT</td><td class="r"><span class="ar-tag a">75%</span></td><td class="r">$9.37M</td><td class="r">$7.04M</td><td class="r">$2.33M</td></tr>
+            <tr><td class="name-cell">CREDORAX</td><td class="r"><span class="ar-tag a">74%</span></td><td class="r">$6.40M</td><td class="r">$4.76M</td><td class="r">$1.64M</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$468.4K</td><td class="r">$0</td><td class="r">$468.4K</td></tr>
+            <tr><td class="name-cell">ECOMMPAY</td><td class="r"><span class="ar-tag r">22%</span></td><td class="r">$452.5K</td><td class="r">$99.4K</td><td class="r">$353.2K</td></tr>
+            <tr><td class="name-cell">MY_FATOORAH</td><td class="r"><span class="ar-tag r">2%</span></td><td class="r">$339.0K</td><td class="r">$8.4K</td><td class="r">$330.6K</td></tr>
+            <tr><td class="name-cell">STRIPE</td><td class="r"><span class="ar-tag r">3%</span></td><td class="r">$259.2K</td><td class="r">$6.6K</td><td class="r">$252.6K</td></tr>
+            <tr><td class="name-cell">ECOMMPAY_ITEZ</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$58.9K</td><td class="r">$58.9K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">CAPITAL_PAYMENT</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$11.4K</td><td class="r">$11.4K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag r">3%</span></td><td class="r">$3.3K</td><td class="r">$93</td><td class="r">$3.2K</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-grid">
+        <div class="diag-box problem">
+          <div class="diag-title">Diagnosis — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>Visa: 71% AR on $11.4M — primary method, $3.3M declined</li>
+            <li>Apple Pay: 76% AR on $4.4M — performing well</li>
+            <li>Mastercard: 34% AR on $699K — wrong PSP routing</li>
+            <li>Neteller: 0% AR on $468K, Maestro and Skrill near-zero — all dead</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(192,57,43,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Diagnosis — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>Checkout: $9.2M at 75% AR — primary PSP solid</li>
+            <li>Credorax: $6.4M at 74% AR — good secondary</li>
+            <li>EcommPay: 77.26% decline rate on $437K — needs rerouting</li>
+            <li>Neteller: 100%, Stripe: 97.35%, Skrill: 97.16% — dead</li>
+            <li>My Fatoorah: 2% AR on $339K — dead</li>
+          </ul>
+        </div>
+        <div class="diag-box fix">
+          <div class="diag-title">Actions — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>MASTERCARD</strong> — 66.16% AR — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate</span></li>
+            <li><strong>NETELLER</strong> — 100% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>CRYPTO</strong> — 100% AR — <span class="tag p" style="background:#f0fdf4;color:#16a34a;border:1px solid #86efac;">Promote</span></li>
+            <li><strong>MAESTRO</strong> — 100% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>SKRILL</strong> — 97.16% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(22,163,74,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Actions — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>NETELLER</strong> — 100% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>ECOMMPAY</strong> — 77.26% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate &amp; reroute</span></li>
+            <li><strong>STRIPE</strong> — 97.35% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>SKRILL</strong> — 97.16% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li>Disable My Fatoorah — consolidate on Checkout + Credorax</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ COUNTRY 10: CHILE ════ -->
+  <div class="country-block">
+    <div class="country-header">
+      <span class="country-rank">#10</span>
+      <span class="country-title">Chile</span>
+      <div class="ch-stat"><div class="v">28.1%</div><div class="l">Current AR</div></div>
+      <div class="ch-stat"><div class="v">$13.6M</div><div class="l">Total Vol</div></div>
+      <div class="ch-stat"><div class="v" style="color:#f87171">$9.8M</div><div class="l">Declined</div></div>
+      <div class="ch-stat"><div class="v" style="color:#4ade80">$1.4M</div><div class="l">Gain @ +10pp</div></div>
+    </div>
+    <div class="tables-row">
+      <div class="table-panel">
+        <div class="table-label">Payment Methods</div>
+        <table class="data-table">
+          <thead><tr><th>Method</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">VISA</td><td class="r"><span class="ar-tag r">35%</span></td><td class="r">$5.80M</td><td class="r">$2.00M</td><td class="r">$3.80M</td></tr>
+            <tr><td class="name-cell">MASTERCARD</td><td class="r"><span class="ar-tag r">28%</span></td><td class="r">$3.16M</td><td class="r">$876.7K</td><td class="r">$2.28M</td></tr>
+            <tr><td class="name-cell">WEB_PAY</td><td class="r"><span class="ar-tag r">14%</span></td><td class="r">$2.34M</td><td class="r">$335.6K</td><td class="r">$2.00M</td></tr>
+            <tr><td class="name-cell">APPLEPAY</td><td class="r"><span class="ar-tag r">34%</span></td><td class="r">$888.9K</td><td class="r">$304.0K</td><td class="r">$584.9K</td></tr>
+            <tr><td class="name-cell">GOOGLEPAY_REF</td><td class="r"><span class="ar-tag r">10%</span></td><td class="r">$746.4K</td><td class="r">$71.9K</td><td class="r">$674.5K</td></tr>
+            <tr><td class="name-cell">KHIPU</td><td class="r"><span class="ar-tag r">26%</span></td><td class="r">$349.0K</td><td class="r">$90.1K</td><td class="r">$258.9K</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">2%</span></td><td class="r">$143.5K</td><td class="r">$2.2K</td><td class="r">$141.3K</td></tr>
+            <tr><td class="name-cell">CRYPTO</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$125.5K</td><td class="r">$125.5K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag r">7%</span></td><td class="r">$39.2K</td><td class="r">$2.6K</td><td class="r">$36.6K</td></tr>
+            <tr><td class="name-cell">MACH</td><td class="r"><span class="ar-tag r">40%</span></td><td class="r">$19.3K</td><td class="r">$7.7K</td><td class="r">$11.6K</td></tr>
+            <tr><td class="name-cell">BANK</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$14.1K</td><td class="r">$14.1K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">MAESTRO</td><td class="r"><span class="ar-tag r">0%</span></td><td class="r">$5.0K</td><td class="r">$0</td><td class="r">$5.0K</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-panel">
+        <div class="table-label">PSPs</div>
+        <table class="data-table">
+          <thead><tr><th>PSP</th><th class="r">AR</th><th class="r">Volume</th><th class="r">Processed</th><th class="r">Declined</th></tr></thead>
+          <tbody>
+            <tr><td class="name-cell">CREDORAX</td><td class="r"><span class="ar-tag r">37%</span></td><td class="r">$6.91M</td><td class="r">$2.57M</td><td class="r">$4.34M</td></tr>
+            <tr><td class="name-cell">PAY_RETAILERS</td><td class="r"><span class="ar-tag r">16%</span></td><td class="r">$2.71M</td><td class="r">$433.5K</td><td class="r">$2.27M</td></tr>
+            <tr><td class="name-cell">CHECKOUT</td><td class="r"><span class="ar-tag r">27%</span></td><td class="r">$2.18M</td><td class="r">$587.4K</td><td class="r">$1.59M</td></tr>
+            <tr><td class="name-cell">ECOMMPAY</td><td class="r"><span class="ar-tag r">6%</span></td><td class="r">$1.51M</td><td class="r">$95.3K</td><td class="r">$1.41M</td></tr>
+            <tr><td class="name-cell">NETELLER</td><td class="r"><span class="ar-tag r">2%</span></td><td class="r">$143.5K</td><td class="r">$2.2K</td><td class="r">$141.3K</td></tr>
+            <tr><td class="name-cell">ECOMMPAY_ITEZ</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$125.5K</td><td class="r">$125.5K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">SKRILL</td><td class="r"><span class="ar-tag r">7%</span></td><td class="r">$39.2K</td><td class="r">$2.6K</td><td class="r">$36.6K</td></tr>
+            <tr><td class="name-cell">CAPITAL_PAYMENT</td><td class="r"><span class="ar-tag g">100%</span></td><td class="r">$14.1K</td><td class="r">$14.1K</td><td class="r">$0</td></tr>
+            <tr><td class="name-cell">STRIPE</td><td class="r"><span class="ar-tag r">20%</span></td><td class="r">$200</td><td class="r">$40</td><td class="r">$160</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="diag-section">
+      <div class="diag-grid">
+        <div class="diag-box problem">
+          <div class="diag-title">Diagnosis — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>Credorax: 37% AR on $6.9M — primary PSP failing, $4.3M declined</li>
+            <li>Checkout: 27% AR on $2.2M — $1.6M declined</li>
+            <li>EcommPay: 6% AR on $1.5M — near-total failure</li>
+            <li>Pay_Retailers: 100% AR on $433K — proof the fix exists</li>
+            <li>All card methods at low AR — no working card routing</li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(192,57,43,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Diagnosis — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li>Credorax: primary PSP at only 37% AR — needs full replacement</li>
+            <li>Checkout: 27% AR — underperforming</li>
+            <li>EcommPay: 93.67% decline rate — dead</li>
+            <li>Pay_Retailers: 100% AR — should be primary</li>
+            <li>Neteller: 98.48%, Skrill: 93.39%, Stripe: 79.97% — dead</li>
+          </ul>
+        </div>
+        <div class="diag-box fix">
+          <div class="diag-title">Actions — Methods</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>VISA</strong> — 65.20% AR — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate</span></li>
+            <li><strong>MASTERCARD</strong> — 71.77% AR — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate</span></li>
+            <li><strong>WEB_PAY</strong> — 85.65% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate</span></li>
+            <li><strong>APPLEPAY</strong> — 65.80% AR — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate</span></li>
+            <li><strong>GOOGLEPAY_REF</strong> — 90.37% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>KHIPU</strong> — 74.17% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate</span></li>
+            <li><strong>NETELLER</strong> — 98.48% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>CRYPTO</strong> — 100% AR — <span class="tag p" style="background:#f0fdf4;color:#16a34a;border:1px solid #86efac;">Promote</span></li>
+            <li><strong>SKRILL</strong> — 93.39% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>MACH</strong> — 60.09% AR — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate</span></li>
+            <li><strong>MAESTRO</strong> — 100% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+          </ul>
+          <hr style="border:none;border-top:1px solid rgba(22,163,74,0.2);margin:10px 0;">
+          <div class="diag-title" style="margin-top:4px;">Actions — PSPs</div>
+          <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.8;color:var(--text);">
+            <li><strong>PAY_RETAILERS</strong> — 83.98% decline — <span class="tag s" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d;">Investigate &amp; reroute</span></li>
+            <li><strong>ECOMMPAY</strong> — 93.67% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>NETELLER</strong> — 98.48% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>SKRILL</strong> — 93.39% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li><strong>STRIPE</strong> — 79.97% decline — <span class="tag s" style="background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;">Turn off</span></li>
+            <li>Switch primary PSP to PayRetailers / dLocal — full PSP swap needed</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ POSSIBLE SOLUTIONS ════ -->
+  <div style="margin-top:48px;border:1px solid var(--border);background:var(--white);">
+    <div style="background:var(--text);color:white;padding:12px 16px;">
+      <span style="font-size:15px;font-weight:600;">Possible Solutions</span>
+    </div>
+    <div style="padding:24px;">
+
+      <div style="margin-bottom:0;">
+        <div style="font-size:9px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:10px;">Branded Prepaid Card via BaaS → Own E-Money Licence</div>
+        <p style="font-size:13px;line-height:1.75;color:var(--text);">
+          A Capital.com-branded prepaid Mastercard would bypass the core PSP problem entirely — clients fund the card directly, money moves within their own account ecosystem rather than through a merchant acquiring flow, eliminating MCC-based issuer blocks. In the near term this can be launched via a <strong>Banking as a Service (BaaS)</strong> partner: a licensed card issuer (e.g. Gate to Pay, Neopay, Paymentology) provides the regulated infrastructure — card issuing, scheme membership, safeguarding — while Capital.com builds the product and brand layer on top. No additional broker licence required, and the model is already proven in this space by Equiti via Gate to Pay. Weeks to launch, not months. Medium-term, <strong>Capital.com's e-money licence in progress</strong> would replace the BaaS dependency entirely — bringing card issuance in-house, improving unit economics at scale, and giving full control over the client funding experience. Given $108M in declined deposit volume in UAE alone over the last 6 months, the addressable impact is material.
+        </p>
+        <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;">
+          <span style="font-size:10px;font-family:'DM Mono',monospace;padding:4px 10px;border-radius:2px;background:#eff6ff;color:#1d4ed8;border:1px solid #93c5fd;font-weight:500;">Near-term: BaaS partner</span>
+          <span style="font-size:10px;font-family:'DM Mono',monospace;padding:4px 10px;border-radius:2px;background:#eff6ff;color:#1d4ed8;border:1px solid #93c5fd;font-weight:500;">Gate to Pay · Neopay · Paymentology</span>
+          <span style="font-size:10px;font-family:'DM Mono',monospace;padding:4px 10px;border-radius:2px;background:#f0fdf4;color:#16a34a;border:1px solid #86efac;font-weight:500;">Medium-term: Own EMI licence (in progress)</span>
+          <span style="font-size:10px;font-family:'DM Mono',monospace;padding:4px 10px;border-radius:2px;background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;font-weight:500;">$108M declined in UAE alone (last 6M)</span>
+        </div>
+      </div>
+
+    
+      <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border);">
+        <div style="font-size:9px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);margin-bottom:10px;">Local Payment Schemes by Market</div>
+        <p style="font-size:12px;color:var(--muted);margin-bottom:12px;font-style:italic;">Each market has regulated domestic schemes handling the majority of local transactions. These require a PSP with local connectivity to route — several are already accessible via Checkout.com and My Fatoorah. Neteller and Skrill, which are running at near-zero AR across all these markets, should be replaced with these alternatives.</p>
+
+        <div style="font-size:10px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin:12px 0 6px;">GCC</div>
+        <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.9;color:var(--text);">
+          <li><strong>Saudi Arabia — Mada</strong>: national debit scheme, dominant across all online transactions. Activatable via My Fatoorah (already our primary KSA PSP). Also <strong>STC Pay</strong>: telco-backed wallet, 12% of all KSA online payments.</li>
+          <li><strong>Kuwait — KNET</strong>: 85%+ of all Kuwait transactions. Checkout.com is already our primary Kuwait PSP and supports KNET — this is a configuration enable only, no new contract needed.</li>
+          <li><strong>Qatar — NAPS (QPay)</strong>: Qatar Central Bank scheme, 70%+ of Qatar online transactions. Both Checkout.com and Credorax have NAPS connectivity.</li>
+          <li><strong>Oman — OmanNet</strong>: ~70% of Oman online transactions. Checkout.com supports OmanNet. Straightforward to enable alongside Credorax.</li>
+          <li><strong>UAE — e& money (Etisalat Wallet)</strong>: first CBUAE-licensed digital wallet, fast-growing. Complements Lean, which is already live at 77% AR.</li>
+        </ul>
+
+        <div style="font-size:10px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin:16px 0 6px;">Hong Kong</div>
+        <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.9;color:var(--text);">
+          <li><strong>FPS</strong> (Faster Payment System): HKMA-operated real-time bank transfer system, connects 30+ banks, instant and free. Direct equivalent of Lean for UAE. Checkout.com already supports FPS.</li>
+          <li><strong>AlipayHK + WeChat Pay HK</strong>: dominant local wallets, essential for clients with mainland China connections. High adoption among HK's younger demographic.</li>
+          <li><strong>PayMe</strong> (HSBC-backed): widely used for retail and P2P payments across the market.</li>
+        </ul>
+
+        <div style="font-size:10px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin:16px 0 6px;">Mexico</div>
+        <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.9;color:var(--text);">
+          <li><strong>DiMo</strong>: Bank of Mexico's phone-number-based instant transfer layer, 7M+ users in its first year, backed by BBVA and Santander. Accessible via D24, our best-performing PSP in Mexico at 81% AR — worth enabling as a low-friction local option for clients without card access.</li>
+          <li><strong>Mercado Pago</strong>: dominant Latin American digital wallet. Worth enabling as a fallback for card-declined clients.</li>
+        </ul>
+
+        <div style="font-size:10px;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);margin:16px 0 6px;">Chile</div>
+        <ul style="margin:0;padding-left:16px;font-size:12px;line-height:1.9;color:var(--text);">
+          <li><strong>WebPay Plus fix — switch PSP</strong>: WebPay is live but at 14% AR ($2.3M declined). This is a PSP routing failure, not a method failure. Credorax and Checkout cannot route WebPay correctly in Chile. dLocal and PayRetailers are Chile specialists — PayRetailers is already running at 100% AR on $433K in our data. Switching WebPay routing to dLocal or PayRetailers is the single highest-impact fix for Chile.</li>
+          <li><strong>Khipu fix — same root cause</strong>: live at 26% AR, same misrouting issue. dLocal supports Khipu natively with high acceptance rates. No new method needed — new PSP only.</li>
+          <li><strong>Redcompra</strong>: Chile's national debit card scheme (Transbank), not currently enabled. Would give a direct local card rail bypassing international card routing entirely. Supported by dLocal.</li>
+          <li><strong>Fintoc</strong>: open banking API connecting directly to Chilean bank accounts — cleaner and more reliable than Khipu. Supported by dLocal. Worth enabling as the long-term local bank transfer solution.</li>
+        </ul>
+
+        <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;">
+          <span style="font-size:10px;font-family:'DM Mono',monospace;padding:4px 10px;border-radius:2px;background:#fef2f2;color:#c0392b;border:1px solid #fca5a5;font-weight:500;">Replace Neteller + Skrill across all markets</span>
+          <span style="font-size:10px;font-family:'DM Mono',monospace;padding:4px 10px;border-radius:2px;background:#eff6ff;color:#1d4ed8;border:1px solid #93c5fd;font-weight:500;">KNET · NAPS · Mada · OmanNet · FPS</span>
+          <span style="font-size:10px;font-family:'DM Mono',monospace;padding:4px 10px;border-radius:2px;background:#f0fdf4;color:#16a34a;border:1px solid #86efac;font-weight:500;">Chile: switch WebPay + Khipu to dLocal / PayRetailers</span>
+          <span style="font-size:10px;font-family:'DM Mono',monospace;padding:4px 10px;border-radius:2px;background:#f0fdf4;color:#16a34a;border:1px solid #86efac;font-weight:500;">KNET + NAPS + OmanNet via Checkout.com (config only)</span>
+        </div>
+      </div>
+</div>
+  </div>
+
+
+  <!-- COMPLIANCE -->
+
+  <div style="background:#f8f8f6;border:1px solid var(--border);padding:14px 16px;font-size:10px;color:var(--muted);font-family:'DM Mono',monospace;line-height:1.7;margin-top:24px;">
+    DATA NOTE: All figures from Tableau rep_transactions_v_updated · BAH licence · Deposits only (PROCESSED + DECLINED) · Last 6 months · Test users excluded (Test Sign = FALSE). AR = SUM(PROCESSED) / SUM(PROCESSED + DECLINED). "Gain @ +10pp" = 10% × total attempted volume. COMPLIANCE: Acceptance rates reflect past performance only. No method is guaranteed. Do not represent any rate as certain to clients. CFDs involve significant risk. Capital at risk.
+  </div>
+
+  <footer>
+    <span>Capital.com · CEO Office · April 2026</span>
+    <span>Source: Tableau MCP · rep_transactions_v_updated · BAH · Last 6M</span>
+  </footer>
+
+</div>
+</body>
+</html>
