@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIVA 2026 YTD — Country Performance Report</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+  :root {
+    --bg-void: #0A0A0B;
+    --bg-card: #111114;
+    --bg-card2: #16161A;
+    --bg-hover: #1C1C22;
+    --border: rgba(255,255,255,0.06);
+    --border-bright: rgba(255,255,255,0.12);
+    --gold: #C9A84C;
+    --gold-dim: rgba(201,168,76,0.15);
+    --gold-glow: rgba(201,168,76,0.08);
+    --text-primary: #F0EEE8;
+    --text-secondary: #7A7980;
+    --text-dim: #46454F;
+    --green: #3DCC8A;
+    --green-bg: rgba(61,204,138,0.1);
+    --red: #E05555;
+    --red-bg: rgba(224,85,85,0.1);
+    --amber: #E8943A;
+    --amber-bg: rgba(232,148,58,0.1);
+    --blue: #5588FF;
+    --blue-bg: rgba(85,136,255,0.08);
+    --conv: #7B6FF0;
+    --ret: #3DAED4;
+    --conv-bg: rgba(123,111,240,0.12);
+    --ret-bg: rgba(61,174,212,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg-void);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* ─── PAGE LAYOUT ─── */
+  .page { max-width: 1400px; margin: 0 auto; padding: 48px 40px 80px; }
+
+  /* ─── HEADER ─── */
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 52px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header-left {}
+  .header-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .header-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    line-height: 1.1;
+  }
+  .header-title span { color: var(--gold); }
+  .header-subtitle {
+    margin-top: 8px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 400;
+  }
+  .header-meta {
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 2;
+  }
+  .header-meta .live {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--green);
+    font-size: 10px;
+  }
+  .header-meta .live::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* ─── KPI TILES ─── */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+  .kpi-tile {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .kpi-tile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent, var(--gold));
+    opacity: 0.7;
+  }
+  .kpi-tile:hover { border-color: var(--border-bright); }
+  .kpi-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+  }
+  .kpi-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .kpi-sub {
+    margin-top: 6px;
+    font-size: 11px;
+    color: var(--text-dim);
+  }
+
+  /* ─── SECTION HEADER ─── */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 18px;
+    margin-top: 44px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .section-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.1em;
+  }
+
+  /* ─── MAIN TABLE ─── */
+  .table-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }
+  thead th {
+    padding: 11px 14px;
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    background: var(--bg-card2);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  thead th:first-child,
+  thead th:nth-child(2) { text-align: left; }
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--bg-hover); }
+  tbody td {
+    padding: 11px 14px;
+    text-align: right;
+    color: var(--text-primary);
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  tbody td:first-child { text-align: left; }
+  tbody td:nth-child(2) { text-align: left; }
+
+  .rank-col {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    min-width: 28px;
+  }
+  .country-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 13px;
+  }
+  .flag { font-size: 15px; margin-right: 7px; }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-right: 4px;
+  }
+  .badge-conv { background: var(--conv-bg); color: var(--conv); }
+  .badge-ret  { background: var(--ret-bg);  color: var(--ret);  }
+
+  .num { font-family: 'DM Mono', monospace; }
+  .num-gold { color: var(--gold); font-weight: 500; }
+  .num-green { color: var(--green); }
+  .num-dim { color: var(--text-dim); }
+  .num-red { color: var(--red); }
+
+  .cbv-bar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .bar-track {
+    width: 60px;
+    height: 4px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--gold);
+  }
+
+  .connect-rate {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+  }
+  .cr-good { color: var(--green); }
+  .cr-mid  { color: var(--amber); }
+  .cr-low  { color: var(--red); }
+
+  .date-chip {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    background: var(--bg-card2);
+    padding: 2px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .date-chip.na { opacity: 0.4; }
+
+  /* Sub-row (country detail) */
+  .sub-row { background: var(--bg-void) !important; }
+  .sub-row td {
+    font-size: 11.5px;
+    color: var(--text-secondary);
+    padding: 7px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.03) !important;
+  }
+  .sub-row:last-child td { border-bottom: none !important; }
+
+  .country-group-header td {
+    background: var(--bg-card2);
+    padding: 12px 14px 8px;
+    border-bottom: none !important;
+  }
+
+  /* ─── ANOMALIES ─── */
+  .anomaly-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+  .anomaly-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 20px;
+    border-left: 3px solid var(--flag-color, var(--gold));
+  }
+  .anomaly-card.flag-red    { --flag-color: var(--red); background: rgba(224,85,85,0.04); }
+  .anomaly-card.flag-amber  { --flag-color: var(--amber); background: rgba(232,148,58,0.04); }
+  .anomaly-card.flag-green  { --flag-color: var(--green); background: rgba(61,204,138,0.04); }
+  .anomaly-card.flag-blue   { --flag-color: var(--blue); background: rgba(85,136,255,0.04); }
+  .anomaly-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--flag-color);
+    margin-bottom: 8px;
+  }
+  .anomaly-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+  }
+  .anomaly-body {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+  .anomaly-body strong { color: var(--text-primary); }
+  .anomaly-stat {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--flag-color);
+    background: var(--flag-color-bg, rgba(201,168,76,0.1));
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+
+  /* ─── FOOTER ─── */
+  .report-footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-left {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    line-height: 1.8;
+  }
+  .footer-right {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--text-dim);
+    text-align: right;
+  }
+
+  /* tooltip */
+  [title] { cursor: help; }
+
+  /* sticky thead */
+  .sticky-head thead th { position: sticky; top: 0; z-index: 2; }
+
+  /* ─── REGION DIVIDER ─── */
+  .region-row td {
+    background: var(--bg-void);
+    padding: 6px 14px 4px;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-align: left !important;
+    border-bottom: none !important;
+  }
+
+  .separator { color: var(--text-dim); }
+
+  .trend-up::before { content: '↑ '; color: var(--green); }
+  .trend-new::before { content: '◆ '; color: var(--blue); font-size: 8px; }
+
+  /* scrollable table */
+  .table-scroll { overflow-x: auto; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ─── HEADER ─── -->
+  <div class="header">
+    <div class="header-left">
+      <div class="header-eyebrow">Capital.com · MSO · Sales AI</div>
+      <h1 class="header-title">AIVA <span>Country</span> Performance</h1>
+      <p class="header-subtitle">AI Voice Agent Programme · 2026 Year-to-Date · All Agents · Conv &amp; Retention</p>
+    </div>
+    <div class="header-meta">
+      <div class="live">Data Source: rep_sales_kpi_new_v</div>
+      <div>Pulled: 30 Apr 2026 &nbsp;|&nbsp; Period: 01 Jan – 30 Apr 2026</div>
+      <div>Agent Filter: officer LIKE 'ai.%'</div>
+      <div style="margin-top:8px; padding-top:8px; border-top:1px solid var(--border); color: var(--text-secondary); font-size:11px;">
+        Prepared by: <span style="color:var(--gold)">Bilal Hasham</span> &amp; <span style="color:var(--gold)">Venkata Sai Aneesh Karanam</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── KPI TILES ─── -->
+  <div class="kpi-row">
+    <div class="kpi-tile" style="--accent: var(--gold)">
+      <div class="kpi-label">Total Calls</div>
+      <div class="kpi-value">488.4K</div>
+      <div class="kpi-sub">Conv + Retention, all markets</div>
+    </div>
+    <div class="kpi-tile" style="--accent: var(--conv)">
+      <div class="kpi-label">FTDs (14d)</div>
+      <div class="kpi-value">1,322</div>
+      <div class="kpi-sub">Conversion agents · 14-day attribution</div>
+    </div>
+    <div class="kpi-tile" style="--accent: var(--ret)">
+      <div class="kpi-label">Reactivations (14d)</div>
+      <div class="kpi-value">~700</div>
+      <div class="kpi-sub">Retention agents · 14-day attribution</div>
+    </div>
+    <div class="kpi-tile" style="--accent: var(--green)">
+      <div class="kpi-label">Total CBV Generated</div>
+      <div class="kpi-value">$1.57M</div>
+      <div class="kpi-sub">FTD + Reactivation CBV combined</div>
+    </div>
+    <div class="kpi-tile" style="--accent: var(--blue)">
+      <div class="kpi-label">Active Countries</div>
+      <div class="kpi-value">26</div>
+      <div class="kpi-sub">Conv ∪ Retention, ≥1 outcome</div>
+    </div>
+  </div>
+
+  <!-- ─── COUNTRY RANKING TABLE ─── -->
+  <div class="section-header">
+    <span class="section-title">Country Performance Ranking</span>
+    <span class="section-badge">SORTED BY TOTAL CBV · 2026 YTD · AIVA AGENTS ONLY</span>
+  </div>
+
+  <div class="table-wrap table-scroll">
+    <table class="sticky-head">
+      <thead>
+        <tr>
+          <th style="text-align:left; width:30px">#</th>
+          <th style="text-align:left; min-width:160px">Country</th>
+          <th>Team</th>
+          <th>Go-Live Conv</th>
+          <th>Go-Live Ret</th>
+          <th>Total Calls</th>
+          <th>Eff Calls<br><span style="font-size:8px;opacity:.6">(2min)</span></th>
+          <th>Connect<br><span style="font-size:8px;opacity:.6">Rate</span></th>
+          <th>FTDs<br><span style="font-size:8px;opacity:.6">(14d)</span></th>
+          <th>FTD Deposit $<br><span style="font-size:8px;opacity:.6">(14d)</span></th>
+          <th>Reactivations<br><span style="font-size:8px;opacity:.6">(14d)</span></th>
+          <th>CBV — Conv<br><span style="font-size:8px;opacity:.6">FTD+React</span></th>
+          <th>CBV — Ret<br><span style="font-size:8px;opacity:.6">Reactivation</span></th>
+          <th>Total CBV</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- ══ 1. UAE ══ -->
+        <tr>
+          <td class="rank-col num">1</td>
+          <td><span class="flag">🇦🇪</span><span class="country-name">United Arab Emirates</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">26 Aug 25</span></td>
+          <td><span class="date-chip">01 Oct 25</span></td>
+          <td class="num">76,682</td>
+          <td class="num">607</td>
+          <td class="num connect-rate cr-low">0.8%</td>
+          <td class="num num-green">417</td>
+          <td class="num num-gold">$280,436</td>
+          <td class="num num-green">257</td>
+          <td class="num num-gold">$726,183</td>
+          <td class="num num-gold">$362,677</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+              <span class="num num-gold" style="font-size:12px;font-weight:600">$1,088,860</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 2. Qatar ══ -->
+        <tr>
+          <td class="rank-col num">2</td>
+          <td><span class="flag">🇶🇦</span><span class="country-name">Qatar</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">29 Sep 25</span></td>
+          <td><span class="date-chip">14 Oct 25</span></td>
+          <td class="num">12,773</td>
+          <td class="num">160</td>
+          <td class="num connect-rate cr-low">1.3%</td>
+          <td class="num num-green">14</td>
+          <td class="num num-gold">$2,363</td>
+          <td class="num num-green">49</td>
+          <td class="num num-gold">$2,549</td>
+          <td class="num num-gold">$252,921</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:23.5%"></div></div>
+              <span class="num num-gold" style="font-size:12px;font-weight:600">$255,470</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 3. Mexico ══ -->
+        <tr>
+          <td class="rank-col num">3</td>
+          <td><span class="flag">🇲🇽</span><span class="country-name">Mexico</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">16 Sep 25</span></td>
+          <td><span class="date-chip">20 Oct 25</span></td>
+          <td class="num">111,854</td>
+          <td class="num">1,058</td>
+          <td class="num connect-rate cr-low">0.9%</td>
+          <td class="num num-green">342</td>
+          <td class="num num-gold">$27,059</td>
+          <td class="num num-green">101</td>
+          <td class="num num-gold">$59,093</td>
+          <td class="num num-gold">$6,430</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:6%"></div></div>
+              <span class="num num-gold" style="font-size:12px;font-weight:600">$65,523</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 4. Kuwait ══ -->
+        <tr>
+          <td class="rank-col num">4</td>
+          <td><span class="flag">🇰🇼</span><span class="country-name">Kuwait</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">30 Sep 25</span></td>
+          <td><span class="date-chip">02 Oct 25</span></td>
+          <td class="num">11,757</td>
+          <td class="num">420</td>
+          <td class="num connect-rate cr-mid">3.6%</td>
+          <td class="num num-green">33</td>
+          <td class="num num-gold">$5,434</td>
+          <td class="num num-green">29</td>
+          <td class="num num-gold">$32,468</td>
+          <td class="num num-gold">$9,333</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:3.8%"></div></div>
+              <span class="num num-gold" style="font-size:12px;font-weight:600">$41,801</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 5. Oman ══ -->
+        <tr>
+          <td class="rank-col num">5</td>
+          <td><span class="flag">🇴🇲</span><span class="country-name">Oman</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">08 Oct 25</span></td>
+          <td><span class="date-chip">14 Oct 25</span></td>
+          <td class="num">7,032</td>
+          <td class="num">3,191</td>
+          <td class="num connect-rate cr-good"><strong>45.4%</strong></td>
+          <td class="num num-green">48</td>
+          <td class="num num-gold">$7,517</td>
+          <td class="num num-green">58</td>
+          <td class="num num-gold">$15,399</td>
+          <td class="num num-gold">$17,402</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:3%"></div></div>
+              <span class="num num-gold" style="font-size:12px;font-weight:600">$32,801</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 6. Colombia ══ -->
+        <tr>
+          <td class="rank-col num">6</td>
+          <td><span class="flag">🇨🇴</span><span class="country-name">Colombia</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">25 Sep 25</span></td>
+          <td><span class="date-chip">20 Oct 25</span></td>
+          <td class="num">28,971</td>
+          <td class="num">1,325</td>
+          <td class="num connect-rate cr-mid">4.6%</td>
+          <td class="num num-green">86</td>
+          <td class="num num-gold">$17,546</td>
+          <td class="num num-green">20</td>
+          <td class="num num-gold">$8,333</td>
+          <td class="num num-gold">$16,031</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:2.2%"></div></div>
+              <span class="num num-gold" style="font-size:12px;font-weight:600">$24,364</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 7. Saudi Arabia ══ -->
+        <tr>
+          <td class="rank-col num">7</td>
+          <td><span class="flag">🇸🇦</span><span class="country-name">Saudi Arabia</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">30 Sep 25</span></td>
+          <td><span class="date-chip">15 Oct 25</span></td>
+          <td class="num">25,726</td>
+          <td class="num">1,396</td>
+          <td class="num connect-rate cr-mid">5.4%</td>
+          <td class="num num-green">33</td>
+          <td class="num num-gold">$4,553</td>
+          <td class="num num-green">34</td>
+          <td class="num num-gold">$2,020</td>
+          <td class="num num-gold">$14,594</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:1.5%"></div></div>
+              <span class="num num-gold" style="font-size:12px;font-weight:600">$16,614</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 8. Bahrain ══ -->
+        <tr>
+          <td class="rank-col num">8</td>
+          <td><span class="flag">🇧🇭</span><span class="country-name">Bahrain</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">08 Oct 25</span></td>
+          <td><span class="date-chip">14 Oct 25</span></td>
+          <td class="num">4,686</td>
+          <td class="num">144</td>
+          <td class="num connect-rate cr-mid">3.1%</td>
+          <td class="num num-green">12</td>
+          <td class="num num-gold">$1,800</td>
+          <td class="num num-green">22</td>
+          <td class="num num-gold">$11,389</td>
+          <td class="num num-gold">$3,682</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:1.4%"></div></div>
+              <span class="num num-gold" style="font-size:12px;font-weight:600">$15,071</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 9. Chile ══ -->
+        <tr>
+          <td class="rank-col num">9</td>
+          <td><span class="flag">🇨🇱</span><span class="country-name">Chile</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">31 Oct 25</span></td>
+          <td><span class="date-chip">20 Oct 25</span></td>
+          <td class="num">11,334</td>
+          <td class="num">28</td>
+          <td class="num connect-rate cr-low">0.2%</td>
+          <td class="num num-green">37</td>
+          <td class="num num-gold">$10,378</td>
+          <td class="num num-green">27</td>
+          <td class="num num-gold">$2,927</td>
+          <td class="num num-gold">$4,850</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0.7%"></div></div>
+              <span class="num num-gold" style="font-size:12px;font-weight:600">$7,777</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 10. Kazakhstan ══ -->
+        <tr>
+          <td class="rank-col num">10</td>
+          <td><span class="flag">🇰🇿</span><span class="country-name">Kazakhstan</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">13 Nov 25</span></td>
+          <td><span class="date-chip">02 Feb 26</span></td>
+          <td class="num">12,859</td>
+          <td class="num">107</td>
+          <td class="num connect-rate cr-low">0.8%</td>
+          <td class="num num-green">60</td>
+          <td class="num num-gold">$5,503</td>
+          <td class="num num-green">9</td>
+          <td class="num num-gold">$6,295</td>
+          <td class="num num-gold">$228</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0.6%"></div></div>
+              <span class="num num-gold" style="font-size:12px;font-weight:600">$6,523</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 11. United Kingdom ══ -->
+        <tr>
+          <td class="rank-col num">11</td>
+          <td><span class="flag">🇬🇧</span><span class="country-name">United Kingdom</span> <span style="font-size:10px;color:var(--amber)">⚠</span></td>
+          <td><span class="badge badge-conv">Conv</span></td>
+          <td><span class="date-chip">26 Feb 26</span></td>
+          <td><span class="date-chip na">—</span></td>
+          <td class="num">113</td>
+          <td class="num">4</td>
+          <td class="num connect-rate cr-mid">3.5%</td>
+          <td class="num num-dim">0</td>
+          <td class="num num-dim">$0</td>
+          <td class="num num-green">7</td>
+          <td class="num num-dim">$0</td>
+          <td class="num num-gold">$5,433</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0.5%"></div></div>
+              <span class="num num-gold" style="font-size:12px;font-weight:600">$5,433</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 12. Peru ══ -->
+        <tr>
+          <td class="rank-col num">12</td>
+          <td><span class="flag">🇵🇪</span><span class="country-name">Peru</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">31 Oct 25</span></td>
+          <td><span class="date-chip">29 Oct 25</span></td>
+          <td class="num">12,051</td>
+          <td class="num">363</td>
+          <td class="num connect-rate cr-mid">3.0%</td>
+          <td class="num num-green">30</td>
+          <td class="num num-gold">$1,676</td>
+          <td class="num num-green">6</td>
+          <td class="num num-gold">$2,632</td>
+          <td class="num num-gold">$1,432</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0.37%"></div></div>
+              <span class="num num-gold" style="font-size:12px;font-weight:600">$4,064</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 13. Lebanon ══ -->
+        <tr>
+          <td class="rank-col num">13</td>
+          <td><span class="flag">🇱🇧</span><span class="country-name">Lebanon</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">13 Feb 26</span></td>
+          <td><span class="date-chip">14 Oct 25</span></td>
+          <td class="num">3,636</td>
+          <td class="num">25</td>
+          <td class="num connect-rate cr-low">0.7%</td>
+          <td class="num num-green">8</td>
+          <td class="num num-gold">$1,420</td>
+          <td class="num num-green">1</td>
+          <td class="num num-gold">$1,549</td>
+          <td class="num num-gold">$895</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0.22%"></div></div>
+              <span class="num num-gold" style="font-size:12px;font-weight:600">$2,444</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 14. Guatemala ══ -->
+        <tr>
+          <td class="rank-col num">14</td>
+          <td><span class="flag">🇬🇹</span><span class="country-name">Guatemala</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">06 Mar 26</span></td>
+          <td><span class="date-chip">31 Mar 26</span></td>
+          <td class="num">34,469</td>
+          <td class="num">1,274</td>
+          <td class="num connect-rate cr-mid">3.7%</td>
+          <td class="num num-green">20</td>
+          <td class="num num-dim">$1,105</td>
+          <td class="num num-green">13</td>
+          <td class="num num-gold">$459</td>
+          <td class="num num-gold">$937</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0.13%"></div></div>
+              <span class="num num-gold" style="font-size:12px;font-weight:600">$1,396</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 15. Morocco ══ -->
+        <tr>
+          <td class="rank-col num">15</td>
+          <td><span class="flag">🇲🇦</span><span class="country-name">Morocco</span> <span style="font-size:10px;color:var(--amber)">⚠</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">31 Oct 25</span></td>
+          <td><span class="date-chip">29 Oct 25</span></td>
+          <td class="num">7,572</td>
+          <td class="num">1,622</td>
+          <td class="num connect-rate cr-good"><strong>21.4%</strong></td>
+          <td class="num num-dim">2</td>
+          <td class="num num-dim">$250</td>
+          <td class="num num-green">21</td>
+          <td class="num num-dim">$69</td>
+          <td class="num num-gold">$1,170</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0.11%"></div></div>
+              <span class="num num-gold" style="font-size:12px;font-weight:600">$1,239</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 16. Uzbekistan ══ -->
+        <tr>
+          <td class="rank-col num">16</td>
+          <td><span class="flag">🇺🇿</span><span class="country-name">Uzbekistan</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">13 Nov 25</span></td>
+          <td><span class="date-chip">03 Feb 26</span></td>
+          <td class="num">3,177</td>
+          <td class="num">439</td>
+          <td class="num connect-rate cr-mid">13.8%</td>
+          <td class="num num-green">1</td>
+          <td class="num num-dim">$100</td>
+          <td class="num num-green">16</td>
+          <td class="num num-dim">$210</td>
+          <td class="num num-gold">$743</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0.09%"></div></div>
+              <span class="num num-gold" style="font-size:12px;font-weight:600">$953</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 17. Jordan ══ -->
+        <tr>
+          <td class="rank-col num">17</td>
+          <td><span class="flag">🇯🇴</span><span class="country-name">Jordan</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">13 Feb 26</span></td>
+          <td><span class="date-chip">14 Oct 25</span></td>
+          <td class="num">17,288</td>
+          <td class="num">178</td>
+          <td class="num connect-rate cr-low">1.0%</td>
+          <td class="num num-green">7</td>
+          <td class="num num-dim">$118</td>
+          <td class="num num-green">1</td>
+          <td class="num num-dim">$601</td>
+          <td class="num num-dim">$154</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0.07%"></div></div>
+              <span class="num num-dim" style="font-size:12px">$755</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 18. Albania ══ -->
+        <tr>
+          <td class="rank-col num">18</td>
+          <td><span class="flag">🇦🇱</span><span class="country-name">Albania</span></td>
+          <td><span class="badge badge-conv">Conv</span></td>
+          <td><span class="date-chip">17 Mar 26</span></td>
+          <td><span class="date-chip na">—</span></td>
+          <td class="num">1,144</td>
+          <td class="num">23</td>
+          <td class="num connect-rate cr-mid">2.0%</td>
+          <td class="num num-green">16</td>
+          <td class="num num-dim">$1,830</td>
+          <td class="num num-dim">—</td>
+          <td class="num num-dim">$676</td>
+          <td class="num num-dim">—</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0.06%"></div></div>
+              <span class="num num-dim" style="font-size:12px">$676</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 19. El Salvador ══ -->
+        <tr>
+          <td class="rank-col num">19</td>
+          <td><span class="flag">🇸🇻</span><span class="country-name">El Salvador</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">20 Feb 26</span></td>
+          <td><span class="date-chip">31 Mar 26</span></td>
+          <td class="num">20,962</td>
+          <td class="num">547</td>
+          <td class="num connect-rate cr-mid">2.6%</td>
+          <td class="num num-green">33</td>
+          <td class="num num-dim">$2,624</td>
+          <td class="num num-green">12</td>
+          <td class="num num-dim">$314</td>
+          <td class="num num-dim">$9</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0.03%"></div></div>
+              <span class="num num-dim" style="font-size:12px">$323</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 20. Panama ══ -->
+        <tr>
+          <td class="rank-col num">20</td>
+          <td><span class="flag">🇵🇦</span><span class="country-name">Panama</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">06 Mar 26</span></td>
+          <td><span class="date-chip">31 Mar 26</span></td>
+          <td class="num">13,486</td>
+          <td class="num">234</td>
+          <td class="num connect-rate cr-mid">1.7%</td>
+          <td class="num num-green">19</td>
+          <td class="num num-dim">$895</td>
+          <td class="num num-green">10</td>
+          <td class="num num-dim">$164</td>
+          <td class="num num-dim">$196</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0.033%"></div></div>
+              <span class="num num-dim" style="font-size:12px">$360</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 21. Azerbaijan ══ -->
+        <tr>
+          <td class="rank-col num">21</td>
+          <td><span class="flag">🇦🇿</span><span class="country-name">Azerbaijan</span></td>
+          <td><span class="badge badge-conv">Conv</span></td>
+          <td><span class="date-chip">17 Feb 26</span></td>
+          <td><span class="date-chip na">—</span></td>
+          <td class="num">4,903</td>
+          <td class="num">357</td>
+          <td class="num connect-rate cr-mid">7.3%</td>
+          <td class="num num-green">13</td>
+          <td class="num num-dim">$823</td>
+          <td class="num num-dim">—</td>
+          <td class="num num-dim">$221</td>
+          <td class="num num-dim">—</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0.02%"></div></div>
+              <span class="num num-dim" style="font-size:12px">$221</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 22. Paraguay ══ -->
+        <tr>
+          <td class="rank-col num">22</td>
+          <td><span class="flag">🇵🇾</span><span class="country-name">Paraguay</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">12 Mar 26</span></td>
+          <td><span class="date-chip">31 Mar 26</span></td>
+          <td class="num">6,498</td>
+          <td class="num">41</td>
+          <td class="num connect-rate cr-low">0.6%</td>
+          <td class="num num-green">8</td>
+          <td class="num num-dim">$219</td>
+          <td class="num num-green">7</td>
+          <td class="num num-dim">$182</td>
+          <td class="num num-dim">$17</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0.02%"></div></div>
+              <span class="num num-dim" style="font-size:12px">$200</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 23. Ghana ══ -->
+        <tr>
+          <td class="rank-col num">23</td>
+          <td><span class="flag">🇬🇭</span><span class="country-name">Ghana</span> <span style="font-size:10px;color:var(--red)">🚨</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">02 Mar 26</span></td>
+          <td><span class="date-chip">29 Oct 25</span></td>
+          <td class="num">29,540</td>
+          <td class="num">822</td>
+          <td class="num connect-rate cr-mid">2.8%</td>
+          <td class="num num-green">20</td>
+          <td class="num num-dim">$4,818</td>
+          <td class="num num-dim">0</td>
+          <td class="num num-red">$94</td>
+          <td class="num num-dim">$0</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0.01%; background: var(--red)"></div></div>
+              <span class="num num-red" style="font-size:12px">$94</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 24. Dominican Republic ══ -->
+        <tr>
+          <td class="rank-col num">24</td>
+          <td><span class="flag">🇩🇴</span><span class="country-name">Dominican Republic</span></td>
+          <td><span class="badge badge-conv">Conv</span></td>
+          <td><span class="date-chip trend-new">13 Apr 26</span></td>
+          <td><span class="date-chip na">—</span></td>
+          <td class="num">1,657</td>
+          <td class="num">19</td>
+          <td class="num connect-rate cr-low">1.1%</td>
+          <td class="num num-green">3</td>
+          <td class="num num-dim">$310</td>
+          <td class="num num-dim">—</td>
+          <td class="num num-dim">$41</td>
+          <td class="num num-dim">—</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0%"></div></div>
+              <span class="num num-dim" style="font-size:12px">$41</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 25. Brazil ══ -->
+        <tr>
+          <td class="rank-col num">25</td>
+          <td><span class="flag">🇧🇷</span><span class="country-name">Brazil</span> <span style="font-size:10px;color:var(--amber)">⚠</span></td>
+          <td><span class="badge badge-conv">Conv</span></td>
+          <td><span class="date-chip">09 Mar 26</span></td>
+          <td><span class="date-chip na">—</span></td>
+          <td class="num">8,727</td>
+          <td class="num">35</td>
+          <td class="num connect-rate cr-low">0.4%</td>
+          <td class="num num-green">9</td>
+          <td class="num num-dim">$2,816</td>
+          <td class="num num-dim">—</td>
+          <td class="num num-red">$39</td>
+          <td class="num num-dim">—</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0%; background: var(--red)"></div></div>
+              <span class="num num-red" style="font-size:12px">$39</span>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ══ 26. Nigeria ══ -->
+        <tr>
+          <td class="rank-col num">26</td>
+          <td><span class="flag">🇳🇬</span><span class="country-name">Nigeria</span> <span style="font-size:10px;color:var(--red)">🚨</span></td>
+          <td><span class="badge badge-conv">Conv</span><span class="badge badge-ret">Ret</span></td>
+          <td><span class="date-chip">03 Oct 25</span></td>
+          <td><span class="date-chip">02 Apr 26</span></td>
+          <td class="num">11,738</td>
+          <td class="num">107</td>
+          <td class="num connect-rate cr-low">0.9%</td>
+          <td class="num num-dim">1</td>
+          <td class="num num-dim">$145</td>
+          <td class="num num-dim">1</td>
+          <td class="num num-red">$8</td>
+          <td class="num num-dim">$11</td>
+          <td>
+            <div class="cbv-bar">
+              <div class="bar-track"><div class="bar-fill" style="width:0%; background: var(--red)"></div></div>
+              <span class="num num-red" style="font-size:12px">$18</span>
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ─── ANOMALY FLAGS ─── -->
+  <div class="section-header" style="margin-top:52px;">
+    <span class="section-title">Flags &amp; Observations</span>
+    <span class="section-badge">ANOMALIES · STANDOUTS · STRUCTURAL ISSUES</span>
+  </div>
+
+  <div class="anomaly-grid">
+
+    <!-- FLAG 1: Qatar Retention - standout -->
+    <div class="anomaly-card flag-green">
+      <div class="anomaly-label">✦ Standout Performance</div>
+      <div class="anomaly-title">Qatar Retention — Exceptional CBV/Reactivation</div>
+      <div class="anomaly-body">
+        48 reactivations generated <strong>$252,921 CBV</strong> in 2026 YTD — an average of <strong>$5,269 per reactivation</strong>. This is 3.5× above UAE Retention's already-strong $1,481/reactivation. Qatar's dormant book contains extremely high-value traders. Retention agent coverage here is underweighted: only 18 effective calls from 3,674 total (0.5% connect rate). The call list quality or timing is the constraint, not the client value.
+        <br><span class="anomaly-stat">$5,269 / reactivation · highest in fleet</span>
+      </div>
+    </div>
+
+    <!-- FLAG 2: UAE Conversion - top performer -->
+    <div class="anomaly-card flag-green">
+      <div class="anomaly-label">✦ Programme Leader</div>
+      <div class="anomaly-title">UAE Conversion — Dominant Across All Metrics</div>
+      <div class="anomaly-body">
+        417 FTDs + $694K FTD CBV makes UAE Conv the single largest revenue engine in the fleet — over 6× the next country (Mexico Conv at $59K). Average FTD deposit value <strong>$1,664</strong>. Running since Aug 2025, the longest-running market. Marginal connect rate (0.8%) is consistent with high-volume dialling patterns against large lead pools.
+        <br><span class="anomaly-stat">$694K CBV · 417 FTDs · $1,664/FTD</span>
+      </div>
+    </div>
+
+    <!-- FLAG 3: Ghana - broken campaign -->
+    <div class="anomaly-card flag-red">
+      <div class="anomaly-label">🚨 Critical — Review Required</div>
+      <div class="anomaly-title">Ghana Conversion — 29K Calls, $94 Total CBV</div>
+      <div class="anomaly-body">
+        Ghana Conv is the 4th-largest country by call volume (29,337 calls) but generated only <strong>$94 CBV total</strong> — effectively zero commercial value. 20 FTDs at $4.70 average deposit suggests either wrong lead pool (micro-retail clients), incorrect agent targeting, or a population with insufficient capital. Retention (203 calls, 0 reactivations) adds nothing.
+        Immediate campaign review recommended — cost-per-call is not justified at current output.
+        <br><span class="anomaly-stat">$4.70 avg deposit · CBV/call = $0.003</span>
+      </div>
+    </div>
+
+    <!-- FLAG 4: Nigeria - high volume, no outcome -->
+    <div class="anomaly-card flag-red">
+      <div class="anomaly-label">🚨 Critical — Campaign Efficiency</div>
+      <div class="anomaly-title">Nigeria — 11.7K Calls, 1 FTD, $18 Total CBV</div>
+      <div class="anomaly-body">
+        Nigeria has been live since Oct 2025 (Conv) yet generated <strong>1 FTD and $18 CBV combined</strong> across 11,738 calls. Connect rate of 0.9% is not itself the issue — UAE manages similar rates at scale. The lead book appears to be low-quality or mis-targeted. Retention only launched Apr 2026 so that's embryonic, but Conversion has had 6+ months with no meaningful output. Escalate for lead list audit.
+        <br><span class="anomaly-stat">6 months live · $18 total CBV · pause for review</span>
+      </div>
+    </div>
+
+    <!-- FLAG 5: Morocco - high contact rate but no conversions -->
+    <div class="anomaly-card flag-amber">
+      <div class="anomaly-label">⚠ Structural Mismatch</div>
+      <div class="anomaly-title">Morocco Conv — 19% Connect Rate, 2 FTDs</div>
+      <div class="anomaly-body">
+        Morocco has the 2nd-highest connect rate in the fleet (19.1% — behind only Oman at 45%) but produced just <strong>2 FTDs</strong> from 6,920 conversion calls. High connection rates prove the dialling data is good and clients are picking up. The failure is post-connect: either agent script, offer relevance, or regulatory/payment friction post-call is killing the funnel. Retention ($1,170 CBV from 21 reactivations) is working fine — same clients, different outcome. Conversion script warrants investigation.
+        <br><span class="anomaly-stat">19% connect · 0.03% FTD rate · script review needed</span>
+      </div>
+    </div>
+
+    <!-- FLAG 6: Saudi Arabia - low deposit quality -->
+    <div class="anomaly-card flag-amber">
+      <div class="anomaly-label">⚠ Lead Quality</div>
+      <div class="anomaly-title">Saudi Arabia Conv — 33 FTDs, $61/FTD Average</div>
+      <div class="anomaly-body">
+        Saudi Arabia conversion has a healthy 6% connect rate and 33 FTDs — but average FTD deposit is <strong>$61</strong> vs UAE's $1,664 and Kuwait's $984. This implies either a different lead segment (lower net worth), or the conversion agent is capturing low-intent leads who deposit the minimum. The retention side is healthier ($14.6K from 34 reactivations — $429/reactivation), suggesting the existing book is stronger than the new acquisition funnel.
+        <br><span class="anomaly-stat">$61/FTD vs $1,664 UAE benchmark</span>
+      </div>
+    </div>
+
+    <!-- FLAG 7: Brazil - broken connect rate -->
+    <div class="anomaly-card flag-amber">
+      <div class="anomaly-label">⚠ Connect Rate Issue</div>
+      <div class="anomaly-title">Brazil &amp; Chile Conv — Critical Connect Rate Problem</div>
+      <div class="anomaly-body">
+        Brazil Conv: 8,727 calls, 35 effective (0.4% connect rate). Chile Conv: 10,084 calls, 22 effective (0.2% connect rate). Both launched in late 2025 / early 2026. These are among the worst connect rates in the fleet. Likely causes: incorrect phone number format (country code errors), call timing misalignment with local timezone, or the dialler not respecting local DNC/regulatory windows. Chile's retention (6 eff calls from 1,250) has the same problem.
+        <br><span class="anomaly-stat">Brazil 0.4% · Chile 0.2% · check dialler config</span>
+      </div>
+    </div>
+
+    <!-- FLAG 8: UK anomaly -->
+    <div class="anomaly-card flag-blue">
+      <div class="anomaly-label">◆ Structural Anomaly</div>
+      <div class="anomaly-title">UK Conversion Agent Generating Reactivation CBV</div>
+      <div class="anomaly-body">
+        UK shows 0 FTDs but <strong>7 reactivations and $5,433 CBV</strong> attributed to the Conversion team (no Retention agent active). This either means: (A) the conv agent is being directed at dormant traders rather than fresh leads — a misrouting issue; or (B) called clients were existing traders who then became active again within 14 days (counted as reactivations). Worth checking whether UK Conv has a dedicated lead list or is pulling from the broader callable population. No UK Retention agent launched yet.
+        <br><span class="anomaly-stat">Conv agent → reactivation outcome · investigate lead source</span>
+      </div>
+    </div>
+
+    <!-- FLAG 9: Oman - best connect rate -->
+    <div class="anomaly-card flag-green">
+      <div class="anomaly-label">✦ Operational Excellence</div>
+      <div class="anomaly-title">Oman — Fleet's Best Connect Rate on Both Teams</div>
+      <div class="anomaly-body">
+        Oman Conversion: 46.0% connect rate (2,608 eff / 5,668 calls). Oman Retention: 42.7% (583 eff / 1,364 calls). These are dramatically above fleet average (~3–5% for most markets). This is not a number-quality artifact — both teams showing the same rate points to excellent lead book hygiene, correct calling hours, and a receptive client base. 48 FTDs + 58 reactivations = $32.8K combined CBV. A template market to study for operational setup.
+        <br><span class="anomaly-stat">46% conv connect rate · highest in fleet by far</span>
+      </div>
+    </div>
+
+    <!-- FLAG 10: Dominican Republic and Egypt - too new -->
+    <div class="anomaly-card flag-blue">
+      <div class="anomaly-label">◆ Embryonic Markets</div>
+      <div class="anomaly-title">Dominican Republic &amp; Egypt — Data Insufficient</div>
+      <div class="anomaly-body">
+        Dominican Republic Conversion launched <strong>13 Apr 2026</strong> — only 17 days of data. Egypt launched similarly (10–13 Apr 2026). Neither should be judged at this stage. Dominican Republic has 3 FTDs from ~1,657 calls in 17 days, which is encouraging early signal but statistically meaningless. Egypt has &lt;10 calls total. Flag these as "monitor from May" and exclude from performance benchmarking until June review.
+        <br><span class="anomaly-stat">DR: 17 days live · Egypt: &lt;10 calls · re-review May</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ─── LEGEND ─── -->
+  <div style="display:flex; gap:24px; align-items:center; margin-top:12px; padding:14px 20px; background:var(--bg-card); border:1px solid var(--border); border-radius:8px;">
+    <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-dim);">Legend</span>
+    <span style="font-size:11px;color:var(--text-secondary)"><span class="badge badge-conv">Conv</span> Conversion team (new-to-FTD)</span>
+    <span style="font-size:11px;color:var(--text-secondary)"><span class="badge badge-ret">Ret</span> Retention team (reactivation)</span>
+    <span style="font-size:11px;color:var(--green)">■</span><span style="font-size:11px;color:var(--text-secondary)"> Connect rate ≥10%</span>
+    <span style="font-size:11px;color:var(--amber)">■</span><span style="font-size:11px;color:var(--text-secondary)"> 2–10%</span>
+    <span style="font-size:11px;color:var(--red)">■</span><span style="font-size:11px;color:var(--text-secondary)"> &lt;2%</span>
+    <span style="font-size:11px;color:var(--text-secondary)">CBV = trading revenue attributed within 90d (FTD) or 90d (reactivation)</span>
+    <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--blue)">◆ NEW</span><span style="font-size:11px;color:var(--text-secondary)"> = launched in last 30 days</span>
+  </div>
+
+  <!-- ─── FOOTER ─── -->
+  <div class="report-footer">
+    <div class="footer-left">
+      <div>Source: Tableau · rep_sales_kpi_new_v (ubas_dm)</div>
+      <div>Agent filter: officer STARTSWITH 'ai.'</div>
+      <div>Period: 01 Jan 2026 – 30 Apr 2026 (2026 YTD)</div>
+      <div>CBV: 90-day attribution window post-event · 2-minute effective call threshold</div>
+    </div>
+    <div class="footer-right">
+      <div>Generated: 30 Apr 2026</div>
+      <div>Connect Rate = Effective Calls (≥2min) ÷ Total Calls</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
