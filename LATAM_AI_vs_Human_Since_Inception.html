@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LATAM · AI vs Human · Since Inception</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+:root {
+  --bg:#0c0e10; --s1:#141618; --s2:#1b1e21; --s3:#22262a;
+  --border:rgba(255,255,255,0.06); --border2:rgba(255,255,255,0.11);
+  --text:#ededeb; --muted:#72757a; --dim:#3e4145;
+  --ai:#2dd4a0; --ai2:rgba(45,212,160,0.13); --aib:rgba(45,212,160,0.28);
+  --hm:#8b7cf6; --hm2:rgba(139,124,246,0.13); --hmb:rgba(139,124,246,0.28);
+  --gold:#f4b740; --gold2:rgba(244,183,64,0.1); --goldb:rgba(244,183,64,0.25);
+  --red:#f26c6c; --r:10px; --rl:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',system-ui,sans-serif;font-size:14px;line-height:1.6;padding:44px 36px;max-width:1200px;margin:0 auto;}
+/* layout */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.g5{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+/* header */
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:36px;padding-bottom:22px;border-bottom:0.5px solid var(--border2);}
+.hdr-title{font-size:21px;font-weight:600;letter-spacing:-.02em;}
+.hdr-sub{font-size:12px;color:var(--muted);margin-top:5px;}
+.hdr-meta{text-align:right;font-size:11px;color:var(--muted);}
+.hdr-meta strong{color:var(--text);font-weight:500;display:block;font-size:13px;}
+/* section label */
+.sec{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sec::after{content:'';flex:1;height:.5px;background:var(--border);}
+/* badges */
+.badge{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:20px;margin-top:5px;}
+.b-ai{background:var(--ai2);color:var(--ai);border:.5px solid var(--aib);}
+.b-hm{background:var(--hm2);color:var(--hm);border:.5px solid var(--hmb);}
+.b-gold{background:var(--gold2);color:var(--gold);border:.5px solid var(--goldb);}
+/* panel */
+.panel{border:.5px solid var(--border);border-radius:var(--rl);padding:18px;background:var(--s1);}
+.panel.ai{border-color:var(--aib);}
+.panel.hm{border-color:var(--hmb);}
+.ph{display:flex;align-items:center;gap:9px;margin-bottom:14px;padding-bottom:12px;border-bottom:.5px solid var(--border);}
+.dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+.dot.ai{background:var(--ai);}
+.dot.hm{background:var(--hm);}
+.ph-name{font-size:14px;font-weight:500;}
+.ph-note{font-size:11px;color:var(--muted);margin-left:auto;}
+/* metric cards */
+.mc{background:var(--s2);border-radius:var(--r);padding:13px 15px;border:.5px solid var(--border);}
+.mc-lbl{font-size:10px;color:var(--muted);margin-bottom:4px;}
+.mc-val{font-size:21px;font-weight:600;letter-spacing:-.02em;line-height:1.1;}
+.mc-sub{font-size:10px;color:var(--muted);margin-top:4px;}
+.mc-sub.w{color:var(--ai);font-weight:500;}
+.mc-sub.wh{color:var(--hm);font-weight:500;}
+.mc-sub.bad{color:var(--red);}
+.c-ai{color:var(--ai);}
+.c-hm{color:var(--hm);}
+.c-gold{color:var(--gold);}
+.c-muted{color:var(--muted);}
+/* total row */
+.trow{display:flex;justify-content:space-between;align-items:center;background:var(--s2);border-radius:var(--r);padding:11px 15px;margin-top:10px;border:.5px solid var(--border);}
+.trow-lbl{font-size:11px;color:var(--muted);}
+.trow-val{font-size:17px;font-weight:600;letter-spacing:-.01em;}
+/* cmp table */
+.tw{border:.5px solid var(--border);border-radius:var(--rl);overflow:hidden;background:var(--s1);}
+.ctbl{width:100%;border-collapse:collapse;font-size:12px;}
+.ctbl th{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);padding:8px 12px;text-align:left;border-bottom:.5px solid var(--border2);}
+.ctbl th:not(:first-child){text-align:right;}
+.ctbl td{padding:9px 12px;border-bottom:.5px solid var(--border);color:var(--muted);}
+.ctbl td:first-child{color:var(--text);font-weight:400;}
+.ctbl td:not(:first-child){text-align:right;font-family:'DM Mono',monospace;font-size:11px;}
+.ctbl tr:last-child td{border-bottom:none;}
+.ctbl tr:hover td{background:rgba(255,255,255,0.015);}
+/* agent table */
+.atbl{width:100%;border-collapse:collapse;font-size:11px;}
+.atbl th{font-size:9px;font-weight:500;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-bottom:.5px solid var(--border2);text-align:left;}
+.atbl th:not(:first-child){text-align:right;}
+.atbl td{padding:7px 10px;border-bottom:.5px solid var(--border);color:var(--muted);}
+.atbl td:first-child{font-family:'DM Mono',monospace;font-size:10px;}
+.atbl td:not(:first-child){text-align:right;font-family:'DM Mono',monospace;font-size:11px;}
+.atbl tr:last-child td{border-bottom:none;}
+.atbl tr.ai-r td:first-child{color:var(--ai);}
+.atbl tr.hm-r td:first-child{color:var(--hm);}
+.hl{color:var(--gold);font-weight:500;}
+.z{color:var(--dim);}
+.sep-r td{background:rgba(255,255,255,0.02);font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--dim);padding:4px 10px;}
+/* chart */
+.ch-wrap{position:relative;width:100%;}
+.ch-title{font-size:11px;color:var(--muted);margin-bottom:10px;}
+.leg{display:flex;gap:14px;margin-bottom:8px;}
+.leg-i{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--muted);}
+.leg-sq{width:9px;height:9px;border-radius:2px;}
+/* summary scorecard */
+.score{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px;}
+.score-card{background:var(--s1);border:.5px solid var(--border);border-radius:var(--rl);padding:16px;text-align:center;}
+.score-label{font-size:10px;color:var(--muted);margin-bottom:8px;letter-spacing:.04em;}
+.score-ai{font-size:26px;font-weight:600;color:var(--ai);letter-spacing:-.02em;line-height:1.1;}
+.score-vs{font-size:10px;color:var(--dim);margin:4px 0;}
+.score-hm{font-size:26px;font-weight:600;color:var(--hm);letter-spacing:-.02em;line-height:1.1;}
+.score-winner{font-size:10px;font-weight:500;margin-top:6px;}
+.score-card.ai-win{border-color:var(--aib);}
+.score-card.hm-win{border-color:var(--hmb);}
+/* divider */
+hr{border:none;border-top:.5px solid var(--border);margin:28px 0;}
+section{margin-bottom:32px;}
+/* footnote */
+.fn{font-size:10px;color:var(--dim);margin-top:8px;padding:0 4px;line-height:1.5;}
+/* footer */
+.footer{margin-top:44px;padding-top:18px;border-top:.5px solid var(--border);display:flex;justify-content:space-between;font-size:10px;color:var(--dim);}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div>
+    <div class="hdr-title">LATAM — AI vs Human · Since Inception</div>
+    <div class="hdr-sub">Conversion (FTDs) · Retention (Reactivations) · Sep 2025 – Apr 2026 · 8 months</div>
+    <span class="badge b-ai">AI agents</span>
+    <span class="badge b-hm">Human agents</span>
+    <span class="badge b-gold">Region OKR = LATAM</span>
+  </div>
+  <div class="hdr-meta">
+    <strong>Source: rep_sales_kpi_new_v</strong>
+    Tableau MCP · Capital.com MSO<br>
+    AI go-live: Sep 2025 (Conversion) · Oct 2025 (Retention)<br>
+    Report generated Apr 2026
+  </div>
+</div>
+
+<!-- OVERALL SCORECARD -->
+<section>
+  <div class="sec">Overall scorecard — since AI inception</div>
+  <div class="score">
+    <div class="score-card ai-win">
+      <div class="score-label">Total FTDs (Conversion)</div>
+      <div class="score-ai">890</div>
+      <div class="score-vs">vs</div>
+      <div class="score-hm">572</div>
+      <div class="score-winner c-ai">AI +56% on volume</div>
+    </div>
+    <div class="score-card hm-win">
+      <div class="score-label">CBV from FTDs</div>
+      <div class="score-ai">$94K</div>
+      <div class="score-vs">vs</div>
+      <div class="score-hm">$193K</div>
+      <div class="score-winner c-hm">Human 2.0× on value</div>
+    </div>
+    <div class="score-card ai-win">
+      <div class="score-label">Reactivations (Retention)</div>
+      <div class="score-ai">310</div>
+      <div class="score-vs">vs</div>
+      <div class="score-hm">75</div>
+      <div class="score-winner c-ai">AI 4.1× on volume</div>
+    </div>
+    <div class="score-card hm-win">
+      <div class="score-label">CBV from Reactivations</div>
+      <div class="score-ai">$36K</div>
+      <div class="score-vs">vs</div>
+      <div class="score-hm">$64K</div>
+      <div class="score-winner c-hm">Human 1.8× on value</div>
+    </div>
+  </div>
+</section>
+
+<!-- CHARTS ROW 1 -->
+<section>
+  <div class="sec">Monthly trend — FTDs &amp; reactivations</div>
+  <div class="g2" style="gap:20px; margin-bottom:20px;">
+    <div>
+      <div class="leg">
+        <div class="leg-i"><span class="leg-sq" style="background:var(--ai)"></span>AI agents</div>
+        <div class="leg-i"><span class="leg-sq" style="background:var(--hm)"></span>Human agents</div>
+      </div>
+      <div class="ch-title">Conversion — FTDs per month</div>
+      <div class="ch-wrap" style="height:210px;">
+        <canvas id="c-ftd-trend" role="img" aria-label="Monthly FTD trend for AI and human conversion agents Sep 2025 to Apr 2026">AI peaked at 253 FTDs in Apr 2026. Human peaked at 115 in Feb 2026.</canvas>
+      </div>
+    </div>
+    <div>
+      <div class="leg">
+        <div class="leg-i"><span class="leg-sq" style="background:var(--ai)"></span>AI agents</div>
+        <div class="leg-i"><span class="leg-sq" style="background:var(--hm)"></span>Human agents</div>
+      </div>
+      <div class="ch-title">Retention — reactivations per month</div>
+      <div class="ch-wrap" style="height:210px;">
+        <canvas id="c-react-trend" role="img" aria-label="Monthly reactivation trend for AI and human retention agents Oct 2025 to Apr 2026">AI peaked at 79 in Apr 2026. Human peaked at 22 in Feb 2026.</canvas>
+      </div>
+    </div>
+  </div>
+  <div class="g2" style="gap:20px;">
+    <div>
+      <div class="ch-title">Conversion — CBV from FTDs per month ($)</div>
+      <div class="ch-wrap" style="height:200px;">
+        <canvas id="c-cbv-conv" role="img" aria-label="Monthly CBV from FTDs trend">Human CBV dominated Dec 2025 at $50K and Jan 2026 at $47K.</canvas>
+      </div>
+    </div>
+    <div>
+      <div class="ch-title">Retention — CBV from reactivations per month ($)</div>
+      <div class="ch-wrap" style="height:200px;">
+        <canvas id="c-cbv-ret" role="img" aria-label="Monthly CBV from reactivations trend">AI CBV peaked in Mar 2026 at $16.9K.</canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<!-- CONVERSION SECTION -->
+<section>
+  <div class="sec">Conversion team — FTD outcomes since inception (Sep 2025 – Apr 2026)</div>
+  <div class="g2" style="margin-bottom:18px;">
+    <!-- AI PANEL -->
+    <div class="panel ai">
+      <div class="ph"><span class="dot ai"></span><span class="ph-name">AI agents</span><span class="ph-note">8 agents deployed · Sep 2025 go-live</span></div>
+      <div class="g4" style="gap:9px;">
+        <div class="mc"><div class="mc-lbl">Total FTDs</div><div class="mc-val c-ai">890</div><div class="mc-sub w">+56% vs humans</div></div>
+        <div class="mc"><div class="mc-lbl">Avg FTDs/month</div><div class="mc-val">111</div><div class="mc-sub">across 8 months</div></div>
+        <div class="mc"><div class="mc-lbl">Total CBV</div><div class="mc-val" style="font-size:16px;">$94,042</div><div class="mc-sub">$11,755/month</div></div>
+        <div class="mc"><div class="mc-lbl">CBV per FTD</div><div class="mc-val c-gold" style="font-size:16px;">$105.67</div><div class="mc-sub bad">3.2× below human</div></div>
+      </div>
+      <div class="trow"><span class="trow-lbl">Best month</span><span class="trow-val c-ai">Jan 2026 — 210 FTDs · $29.8K CBV</span></div>
+    </div>
+    <!-- HUMAN PANEL -->
+    <div class="panel hm">
+      <div class="ph"><span class="dot hm"></span><span class="ph-name">Human agents</span><span class="ph-note">achirino drives 99% of outcomes</span></div>
+      <div class="g4" style="gap:9px;">
+        <div class="mc"><div class="mc-lbl">Total FTDs</div><div class="mc-val c-hm">572</div><div class="mc-sub c-muted">1 dominant agent</div></div>
+        <div class="mc"><div class="mc-lbl">Avg FTDs/month</div><div class="mc-val">71</div><div class="mc-sub">across 8 months</div></div>
+        <div class="mc"><div class="mc-lbl">Total CBV</div><div class="mc-val" style="font-size:16px;">$192,603</div><div class="mc-sub wh">$24,075/month</div></div>
+        <div class="mc"><div class="mc-lbl">CBV per FTD</div><div class="mc-val c-gold" style="font-size:16px;">$336.72</div><div class="mc-sub wh">3.2× above AI</div></div>
+      </div>
+      <div class="trow"><span class="trow-lbl">Best month</span><span class="trow-val c-hm">Dec 2025 — 103 FTDs · $50.0K CBV</span></div>
+    </div>
+  </div>
+
+  <!-- CONVERSION EFFICIENCY TABLE -->
+  <div class="tw" style="margin-bottom:16px;">
+    <table class="ctbl">
+      <thead><tr>
+        <th>Metric</th><th>AI agents</th><th>Human agents</th><th>Delta</th>
+      </tr></thead>
+      <tbody>
+        <tr><td>Total FTDs (all time)</td><td class="c-ai">890</td><td>572</td><td class="c-ai">AI +56%</td></tr>
+        <tr><td>Avg FTDs per agent per month (active agents only)</td><td>27.8 <span class="c-muted" style="font-size:10px;">(32/mo, 4 agents avg active)</span></td><td class="c-hm">71.5 <span class="c-muted" style="font-size:10px;">(achirino solo)</span></td><td class="c-hm">Human 2.6× better</td></tr>
+        <tr><td>Total CBV generated</td><td>$94,042</td><td class="c-hm">$192,603</td><td class="c-hm">Human 2.0× better</td></tr>
+        <tr><td>Avg CBV per month</td><td>$11,755</td><td class="c-hm">$24,075</td><td class="c-hm">Human 2.0× better</td></tr>
+        <tr><td>CBV per FTD</td><td>$105.67</td><td class="c-hm">$336.72</td><td class="c-hm">Human 3.2× better</td></tr>
+        <tr><td>Peak FTD month</td><td class="c-ai">Jan 2026 — 210</td><td>Dec 2025 — 103</td><td class="c-ai">AI peak 2.0× higher</td></tr>
+        <tr><td>Peak CBV month</td><td>Jan 2026 — $29.8K</td><td class="c-hm">Dec 2025 — $50.0K</td><td class="c-hm">Human peak 1.7× higher</td></tr>
+        <tr><td>FTD growth trend (last 3 months)</td><td class="c-ai">37 → 87 → 253 ↑↑</td><td>115 → 112 → 48 ↓↓</td><td class="c-ai">AI accelerating</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CONVERSION AGENT TABLE -->
+  <div class="sec" style="margin-top:20px;">Conversion agent breakdown — all time</div>
+  <div class="tw">
+    <table class="atbl">
+      <thead><tr>
+        <th>Agent</th><th>Go-live</th><th>Active months</th><th>Total FTDs</th><th>Avg FTDs/month</th><th>Total CBV</th><th>CBV/FTD</th><th>Best month (FTDs)</th>
+      </tr></thead>
+      <tbody>
+        <tr class="sep-r"><td colspan="8">AI agents</td></tr>
+        <tr class="ai-r"><td>ai.camila</td><td>Sep-25</td><td>8</td><td class="hl">538</td><td class="hl">67.3</td><td>$54,866</td><td>$102.00</td><td>Jan-26 (156)</td></tr>
+        <tr class="ai-r"><td>ai.sofia</td><td>Sep-25</td><td>8</td><td>109</td><td>13.6</td><td>$11,857</td><td>$108.78</td><td>Jan-26 (38)</td></tr>
+        <tr class="ai-r"><td>ai.luciana</td><td>Oct-25</td><td>7</td><td>100</td><td>14.3</td><td>$3,867</td><td>$38.67</td><td>Apr-26 (61)</td></tr>
+        <tr class="ai-r"><td>ai.francesca</td><td>Feb-26</td><td>3</td><td>49</td><td>16.3</td><td>$1,450</td><td>$29.59</td><td>Apr-26 (25)</td></tr>
+        <tr class="ai-r"><td>ai.aria</td><td>Apr-26</td><td>1</td><td>32</td><td>32.0</td><td>$296</td><td>$9.25</td><td>Apr-26 (32)</td></tr>
+        <tr class="ai-r"><td>ai.valeria</td><td>Oct-25</td><td>7</td><td>38</td><td>5.4</td><td>$2,547</td><td>$67.03</td><td>Jan-26 (8)</td></tr>
+        <tr class="ai-r"><td>ai.isabel</td><td>Feb-26</td><td>3</td><td>16</td><td>5.3</td><td>$1,047</td><td>$65.44</td><td>Apr-26 (5)</td></tr>
+        <tr class="ai-r"><td>ai.benjamin</td><td>Mar-26</td><td>2</td><td>8</td><td>4.0</td><td>$39</td><td>$4.88</td><td>Apr-26 (7)</td></tr>
+        <tr class="sep-r"><td colspan="8">Human agents</td></tr>
+        <tr class="hm-r"><td>achirino</td><td>Sep-25</td><td>8</td><td class="hl">569</td><td class="hl">71.1</td><td class="hl">$191,945</td><td class="hl">$337.34</td><td>Dec-25 (102)</td></tr>
+        <tr class="hm-r"><td>ozacarinnaya</td><td>Feb-26</td><td>2</td><td>1</td><td>0.5</td><td>$364</td><td>$364</td><td>—</td></tr>
+        <tr class="hm-r"><td>mshi / others</td><td>—</td><td>var.</td><td>2</td><td>—</td><td>$294</td><td>$147</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="fn">* Apr 2026 included (today = Apr 30, 2026; treated as complete). Agents with 0 FTDs all-time excluded from agent table.</div>
+</section>
+
+<hr>
+
+<!-- RETENTION SECTION -->
+<section>
+  <div class="sec">Retention team — reactivation outcomes since inception (Oct 2025 – Apr 2026)</div>
+  <div class="g2" style="margin-bottom:18px;">
+    <div class="panel ai">
+      <div class="ph"><span class="dot ai"></span><span class="ph-name">AI agents</span><span class="ph-note">4 agents deployed · Oct 2025 go-live</span></div>
+      <div class="g4" style="gap:9px;">
+        <div class="mc"><div class="mc-lbl">Total Reactivations</div><div class="mc-val c-ai">310</div><div class="mc-sub w">4.1× more than humans</div></div>
+        <div class="mc"><div class="mc-lbl">Avg reacts/month</div><div class="mc-val">44.3</div><div class="mc-sub">across 7 months</div></div>
+        <div class="mc"><div class="mc-lbl">Total CBV</div><div class="mc-val" style="font-size:16px;">$35,834</div><div class="mc-sub">$5,119/month</div></div>
+        <div class="mc"><div class="mc-lbl">CBV per react.</div><div class="mc-val c-gold" style="font-size:16px;">$115.60</div><div class="mc-sub bad">7.3× below human</div></div>
+      </div>
+      <div class="trow"><span class="trow-lbl">Best month</span><span class="trow-val c-ai">Apr 2026 — 79 reacts · $7.5K CBV</span></div>
+    </div>
+    <div class="panel hm">
+      <div class="ph"><span class="dot hm"></span><span class="ph-name">Human agents</span><span class="ph-note">grodriguez, mhane, pgarciamacedo dominant</span></div>
+      <div class="g4" style="gap:9px;">
+        <div class="mc"><div class="mc-lbl">Total Reactivations</div><div class="mc-val c-hm">75</div><div class="mc-sub c-muted">3 agents drive it</div></div>
+        <div class="mc"><div class="mc-lbl">Avg reacts/month</div><div class="mc-val">10.7</div><div class="mc-sub">across 7 months</div></div>
+        <div class="mc"><div class="mc-lbl">Total CBV</div><div class="mc-val" style="font-size:16px;">$63,571</div><div class="mc-sub wh">$9,082/month</div></div>
+        <div class="mc"><div class="mc-lbl">CBV per react.</div><div class="mc-val c-gold" style="font-size:16px;">$847.61</div><div class="mc-sub wh">7.3× above AI</div></div>
+      </div>
+      <div class="trow"><span class="trow-lbl">Best month</span><span class="trow-val c-hm">Apr 2026 — 5 reacts · $17.0K CBV</span></div>
+    </div>
+  </div>
+
+  <!-- RETENTION EFFICIENCY TABLE -->
+  <div class="tw" style="margin-bottom:16px;">
+    <table class="ctbl">
+      <thead><tr><th>Metric</th><th>AI agents</th><th>Human agents</th><th>Delta</th></tr></thead>
+      <tbody>
+        <tr><td>Total reactivations (all time)</td><td class="c-ai">310</td><td>75</td><td class="c-ai">AI 4.1× better</td></tr>
+        <tr><td>Avg reactivations per active agent/month</td><td class="c-ai">44.3 <span class="c-muted" style="font-size:10px;">(ai.daniela dominates)</span></td><td>3.6</td><td class="c-ai">AI 12.3× better</td></tr>
+        <tr><td>Total CBV generated</td><td>$35,834</td><td class="c-hm">$63,571</td><td class="c-hm">Human 1.8× better</td></tr>
+        <tr><td>Avg CBV per month</td><td>$5,119</td><td class="c-hm">$9,082</td><td class="c-hm">Human 1.8× better</td></tr>
+        <tr><td>CBV per reactivation</td><td>$115.60</td><td class="c-hm">$847.61</td><td class="c-hm">Human 7.3× better</td></tr>
+        <tr><td>Peak reactivation month</td><td class="c-ai">Apr 2026 — 79</td><td>Feb 2026 — 22</td><td class="c-ai">AI peak 3.6× higher</td></tr>
+        <tr><td>Peak CBV month</td><td>Mar 2026 — $17.0K</td><td class="c-hm">Apr 2026 — $17.0K</td><td>≈ Parity</td></tr>
+        <tr><td>Reactivation trend (last 3 months)</td><td class="c-ai">58 → 39 → 79 ↑ (volatile)</td><td>22 → 15 → 5 ↓↓</td><td class="c-ai">AI growing, humans declining</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- RETENTION AGENT TABLE -->
+  <div class="sec" style="margin-top:20px;">Retention agent breakdown — all time</div>
+  <div class="tw">
+    <table class="atbl">
+      <thead><tr>
+        <th>Agent</th><th>Go-live</th><th>Active months</th><th>Total reacts.</th><th>Avg reacts/month</th><th>Total CBV</th><th>CBV/react.</th><th>Best month (reacts.)</th>
+      </tr></thead>
+      <tbody>
+        <tr class="sep-r"><td colspan="8">AI agents</td></tr>
+        <tr class="ai-r"><td>ai.daniela</td><td>Oct-25</td><td>7</td><td class="hl">295</td><td class="hl">42.1</td><td>$27,381</td><td>$92.85</td><td>Apr-26 (79)</td></tr>
+        <tr class="ai-r"><td>ai.alia</td><td>Jan-26</td><td>4</td><td>15</td><td>3.75</td><td>$631</td><td>$42.07</td><td>Jan-26 (13)</td></tr>
+        <tr class="ai-r"><td>ai.alita</td><td>Feb-26</td><td>3</td><td class="z">0</td><td class="z">0</td><td class="z">—</td><td class="z">—</td><td class="z">—</td></tr>
+        <tr class="ai-r"><td>ai.amara</td><td>Oct-25</td><td>2</td><td class="z">0</td><td class="z">0</td><td class="z">—</td><td class="z">—</td><td class="z">—</td></tr>
+        <tr class="sep-r"><td colspan="8">Human agents (active since AI inception)</td></tr>
+        <tr class="hm-r"><td>grodriguezdelavega</td><td>Sep-24</td><td>7</td><td class="hl">38</td><td>5.4</td><td class="hl">$45,956</td><td class="hl">$1,209</td><td>Feb-26 (16)</td></tr>
+        <tr class="hm-r"><td>pgarciamacedo</td><td>May-25</td><td>7</td><td>15</td><td>2.1</td><td>$8,843</td><td>$589</td><td>Mar-26 (5)</td></tr>
+        <tr class="hm-r"><td>mhane</td><td>Nov-24</td><td>7</td><td>12</td><td>1.7</td><td>$9,390</td><td>$782</td><td>Oct-25 (2)</td></tr>
+        <tr class="hm-r"><td>ntouali</td><td>Mar-24</td><td>7</td><td>6</td><td>0.9</td><td>$855</td><td>$142</td><td>Oct-25 (3)</td></tr>
+        <tr class="hm-r"><td>pbagul / anasser / others</td><td>—</td><td>var.</td><td>4</td><td>—</td><td>$527</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="fn">† CBV lag: some CBV appears in months after the reactivation event (90-day attribution window). Lagged CBV assigned to the month it registers, not the call month.</div>
+</section>
+
+<hr>
+
+<!-- KEY FINDINGS -->
+<section>
+  <div class="sec">Key findings</div>
+  <div class="g2" style="gap:12px;">
+    <div class="panel ai" style="padding:16px;">
+      <div style="font-size:12px;font-weight:500;color:var(--ai);margin-bottom:10px;">AI is winning on volume</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.7;">
+        • <strong style="color:var(--text)">890 FTDs</strong> vs 572 human — AI produces 56% more FTDs since inception<br>
+        • <strong style="color:var(--text)">310 reactivations</strong> vs 75 human — AI produces 4.1× more reactivations<br>
+        • AI FTD trend is <strong style="color:var(--ai)">accelerating</strong>: 37 → 87 → 253 in last 3 months<br>
+        • ai.camila: 538 FTDs lifetime, best single month 156 (Jan-26)<br>
+        • ai.daniela: 295 reactivations lifetime, growing to 79/month
+      </div>
+    </div>
+    <div class="panel hm" style="padding:16px;">
+      <div style="font-size:12px;font-weight:500;color:var(--hm);margin-bottom:10px;">Humans are winning on value</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.7;">
+        • Human CBV/FTD: <strong style="color:var(--text)">$337 vs $106</strong> — 3.2× better quality per conversion<br>
+        • Human CBV/reactivation: <strong style="color:var(--text)">$848 vs $116</strong> — 7.3× better quality per event<br>
+        • achirino generated <strong style="color:var(--hm)">$192K CBV</strong> from 569 FTDs — the programme's highest-value single agent<br>
+        • grodriguez generated <strong style="color:var(--hm)">$45.9K CBV</strong> from just 38 reactivations ($1,209/react)<br>
+        • Human retention CBV/react is declining (loss of lioan in Feb-25 was the key driver)
+      </div>
+    </div>
+    <div class="panel" style="padding:16px;border-color:var(--goldb);">
+      <div style="font-size:12px;font-weight:500;color:var(--gold);margin-bottom:10px;">The big question: the March FTD dip</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.7;">
+        Mar-26 (last complete month) showed AI at 87 FTDs — below Jan's 210 and Nov's 115. But Apr-26 has already rebounded to 253. The Mar dip was likely a list/campaign cycle issue, not structural decline. The AI programme was not "only 87 FTDs ever" — that was a single-month snapshot.
+      </div>
+    </div>
+    <div class="panel" style="padding:16px;border-color:var(--goldb);">
+      <div style="font-size:12px;font-weight:500;color:var(--gold);margin-bottom:10px;">The CBV quality gap explained</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.7;">
+        The CBV/FTD gap (AI $106 vs human $337) likely reflects <strong style="color:var(--text)">client tier differences</strong>, not just call quality. AI works through mass-dialled dormant lists; humans (especially achirino) work assigned higher-value books. Tiering the AI contact lists by client CBV potential would be the single highest-impact lever to close this gap.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHARTS JS -->
+<script>
+const G = 'rgba(255,255,255,0.05)';
+const T = '#72757a';
+Chart.defaults.color = T;
+Chart.defaults.font.family = "'DM Sans',system-ui,sans-serif";
+Chart.defaults.font.size = 11;
+
+const CONV_MONTHS = ['Sep-25','Oct-25','Nov-25','Dec-25','Jan-26','Feb-26','Mar-26','Apr-26'];
+const RET_MONTHS  = ['Oct-25','Nov-25','Dec-25','Jan-26','Feb-26','Mar-26','Apr-26'];
+
+// FTD trend
+new Chart(document.getElementById('c-ftd-trend'),{
+  type:'bar',
+  data:{
+    labels:CONV_MONTHS,
+    datasets:[
+      {label:'AI',data:[13,82,115,93,210,37,87,253],backgroundColor:'#2dd4a0',borderRadius:3},
+      {label:'Human',data:[9,51,66,103,68,115,112,48],backgroundColor:'#8b7cf6',borderRadius:3}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+    scales:{x:{grid:{display:false},ticks:{color:T}},y:{grid:{color:G},ticks:{color:T}}}}
+});
+
+// Reactivation trend
+new Chart(document.getElementById('c-react-trend'),{
+  type:'bar',
+  data:{
+    labels:RET_MONTHS,
+    datasets:[
+      {label:'AI',data:[68,46,0,20,58,39,79],backgroundColor:'#2dd4a0',borderRadius:3},
+      {label:'Human',data:[13,6,3,11,22,15,5],backgroundColor:'#8b7cf6',borderRadius:3}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+    scales:{x:{grid:{display:false},ticks:{color:T}},y:{grid:{color:G},ticks:{color:T}}}}
+});
+
+// CBV Conversion trend
+new Chart(document.getElementById('c-cbv-conv'),{
+  type:'line',
+  data:{
+    labels:CONV_MONTHS,
+    datasets:[
+      {label:'AI',data:[145,3730,9336,6646,29778,22280,12507,9619],borderColor:'#2dd4a0',backgroundColor:'rgba(45,212,160,0.08)',fill:true,tension:.3,pointRadius:3},
+      {label:'Human',data:[187,10253,13356,50046,47297,20675,33772,17016],borderColor:'#8b7cf6',backgroundColor:'rgba(139,124,246,0.08)',fill:true,tension:.3,pointRadius:3}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+    scales:{x:{grid:{display:false},ticks:{color:T}},y:{grid:{color:G},ticks:{color:T,callback:v=>'$'+(v>=1000?Math.round(v/1000)+'K':v)}}}}
+});
+
+// CBV Retention trend
+new Chart(document.getElementById('c-cbv-ret'),{
+  type:'line',
+  data:{
+    labels:RET_MONTHS,
+    datasets:[
+      {label:'AI',data:[226,4182,1514,879,4522,16967,7543],borderColor:'#2dd4a0',backgroundColor:'rgba(45,212,160,0.08)',fill:true,tension:.3,pointRadius:3},
+      {label:'Human',data:[3396,1875,5642,8813,8540,18276,17030],borderColor:'#8b7cf6',backgroundColor:'rgba(139,124,246,0.08)',fill:true,tension:.3,pointRadius:3}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+    scales:{x:{grid:{display:false},ticks:{color:T}},y:{grid:{color:G},ticks:{color:T,callback:v=>'$'+(v>=1000?Math.round(v/1000)+'K':v)}}}}
+});
+</script>
+
+<div class="footer">
+  <div>Capital.com · MSO / AIVA Programme · LATAM Region</div>
+  <div>Source: rep_sales_kpi_new_v · Tableau MCP · All data since Sep 2025 AI go-live · Generated Apr 2026</div>
+</div>
+
+</body>
+</html>
