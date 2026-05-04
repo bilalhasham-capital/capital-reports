@@ -1,0 +1,1655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>South Asia Commercial Strategy 2026 — Capital.com</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #0f0f0f;
+  --ink-2: #2a2a2a;
+  --ink-3: #4a4a4a;
+  --ink-4: #8a8a8a;
+  --rule: #d8d4cc;
+  --paper: #faf8f4;
+  --paper-2: #f2efe9;
+  --blue: #1a3a5c;
+  --blue-mid: #2d5986;
+  --blue-light: #e8eef5;
+  --red: #8b1a1a;
+  --red-light: #f5eaea;
+  --green: #1a4a2e;
+  --green-light: #eaf2ed;
+  --amber: #7a4e0a;
+  --amber-light: #f7f0e4;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+
+/* ─── COVER ─── */
+.cover {
+  min-height: 100vh;
+  background: var(--ink);
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 5rem 6rem;
+  position: relative;
+  overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 38%;
+  height: 100%;
+  background: var(--blue);
+  opacity: 0.18;
+}
+.cover-rule {
+  width: 3px;
+  height: 64px;
+  background: var(--blue-mid);
+  margin-bottom: 3rem;
+  opacity: 0.85;
+}
+.cover-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 2.5rem;
+}
+.cover h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 5.5vw, 5rem);
+  font-weight: 400;
+  line-height: 1.08;
+  color: #fff;
+  max-width: 680px;
+  margin-bottom: 2rem;
+}
+.cover h1 em {
+  font-style: italic;
+  color: rgba(255,255,255,0.55);
+}
+.cover-sub {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  max-width: 480px;
+  line-height: 1.7;
+  margin-bottom: 4rem;
+}
+.cover-stats {
+  display: flex;
+  gap: 4rem;
+}
+.cs-item .val {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: #fff;
+  display: block;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.cs-item .lbl {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+.cover-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 2rem;
+}
+.cf-brand {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.08em;
+}
+.cf-meta {
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+  font-weight: 300;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 6rem;
+  height: 52px;
+}
+.nav-brand {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+.nav-links a {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-4);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--ink); }
+
+/* ─── LAYOUT ─── */
+.page { max-width: 1100px; margin: 0 auto; padding: 0 6rem; }
+
+section {
+  padding: 5.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+section:last-of-type { border-bottom: none; }
+
+.sec-header {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 0;
+  margin-bottom: 3.5rem;
+  align-items: start;
+}
+.sec-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-4);
+  letter-spacing: 0.1em;
+  padding-top: 6px;
+}
+.sec-title h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+.sec-title p {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--ink-3);
+  max-width: 580px;
+  line-height: 1.7;
+}
+
+/* ─── EXECUTIVE SUMMARY ─── */
+.exec-summary {
+  background: var(--ink);
+  color: #fff;
+  padding: 4rem 6rem;
+}
+.exec-summary .es-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 1.5rem;
+}
+.exec-summary blockquote {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.9);
+  max-width: 760px;
+  border-left: 3px solid var(--blue-mid);
+  padding-left: 2rem;
+  font-style: italic;
+}
+
+/* ─── MARKET CARDS ─── */
+.market-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--rule);
+  margin-bottom: 3.5rem;
+}
+.mcard {
+  padding: 2.25rem;
+  border-right: 1px solid var(--rule);
+}
+.mcard:last-child { border-right: none; }
+.mcard-flag { font-size: 1.5rem; margin-bottom: 1rem; }
+.mcard-country {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+.mcard-tag {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  margin-bottom: 1.5rem;
+}
+.tag-priority { background: var(--amber-light); color: var(--amber); }
+.tag-potential { background: var(--green-light); color: var(--green); }
+.tag-crisis { background: var(--red-light); color: var(--red); }
+
+.mstat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13px;
+}
+.mstat-row:last-child { border-bottom: none; }
+.mstat-key { color: var(--ink-4); font-weight: 300; }
+.mstat-val { font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; }
+.mstat-val.c-red { color: var(--red); }
+.mstat-val.c-amber { color: var(--amber); }
+.mstat-val.c-green { color: var(--green); }
+.mstat-val.c-blue { color: var(--blue-mid); }
+
+/* ─── DATA TABLE ─── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin-bottom: 3rem;
+}
+.data-table thead tr {
+  border-bottom: 2px solid var(--ink);
+}
+.data-table th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding: 10px 12px;
+  text-align: left;
+}
+.data-table td {
+  padding: 11px 12px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-2);
+  vertical-align: middle;
+  font-variant-numeric: tabular-nums;
+}
+.data-table tbody tr:hover td { background: var(--paper-2); }
+.data-table tfoot td {
+  font-weight: 500;
+  border-top: 1px solid var(--ink-3);
+  border-bottom: none;
+  font-size: 12px;
+  color: var(--ink);
+}
+
+.verdict {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+}
+.v-critical { background: var(--red-light); color: var(--red); }
+.v-action { background: var(--amber-light); color: var(--amber); }
+.v-scale { background: var(--green-light); color: var(--green); }
+.v-broken { background: #f0e0e0; color: #6b0000; }
+
+/* ─── INSIGHTS ─── */
+.insight-row {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 0;
+  border: 1px solid var(--rule);
+  margin-bottom: 8px;
+}
+.ir-label {
+  background: var(--paper-2);
+  padding: 1.5rem 2rem;
+  border-right: 1px solid var(--rule);
+}
+.ir-label-text {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 8px;
+}
+.ir-label-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.3;
+}
+.ir-body {
+  padding: 1.5rem 2rem;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-2);
+  line-height: 1.7;
+}
+.ir-body strong { font-weight: 500; color: var(--ink); }
+
+/* ─── STRATEGY PILLARS ─── */
+.pillar {
+  border: 1px solid var(--rule);
+  margin-bottom: 0;
+  border-bottom: none;
+}
+.pillar:last-child { border-bottom: 1px solid var(--rule); }
+.pillar-head {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+  transition: background 0.15s;
+}
+.pillar-head:hover { background: var(--paper-2); }
+.pillar-n {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--ink-4);
+  letter-spacing: 0.08em;
+}
+.pillar-t {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.pillar-badge {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue-mid);
+  background: var(--blue-light);
+  padding: 3px 10px;
+}
+.pillar-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: #fff;
+}
+.pillar-col {
+  padding: 2rem;
+  border-right: 1px solid var(--rule);
+}
+.pillar-col:last-child { border-right: none; }
+.pillar-col-head {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+.pillar-col ul { list-style: none; }
+.pillar-col ul li {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-2);
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  line-height: 1.5;
+  padding-left: 1rem;
+  position: relative;
+}
+.pillar-col ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--ink-4);
+  font-size: 11px;
+}
+.pillar-col ul li:last-child { border-bottom: none; }
+
+/* ─── OPPORTUNITY NUMBERS ─── */
+.opp-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 1px solid var(--rule);
+  margin-bottom: 3.5rem;
+}
+.opp-cell {
+  padding: 2.5rem 2rem;
+  border-right: 1px solid var(--rule);
+}
+.opp-cell:last-child { border-right: none; }
+.opp-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+.opp-num span { font-size: 1.4rem; color: var(--ink-3); }
+.opp-label {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-2);
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+.opp-sub {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--ink-4);
+  line-height: 1.55;
+}
+
+/* ─── WHALE TABLE ─── */
+.whale-note {
+  background: var(--blue-light);
+  border-left: 3px solid var(--blue-mid);
+  padding: 1rem 1.5rem;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--blue);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+.whale-note strong { font-weight: 500; }
+
+/* ─── GO/NO-GO ─── */
+.gng-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--rule);
+  margin-bottom: 3rem;
+}
+.gng-card {
+  padding: 2.5rem;
+  border-right: 1px solid var(--rule);
+}
+.gng-card:last-child { border-right: none; }
+.gng-flag { font-size: 1.75rem; margin-bottom: 1rem; display: block; }
+.gng-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+.gng-verdict {
+  display: inline-block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  margin-bottom: 1.25rem;
+}
+.gng-cond { background: var(--amber-light); color: var(--amber); }
+.gng-note {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-3);
+  line-height: 1.65;
+}
+
+/* ─── TIMELINE ─── */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1px solid var(--rule);
+  margin-bottom: 3rem;
+}
+.tl-col {
+  padding: 2.5rem;
+  border-right: 1px solid var(--rule);
+}
+.tl-col:last-child { border-right: none; }
+.tl-period {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.tl-title {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+.tl-item {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-2);
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+  line-height: 1.5;
+  display: flex;
+  gap: 10px;
+}
+.tl-item::before { content: '·'; color: var(--blue-mid); flex-shrink: 0; font-size: 16px; line-height: 1.3; }
+.tl-output {
+  margin-top: 1.25rem;
+  padding: 0.875rem 1rem;
+  background: var(--paper-2);
+  border-left: 2px solid var(--ink-3);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-3);
+  line-height: 1.55;
+}
+
+/* ─── ASKS ─── */
+.asks-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border: 1px solid var(--rule);
+  margin-bottom: 3rem;
+}
+.ask-card {
+  padding: 2.25rem;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.ask-card:nth-child(2n) { border-right: none; }
+.ask-card:nth-child(3), .ask-card:nth-child(4) { border-bottom: none; }
+.ask-team {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--blue-mid);
+  margin-bottom: 0.75rem;
+}
+.ask-need {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 0.875rem;
+  line-height: 1.35;
+}
+.ask-why {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-3);
+  line-height: 1.65;
+}
+
+/* ─── RISK TABLE ─── */
+.risk-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.risk-table thead tr { border-bottom: 2px solid var(--ink); }
+.risk-table th {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding: 10px 14px;
+  text-align: left;
+}
+.risk-table td {
+  padding: 14px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  line-height: 1.6;
+  font-weight: 300;
+  color: var(--ink-2);
+}
+.risk-table td:first-child { font-weight: 500; color: var(--ink); font-size: 13px; }
+.risk-table tbody tr:last-child td { border-bottom: none; }
+.rh { color: var(--red); font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.06em; }
+.rm { color: var(--amber); font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.06em; }
+
+/* ─── CLOSING ─── */
+.closing {
+  background: var(--ink);
+  padding: 6rem;
+  text-align: center;
+}
+.closing-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 2rem;
+}
+.closing h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+  font-weight: 400;
+  color: #fff;
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.35;
+  font-style: italic;
+}
+.closing p {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.4);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 2rem 6rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.f-brand { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: var(--ink-4); letter-spacing: 0.06em; }
+.f-meta { font-size: 11px; color: var(--ink-4); font-weight: 300; }
+
+/* ─── UTILS ─── */
+.ruled-heading {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  margin-top: 2.5rem;
+}
+.ruled-heading h3 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  white-space: nowrap;
+  font-weight: 500;
+}
+.ruled-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+.note-box {
+  border-left: 3px solid var(--blue-mid);
+  background: var(--blue-light);
+  padding: 1rem 1.5rem;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--blue);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+.note-box strong { font-weight: 500; }
+.alert-box {
+  border-left: 3px solid var(--red);
+  background: var(--red-light);
+  padding: 1rem 1.5rem;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--red);
+  line-height: 1.65;
+  margin-bottom: 2rem;
+}
+.alert-box strong { font-weight: 500; }
+.spacer { height: 2rem; }
+
+@media (max-width: 900px) {
+  .cover, nav, .exec-summary, footer { padding-left: 2rem; padding-right: 2rem; }
+  .page { padding: 0 2rem; }
+  .market-grid, .opp-strip, .timeline, .gng-grid, .asks-grid { grid-template-columns: 1fr; }
+  .mcard, .opp-cell, .tl-col, .gng-card, .ask-card { border-right: none; border-bottom: 1px solid var(--rule); }
+  .pillar-body, .insight-row, .sec-header { grid-template-columns: 1fr; }
+  .ir-label { border-right: none; border-bottom: 1px solid var(--rule); }
+  .closing { padding: 4rem 2rem; }
+  .nav-links { display: none; }
+  .cover-stats { flex-wrap: wrap; gap: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div>
+    <div class="cover-rule"></div>
+    <div class="cover-eyebrow">Capital.com &nbsp;·&nbsp; Commercial Strategy &nbsp;·&nbsp; April 2026</div>
+    <h1>South Asia:<br>The <em>Case for</em><br>Moving Now</h1>
+    <p class="cover-sub">Pakistan, Bangladesh, and Sri Lanka. 454 million people. 21M+ verified crypto holders. $213K CBV from Pakistan alone — on $10K spend, with no IBs, no localisation, and a broken payments funnel. This is what undertapped looks like. This document is the evidence, the plan, and the ask.</p>
+    <div class="cover-stats">
+      <div class="cs-item"><span class="val">60%</span><span class="lbl">of global CFDs from Asia</span></div>
+      <div class="cs-item"><span class="val">7%</span><span class="lbl">our Asia revenue share</span></div>
+      <div class="cs-item"><span class="val">$46</span><span class="lbl">Pakistan CPA on minimal 2025 spend</span></div>
+    </div>
+  </div>
+  <div class="cover-footer">
+    <span class="cf-brand">CAPITAL.COM &nbsp;·&nbsp; CONFIDENTIAL</span>
+    <span class="cf-meta">Prepared by Commercial Head, Asia &nbsp;·&nbsp; April 2026</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">South Asia Strategy 2026</span>
+  <div class="nav-links">
+    <a href="#situation">State &amp; Opportunity</a>
+    <a href="#regulatory">Regulatory</a>
+    <a href="#readiness">Readiness</a>
+    <a href="#payments">Payments</a>
+    <a href="#strategy">Strategy</a>
+    <a href="#execution">Execution</a>
+    <a href="#asks">Asks</a>
+    <a href="#cricket">Cricket</a>
+  </div>
+</nav>
+
+<!-- EXECUTIVE SUMMARY -->
+<div class="exec-summary">
+  <div class="es-label">Executive Summary</div>
+  <blockquote>"Asia is 60% of the global CFD market. It is 7% of our revenue. That gap is not a market problem — it is an infrastructure and ownership problem. Pakistan generated $213K CBV on $10K spend with no IBs and a broken payments funnel. Bangladesh generated $116K. These markets are not near zero — they are undertapped, and the distance between what they produce today with no real effort and what they can produce with the right infrastructure and ownership is the entire opportunity. Kazakhstan shows what happens when the constraints are removed: 9× revenue in two years. The target is $5M. The constraints here are the same. The constraints are fixable."</blockquote>
+</div>
+
+<!-- SECTION 1: SITUATION -->
+<div class="page">
+<section id="situation">
+  <div class="sec-header">
+    <div class="sec-num">01</div>
+    <div class="sec-title">
+      <h2>Current State &amp; Opportunity</h2>
+      <p>Early-stage activity exists across all three markets. The data reveals strong latent demand suppressed by broken payment infrastructure — not absent client intent. Kazakhstan: $1M in 2023 to $9M in 2025 with the same constraints removed. The aim is exponential growth to the CEO-set target of $5M.</p>
+    </div>
+  </div>
+
+  <div class="market-grid">
+    <div class="mcard">
+      <div class="mcard-flag">🇵🇰</div>
+      <div class="mcard-country">Pakistan</div>
+      <div class="mcard-tag tag-priority">Highest Priority</div>
+      <div class="mstat-row"><span class="mstat-key">Population</span><span class="mstat-val">255M</span></div>
+      <div class="mstat-row"><span class="mstat-key">GDP per capita</span><span class="mstat-val">$1,707</span></div>
+      <div class="mstat-row"><span class="mstat-key">2025 FTDs</span><span class="mstat-val c-blue">231</span></div>
+      <div class="mstat-row"><span class="mstat-key">2025 CBV</span><span class="mstat-val c-blue">$212,942</span></div>
+      <div class="mstat-row"><span class="mstat-key">ARPU</span><span class="mstat-val c-green">$531</span></div>
+      <div class="mstat-row"><span class="mstat-key">Payment success rate</span><span class="mstat-val c-amber">43%</span></div>
+      <div class="mstat-row"><span class="mstat-key">Volume declined</span><span class="mstat-val c-red">$1.26M</span></div>
+      <div class="mstat-row"><span class="mstat-key">CPA per FTD</span><span class="mstat-val c-green">$46</span></div>
+      <div class="mstat-row"><span class="mstat-key">Marketing spend 2025</span><span class="mstat-val">$10,576</span></div>
+    </div>
+    <div class="mcard">
+      <div class="mcard-flag">🇧🇩</div>
+      <div class="mcard-country">Bangladesh</div>
+      <div class="mcard-tag tag-potential">High Potential</div>
+      <div class="mstat-row"><span class="mstat-key">Population</span><span class="mstat-val">176M</span></div>
+      <div class="mstat-row"><span class="mstat-key">GDP per capita</span><span class="mstat-val">$2,622</span></div>
+      <div class="mstat-row"><span class="mstat-key">2025 FTDs</span><span class="mstat-val c-blue">65</span></div>
+      <div class="mstat-row"><span class="mstat-key">2025 CBV</span><span class="mstat-val c-blue">$116,028</span></div>
+      <div class="mstat-row"><span class="mstat-key">ARPU</span><span class="mstat-val c-green">$1,149</span></div>
+      <div class="mstat-row"><span class="mstat-key">Payment success rate</span><span class="mstat-val c-amber">57%</span></div>
+      <div class="mstat-row"><span class="mstat-key">Volume declined</span><span class="mstat-val c-red">$285K</span></div>
+      <div class="mstat-row"><span class="mstat-key">CPA per FTD</span><span class="mstat-val c-red">$402</span></div>
+    </div>
+    <div class="mcard">
+      <div class="mcard-flag">🇱🇰</div>
+      <div class="mcard-country">Sri Lanka</div>
+      <div class="mcard-tag tag-crisis">Payments Crisis</div>
+      <div class="mstat-row"><span class="mstat-key">Population</span><span class="mstat-val">23M</span></div>
+      <div class="mstat-row"><span class="mstat-key">GDP per capita</span><span class="mstat-val">$3,400</span></div>
+      <div class="mstat-row"><span class="mstat-key">2025 FTDs</span><span class="mstat-val c-blue">59</span></div>
+      <div class="mstat-row"><span class="mstat-key">2025 CBV</span><span class="mstat-val c-blue">$16,730</span></div>
+      <div class="mstat-row"><span class="mstat-key">ARPU</span><span class="mstat-val c-green">$223</span></div>
+      <div class="mstat-row"><span class="mstat-key">Payment success rate</span><span class="mstat-val c-red">6%</span></div>
+      <div class="mstat-row"><span class="mstat-key">Volume declined</span><span class="mstat-val c-red">$637K</span></div>
+      <div class="mstat-row"><span class="mstat-key">Avg declined txn</span><span class="mstat-val c-red">$463</span></div>
+    </div>
+  </div>
+
+  <div class="ruled-heading"><h3>Three binding constraints</h3></div>
+
+  <div class="insight-row">
+    <div class="ir-label">
+      <div class="ir-label-text">Constraint 01</div>
+      <div class="ir-label-title">Payments infrastructure is broken</div>
+    </div>
+    <div class="ir-body">
+      <strong>$2.1M in transaction volume was declined across the three markets in 2025.</strong> Sri Lanka processes 6% of attempted volume. Neteller Pakistan has a 0.09% success rate — $373K declined on a channel still receiving routing. JazzCash, Easypaisa, and bKash — the dominant local wallets in Pakistan and Bangladesh — are entirely absent. USDT deposits are not enabled despite Binance operating freely in Pakistan and competitors offering it. This is not a demand problem.
+    </div>
+  </div>
+
+  <div class="insight-row">
+    <div class="ir-label">
+      <div class="ir-label-text">Constraint 02</div>
+      <div class="ir-label-title">IB programme is blocked without justification</div>
+    </div>
+    <div class="ir-body">
+      <strong>Pakistan was removed from the FATF grey list in October 2022.</strong> We have not onboarded a single IB in Pakistan since. Competitors — Exness, XM, OctaFX — have active, producing IB networks across all three markets. Multiple high-value IBs have already been identified and researched, including Anas Ali (1.4M followers, 160K students) and Badar Tanveer (513K subscribers). None have been approached. The compliance rationale for the block no longer exists.
+    </div>
+  </div>
+
+  <div class="insight-row">
+    <div class="ir-label">
+      <div class="ir-label-text">Constraint 03</div>
+      <div class="ir-label-title">Zero local presence or localisation</div>
+    </div>
+    <div class="ir-body">
+      No Urdu, Bengali, or Sinhala content exists anywhere in our product or marketing. No local Telegram channels. No TradingView articles in regional languages. No events. No AI support in regional languages. In markets where trust is built through repeated local exposure and community validation, we are invisible. Competitors who have invested in local presence — FXTM in Nigeria, FXPesa in Kenya — show consistently higher conversion and IB recruitment rates.
+    </div>
+  </div>
+
+  <div class="ruled-heading"><h3>Conversion funnel vs Kazakhstan benchmark</h3></div>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Market</th>
+        <th>CR: Account → FTD</th>
+        <th>CR: Account → Verified</th>
+        <th>CR: Verified → FTD</th>
+        <th>Read</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:#E6F2EC;">
+        <td><strong style="color:#1A5C38;">🇰🇿 Kazakhstan</strong></td>
+        <td style="text-align:center;font-weight:700;color:#1A5C38;">7.81%</td>
+        <td style="text-align:center;font-weight:700;color:#1A5C38;">16.76%</td>
+        <td style="text-align:center;font-weight:700;color:#1A5C38;">46.60%</td>
+        <td style="color:#1A5C38;font-size:0.82rem;">Benchmark — what a working funnel looks like</td>
+      </tr>
+      <tr>
+        <td><strong>🇵🇰 Pakistan</strong></td>
+        <td style="text-align:center;color:#B8860B;font-weight:700;">1.19%</td>
+        <td style="text-align:center;color:#B8860B;font-weight:700;">11.82%</td>
+        <td style="text-align:center;color:#8B1A1A;font-weight:700;">10.08%</td>
+        <td style="font-size:0.82rem;">6.6× below KZ on account→FTD. Leak is post-verification — points directly to payments failure.</td>
+      </tr>
+      <tr style="background:#FAFAF8;">
+        <td><strong>🇧🇩 Bangladesh</strong></td>
+        <td style="text-align:center;color:#8B1A1A;font-weight:700;">0.56%</td>
+        <td style="text-align:center;color:#8B1A1A;font-weight:700;">8.36%</td>
+        <td style="text-align:center;color:#8B1A1A;font-weight:700;">6.69%</td>
+        <td style="font-size:0.82rem;">14× below KZ — worst of the three. Low verification rate compounds low FTD conversion.</td>
+      </tr>
+      <tr>
+        <td><strong>🇱🇰 Sri Lanka</strong></td>
+        <td style="text-align:center;color:#B8860B;font-weight:700;">2.00%</td>
+        <td style="text-align:center;color:#B8860B;font-weight:700;">19.72%</td>
+        <td style="text-align:center;color:#8B1A1A;font-weight:700;">10.14%</td>
+        <td style="font-size:0.82rem;">Highest verification rate of the three — but verified→FTD 4.6× below KZ. Choked by 6% payment acceptance.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="font-size:0.75rem;color:#888;margin-top:0.3rem;margin-bottom:1rem;font-style:italic;">Source: Tableau attribution dashboard. CR = conversion rate.</div>
+
+  <div class="spacer"></div>
+  <div class="ruled-heading"><h3>High-value existing clients — immediate priority</h3></div>
+  <div class="note-box">
+    <strong>6 clients generated over $10,000 CBV in 2025 across the three markets.</strong> These are verified, active traders with balances on platform. The highest-CBV client (ID 30225220, Bangladesh) has generated $94,612 CBV on $144,878 in deposits and traded as recently as February 2026. None have been contacted by a commercial head. Re-engagement and IB conversion of these clients is the highest-impact action available in the next 30 days. All dormant South Asia clients to be contacted and reactivated through CRM sequences and targeted rebate offers.
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Client ID</th>
+        <th>Market</th>
+        <th>CBV Generated</th>
+        <th>Total Deposited</th>
+        <th>Balance</th>
+        <th>Last Active</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>30225220</td><td>🇧🇩 Bangladesh</td><td><strong>$94,612</strong></td><td>$144,878</td><td>$3,719</td><td>Feb 2026</td><td><span class="verdict v-scale">Active</span></td></tr>
+      <tr><td>16419430</td><td>🇵🇰 Pakistan</td><td><strong>$93,678</strong></td><td>$283,358</td><td>$16.68</td><td>Feb 2026</td><td><span class="verdict v-scale">Active</span></td></tr>
+      <tr><td>13256592</td><td>🇵🇰 Pakistan</td><td><strong>$73,131</strong></td><td>$534,450</td><td>$13,019</td><td>Feb 2026</td><td><span class="verdict v-scale">Active</span></td></tr>
+      <tr><td>26351641</td><td>🇧🇩 Bangladesh</td><td><strong>$50,675</strong></td><td>$87,010</td><td>$330</td><td>Feb 2026</td><td><span class="verdict v-action">Re-engage</span></td></tr>
+      <tr><td>31081006</td><td>🇵🇰 Pakistan</td><td><strong>$17,005</strong></td><td>$16,332</td><td>$4,050</td><td>Feb 2026</td><td><span class="verdict v-scale">Active</span></td></tr>
+      <tr><td>18712758</td><td>🇵🇰 Pakistan</td><td><strong>$10,972</strong></td><td>$17,730</td><td>$486</td><td>Feb 2026</td><td><span class="verdict v-action">Re-engage</span></td></tr>
+    </tbody>
+  </table>
+
+
+  <div class="spacer"></div>
+  <div class="ruled-heading"><h3>The Opportunity</h3></div>
+
+  <div class="opp-strip">
+    <div class="opp-cell">
+      <div class="opp-num">21<span>M+</span></div>
+      <div class="opp-label">Verified crypto holders across three markets — the highest-intent trading audience</div>
+      <div class="opp-sub">Pakistan 18.2M (#3 globally) · Bangladesh 3.1M (#14 globally) · Sri Lanka est. 500K–800K. Source: TRM Labs 2025.</div>
+    </div>
+    <div class="opp-cell">
+      <div class="opp-num">9<span>×</span></div>
+      <div class="opp-label">Kazakhstan revenue growth — an IB-led, payments-first playbook</div>
+      <div class="opp-sub">$1M in 2023 → $9M in 2025. IB-led, payments-fixed, localisation-led. South Asia is that playbook. CEO-set target: $5M.</div>
+    </div>
+    <div class="opp-cell">
+      <div class="opp-num">0</div>
+      <div class="opp-label">Licensed local brokers in any of the three markets</div>
+      <div class="opp-sub">All competition operates offshore. First-mover credibility advantage is available to whoever builds trust fastest.</div>
+    </div>
+    <div class="opp-cell">
+      <div class="opp-num">454<span>M</span></div>
+      <div class="opp-label">Total addressable population across Pakistan, Bangladesh, and Sri Lanka</div>
+      <div class="opp-sub">Pakistan 255M · Bangladesh 176M · Sri Lanka 23M. Youth population (15–35) above 40% in all three markets.</div>
+    </div>
+  </div>
+
+  <table class="data-table">
+    <thead>
+      <tr><th>Metric</th><th>🇵🇰 Pakistan</th><th>🇧🇩 Bangladesh</th><th>🇱🇰 Sri Lanka</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Youth population (15–35)</td><td>48%</td><td>51%</td><td>40%</td></tr>
+      <tr><td>Smartphone penetration</td><td>68%</td><td>53%</td><td>58%</td></tr>
+      <tr><td>Mobile money penetration</td><td>45%</td><td>62%</td><td>28%</td></tr>
+      <tr><td>GDP growth rate 2025</td><td>3.5%</td><td>5.8%</td><td>5.0%</td></tr>
+      <tr><td>Middle class</td><td>40M people</td><td>25M people</td><td>4M people</td></tr>
+      <tr><td>Est. crypto holders</td><td>18.2M (#3 globally, TRM Labs 2025)</td><td>3.1M (#14 globally, stablecoin-led)</td><td>Est. 500K–800K</td></tr>
+      <tr><td>FATF grey list status</td><td>Removed Oct 2022</td><td>Never listed</td><td>Removed 2019</td></tr>
+      <tr><td>Major competing brokers</td><td>Exness, XM, IC Markets</td><td>Exness, IC Markets, FP Markets</td><td>Exness, Pepperstone, IC Markets</td></tr>
+    </tbody>
+  </table>
+
+</section>
+
+<!-- SECTION 2: REGULATORY -->
+<section id="regulatory">
+  <div class="sec-header">
+    <div class="sec-num">02</div>
+    <div class="sec-title">
+      <h2>Regulatory &amp; Compliance Landscape</h2>
+      <p>All three markets operate in a grey zone for offshore CFD brokers — no local licences exist, no offshore broker has been locally regulated, and all major competitors (Exness, XM, IC Markets) operate exactly as we do. The risk profile differs by market but is manageable in all three.</p>
+    </div>
+  </div>
+
+  <div class="market-grid">
+    <div class="mcard">
+      <div class="mcard-flag">🇵🇰</div>
+      <div class="mcard-country">Pakistan</div>
+      <div class="mcard-tag tag-priority">Managed Risk — We Already Operate Here</div>
+      <div class="mstat-row"><span class="mstat-key">Primary regulators</span><span class="mstat-val">SECP + SBP</span></div>
+      <div class="mstat-row"><span class="mstat-key">Enforcement posture</span><span class="mstat-val c-amber">Reactive, payment-led</span></div>
+      <div class="mstat-row"><span class="mstat-key">Regulatory risk</span><span class="mstat-val c-amber">Medium</span></div>
+      <div class="mstat-row"><span class="mstat-key">Enforcement risk</span><span class="mstat-val c-amber">Medium</span></div>
+      <div class="mstat-row"><span class="mstat-key">FATF status</span><span class="mstat-val c-green">Clean — removed Oct 2022</span></div>
+    </div>
+    <div class="mcard">
+      <div class="mcard-flag">🇧🇩</div>
+      <div class="mcard-country">Bangladesh</div>
+      <div class="mcard-tag tag-potential">Most Permissive Environment</div>
+      <div class="mstat-row"><span class="mstat-key">Primary regulators</span><span class="mstat-val">BSEC + Bangladesh Bank</span></div>
+      <div class="mstat-row"><span class="mstat-key">Enforcement posture</span><span class="mstat-val c-green">Non-existent vs offshore</span></div>
+      <div class="mstat-row"><span class="mstat-key">Regulatory risk</span><span class="mstat-val c-green">Low</span></div>
+      <div class="mstat-row"><span class="mstat-key">Enforcement risk</span><span class="mstat-val c-green">Low</span></div>
+      <div class="mstat-row"><span class="mstat-key">FATF status</span><span class="mstat-val c-green">Clean — never listed</span></div>
+    </div>
+    <div class="mcard">
+      <div class="mcard-flag">🇱🇰</div>
+      <div class="mcard-country">Sri Lanka</div>
+      <div class="mcard-tag tag-potential">Tolerated, Low Enforcement</div>
+      <div class="mstat-row"><span class="mstat-key">Primary regulators</span><span class="mstat-val">SEC Sri Lanka + CBSL</span></div>
+      <div class="mstat-row"><span class="mstat-key">Enforcement posture</span><span class="mstat-val c-green">Focused on local scams only</span></div>
+      <div class="mstat-row"><span class="mstat-key">Regulatory risk</span><span class="mstat-val c-green">Low–Medium</span></div>
+      <div class="mstat-row"><span class="mstat-key">Enforcement risk</span><span class="mstat-val c-green">Low</span></div>
+      <div class="mstat-row"><span class="mstat-key">FATF status</span><span class="mstat-val c-green">Clean — removed 2019</span></div>
+    </div>
+  </div>
+
+  <div class="insight-row">
+    <div class="ir-label">
+      <div class="ir-label-text">Risk by market</div>
+      <div class="ir-label-title">All manageable. All already operating.</div>
+    </div>
+    <div class="ir-body">
+      <ul style="margin:0 0 0 1.2rem;padding:0;">
+        <li style="margin-bottom:0.6rem;"><strong>Pakistan — managed risk.</strong> SBP 2022 circular named OctaFX, Easy Forex, and Exness — we were not named. Enforcement is payment-channel restriction, not prosecution of traders. SECP has no jurisdiction over offshore operators. We already have 231 FTDs and $213K CBV from 2025 without issue. Brokers and traders have migrated to USDT and e-wallets — which is exactly the first fix.</li>
+        <li style="margin-bottom:0.6rem;"><strong>Bangladesh — lowest risk of the three.</strong> No offshore CFD broker has ever been named, warned, or fined by BSEC or Bangladesh Bank. No alert list exists. Bangladesh Bank restricts capital outflows via traditional banking — traders use bKash, Nagad, and crypto to route around this. Most permissive environment of the three.</li>
+        <li><strong>Sri Lanka — tolerated, enforcement theoretical.</strong> CBSL has a more developed framework (Foreign Exchange Act 2022, EFTC card restrictions) but no offshore broker has ever been actioned. Enforcement targets domestic scam operators, not international regulated brokers. The 6% card acceptance rate is a payments infrastructure problem, not a regulatory one. Sri Lanka is effectively tolerated as long as brokers avoid local physical presence or claiming local regulatory status.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="note-box" style="margin-top:2rem;">
+    <strong>Google Ads is unavailable in all three markets for direct CFD/forex advertising</strong> — none are on Google's approved certification list. This is structural, not temporary. Google Search, Display, and any property with direct CFD/leverage product claims are all prohibited. Permitted: brand search, generic financial education content, and app installs via UAC without product claims. Acquisition must be built on IBs, Telegram/social communities, Facebook, TikTok (education-framed), and app store channels.
+  </div>
+
+</section>
+
+<!-- SECTION 4: PAYMENTS -->
+
+<section id="payments">
+  <div class="sec-header">
+    <div class="sec-num">03</div>
+    <div class="sec-title">
+      <h2>Payments Analysis</h2>
+      <p>The funnel does not have a traffic problem. It has a conversion problem caused by PSP routing decisions that can be changed without new contracts or new budget.</p>
+    </div>
+  </div>
+
+  <div class="alert-box">
+    <strong>Total declined volume across three markets in 2025: $2,133,322.</strong> Pakistan $1,262,369 · Bangladesh $289,623 · Sri Lanka $581,330. In all three markets the problem is the same: bad routing decisions, not absent demand. PSP-by-PSP analysis below shows exactly what to fix — none of it requires new contracts or new budget.
+  </div>
+
+  <div class="ruled-heading"><h3>Pakistan PSP performance 2025</h3></div>
+  <table class="data-table">
+    <thead>
+      <tr><th>PSP</th><th>Success Rate (Value)</th><th>Volume Processed</th><th>Volume Declined</th><th>Clients</th><th>Recommended Action</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Credorax</td><td><strong>66.2%</strong></td><td>$339,722</td><td>$173,788</td><td>173</td><td><span class="verdict v-scale">Route more volume here</span></td></tr>
+      <tr><td>Skrill</td><td><strong>71.6%</strong></td><td>$103,853</td><td>$41,298</td><td>68</td><td><span class="verdict v-scale">Scale</span></td></tr>
+      <tr><td>Stripe</td><td>39.1%</td><td>$153,229</td><td>$238,219</td><td>362</td><td><span class="verdict v-action">Reduce routing</span></td></tr>
+      <tr><td>Checkout</td><td>28.9%</td><td>$153,416</td><td>$378,427</td><td>460</td><td><span class="verdict v-critical">Stop routing — worst performer</span></td></tr>
+      <tr><td>Neteller</td><td><strong>0.09%</strong></td><td>$348</td><td>$373,048</td><td>121</td><td><span class="verdict v-broken">Broken — fix immediately</span></td></tr>
+      <tr><td>EcommPay</td><td>3.9%</td><td>$2,270</td><td>$55,715</td><td>103</td><td><span class="verdict v-critical">Non-functional</span></td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td>Total Pakistan</td><td><strong>42.6%</strong></td><td>$936,512</td><td>$1,262,369</td><td>762</td><td></td></tr>
+    </tfoot>
+  </table>
+
+  <div class="ruled-heading"><h3>Bangladesh PSP performance 2025</h3></div>
+  <table class="data-table">
+    <thead>
+      <tr><th>PSP</th><th>Success Rate (Value)</th><th>Volume Processed</th><th>Volume Declined</th><th>Clients</th><th>Recommended Action</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Checkout</td><td><strong>81.0%</strong></td><td>$282,262</td><td>$66,300</td><td>114</td><td><span class="verdict v-scale">Best performer — scale</span></td></tr>
+      <tr><td>Credorax</td><td><strong>63.5%</strong></td><td>$42,946</td><td>$24,681</td><td>74</td><td><span class="verdict v-scale">Route more volume here</span></td></tr>
+      <tr><td>Stripe</td><td>42.6%</td><td>$49,018</td><td>$66,071</td><td>102</td><td><span class="verdict v-action">Review routing</span></td></tr>
+      <tr><td>EcommPay</td><td>4.8%</td><td>$1,308</td><td>$25,929</td><td>70</td><td><span class="verdict v-broken">Broken — fix immediately</span></td></tr>
+      <tr><td>Neteller</td><td>0.8%</td><td>$753</td><td>$99,178</td><td>74</td><td><span class="verdict v-broken">Broken — fix immediately</span></td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td>Total Bangladesh</td><td><strong>60.4%</strong></td><td>$441,434</td><td>$289,623</td><td>—</td><td></td></tr>
+    </tfoot>
+  </table>
+  <div style="font-size:0.78rem;color:var(--ink-4);margin:-1.2rem 0 1.8rem 0;font-style:italic;">Note: bKash and Nagad absent from table — not currently integrated. These are the dominant local wallets and represent the primary gap in the Bangladesh payments stack.</div>
+
+  <div class="ruled-heading"><h3>Sri Lanka PSP performance 2025</h3></div>
+  <table class="data-table">
+    <thead>
+      <tr><th>PSP</th><th>Success Rate (Value)</th><th>Volume Processed</th><th>Volume Declined</th><th>Clients</th><th>Recommended Action</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Neteller</td><td><strong>0.0%</strong></td><td>$0</td><td>$184,254</td><td>35</td><td><span class="verdict v-broken">Broken — suspend immediately</span></td></tr>
+      <tr><td>EcommPay</td><td>1.8%</td><td>$2,470</td><td>$135,805</td><td>147</td><td><span class="verdict v-broken">Broken — fix immediately</span></td></tr>
+      <tr><td>Stripe</td><td>8.6%</td><td>$12,463</td><td>$132,411</td><td>190</td><td><span class="verdict v-broken">Broken — fix immediately</span></td></tr>
+      <tr><td>Credorax</td><td>8.5%</td><td>$4,825</td><td>$51,912</td><td>151</td><td><span class="verdict v-broken">Broken — fix immediately</span></td></tr>
+      <tr><td>Skrill</td><td>15.3%</td><td>$10,437</td><td>$57,942</td><td>46</td><td><span class="verdict v-critical">Reduce routing</span></td></tr>
+      <tr><td>Checkout</td><td>35.4%</td><td>$10,407</td><td>$19,006</td><td>49</td><td><span class="verdict v-action">Best available — increase share</span></td></tr>
+      <tr><td>Blockchain</td><td><strong>100%</strong></td><td>$25,052</td><td>$0</td><td>1</td><td><span class="verdict v-scale">Crypto works — expand</span></td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td>Total Sri Lanka</td><td><strong>10.1%</strong></td><td>$65,654</td><td>$581,330</td><td>—</td><td></td></tr>
+    </tfoot>
+  </table>
+  <div style="font-size:0.78rem;color:var(--ink-4);margin:-1.2rem 0 1.8rem 0;font-style:italic;">Sri Lanka's 6% card acceptance figure reflects card-only routing. The one crypto transaction processed at 100% confirms USDT/blockchain as the primary fix — consistent with the Pakistan playbook. Four PSPs are effectively non-functional. This is a configuration problem, not a market problem.</div>
+
+  <div class="ruled-heading"><h3>Missing local payment rails</h3></div>
+  <table class="data-table">
+    <thead>
+      <tr><th>Payment Method</th><th>Market</th><th>Exness</th><th>XM</th><th>OctaFX</th><th>Capital.com</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>JazzCash</td><td>🇵🇰</td><td>✓</td><td>—</td><td>—</td><td><strong style="color:var(--red);">Not available</strong></td></tr>
+      <tr><td>Easypaisa</td><td>🇵🇰</td><td>✓</td><td>—</td><td>—</td><td><strong style="color:var(--red);">Not available</strong></td></tr>
+      <tr><td>USDT / Crypto</td><td>🇵🇰</td><td>✓</td><td>—</td><td>✓</td><td><strong style="color:var(--red);">Not enabled</strong></td></tr>
+      <tr><td>bKash</td><td>🇧🇩</td><td>✓ (exchangers)</td><td>—</td><td>✓</td><td><strong style="color:var(--red);">Not available</strong></td></tr>
+      <tr><td>Nagad</td><td>🇧🇩</td><td>✓</td><td>—</td><td>—</td><td><strong style="color:var(--red);">Not available</strong></td></tr>
+      <tr><td>Local bank transfer</td><td>🇱🇰</td><td>✓</td><td>—</td><td>—</td><td><strong style="color:var(--red);">Not available</strong></td></tr>
+      <tr><td>Skrill</td><td>All</td><td>✓</td><td>✓</td><td>✓</td><td style="color:var(--amber);">Partial</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note-box">
+    <strong>USDT is now the first payment fix for Pakistan — not a future consideration.</strong> USDT has been legalised in Pakistan, the compliance assessment blocking enablement is based on an outdated position, and Exness and OctaFX already accept USDT deposits. Every day without it is a day competitors take volume we cannot capture.
+  </div>
+
+</section>
+
+<!-- SECTION 4: STRATEGY -->
+<!-- SECTION 4: MARKET READINESS -->
+<section id="readiness">
+  <div class="sec-header">
+    <div class="sec-num">04</div>
+    <div class="sec-title">
+      <h2>Market Readiness Assessment</h2>
+      <p>All three markets are viable. None are recommended as "no-go." The conditions attached are achievable within 30 to 60 days if payments and IB enablement receive commercial priority.</p>
+    </div>
+  </div>
+
+  <div class="gng-grid">
+    <div class="gng-card">
+      <span class="gng-flag">🇵🇰</span>
+      <div class="gng-name">Pakistan</div>
+      <div class="gng-verdict gng-cond">Conditional Go</div>
+      <div class="gng-note">
+        <ul style="margin:0;padding:0 0 0 1.1rem;line-height:1.9;font-size:0.82rem;">
+          <li>USDT enabled — compliance reassessment required, previous position outdated</li>
+          <li>PSP routing fixed — Credorax over Checkout, Neteller suspended</li>
+          <li>IB programme unblocked — FATF removal Oct 2022 invalidates current restriction</li>
+          <li>Refer-a-friend live with fraud T&Cs</li>
+        </ul>
+        <div style="margin-top:0.8rem;font-size:0.82rem;color:var(--ink-3);">$10,576 spend. No IBs. Broken payments. 231 FTDs at $46 CPA. <strong>That is the floor.</strong></div>
+      </div>
+    </div>
+    <div class="gng-card">
+      <span class="gng-flag">🇧🇩</span>
+      <div class="gng-name">Bangladesh</div>
+      <div class="gng-verdict gng-cond">Conditional Go</div>
+      <div class="gng-note">
+        <ul style="margin:0;padding:0 0 0 1.1rem;line-height:1.9;font-size:0.82rem;">
+          <li>bKash and Nagad onboarded</li>
+          <li>Compliant USDT alternative explored — compliance brief required</li>
+          <li>Targeting overhauled — $402 CPA is a channel problem, not a market problem</li>
+        </ul>
+        <div style="margin-top:0.8rem;font-size:0.82rem;color:var(--ink-3);">57% payment success rate — highest of the three.</div>
+      </div>
+    </div>
+    <div class="gng-card">
+      <span class="gng-flag">🇱🇰</span>
+      <div class="gng-name">Sri Lanka</div>
+      <div class="gng-verdict gng-cond">Fix-or-Exit by Day 90</div>
+      <div class="gng-note">
+        <ul style="margin:0;padding:0 0 0 1.1rem;line-height:1.9;font-size:0.82rem;">
+          <li>PSP routing fixed first — 6% acceptance, no IB or paid spend until ≥ 35%</li>
+          <li>Highest-value clients failing hardest — avg declined txn $463 vs $121 processed</li>
+          <li>Same playbook as PK + BD once acceptance gate is confirmed</li>
+        </ul>
+        <div style="margin-top:0.8rem;font-size:0.82rem;color:var(--ink-3);">Quality-over-volume market. Est. 500K–800K crypto holders. Fix payments first — the demand is there.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section id="strategy">
+  <div class="sec-header">
+    <div class="sec-num">05</div>
+    <div class="sec-title">
+      <h2>Growth Strategy</h2>
+      <p>Four phases, sequenced by dependency. <strong>Phase 1 is zero-cost and zero-downside</strong> — every action in the first 60 days costs nothing and carries no execution risk. Paid acquisition is released only after milestone gates are met with senior management. Fix infrastructure first. Build organic distribution second. Amplify with paid only when the funnel earns it.</p>
+    </div>
+  </div>
+
+  <div class="pillar">
+    <div class="pillar-head">
+      <span class="pillar-n">Phase 1</span>
+      <span class="pillar-t">Fix Infrastructure — USDT + PSP Routing</span>
+      <span class="pillar-badge">Week 1 · Zero cost</span>
+    </div>
+    <div class="pillar-body">
+      <div class="pillar-col">
+        <div class="pillar-col-head">USDT — Pakistan priority</div>
+        <ul>
+          <li>Legalised in Pakistan. Compliance block is based on an outdated assessment — requires reassessment, not a new contract. Enablement costs nothing. Exness and OctaFX already accept USDT.</li>
+          <li>Sri Lanka: enable USDT via TRC-20 — primary fix for the 6% acceptance crisis.</li>
+        </ul>
+      </div>
+      <div class="pillar-col">
+        <div class="pillar-col-head">PSP routing — immediate changes</div>
+        <ul>
+          <li>Pakistan: route to Credorax (66%) away from Checkout (29%). Suspend Neteller — 0.09% success, $373K declined in 2025.</li>
+          <li>Bangladesh: bKash and Nagad onboarding. FP Markets has the full local stack — match it.</li>
+          <li>Sri Lanka: test Skrill independently of Neteller (same parent, different BIN stack). Explore non-MCC-7995 routing for sub-$200 transactions.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="pillar">
+    <div class="pillar-head">
+      <span class="pillar-n">Phase 2</span>
+      <span class="pillar-t">Build Organic Distribution — IBs, Communities, Whales, RAF</span>
+      <span class="pillar-badge">Weeks 2 – 8 · AED 3,000 Pakistan visit</span>
+    </div>
+    <div class="pillar-body">
+      <div class="pillar-col">
+        <div class="pillar-col-head">IBs — unblock and sign</div>
+        <ul>
+          <li>Pakistan FATF removal (Oct 2022) makes the IB block unjustifiable — escalate formally to compliance.</li>
+          <li>Priority targets: Anas Ali (1.4M followers), Badar Tanveer (513K YouTube), Earn With Wahaj (18K users, currently Exness), TradexPK. BD: Trading Chart (653K YouTube).</li>
+          <li><strong>AI-powered IB engine</strong> — with Oksana (Partnerships), build automated discovery, multilingual outreach (Urdu/Bangla/Sinhala), onboarding, and produce-or-churn monitoring at 30/60/90 days. From 0 active IBs to a self-scaling network.</li>
+        </ul>
+      </div>
+      <div class="pillar-col">
+        <div class="pillar-col-head">Communities + Whales + RAF</div>
+        <ul>
+          <li>Target 20–30 Telegram/WhatsApp/YouTube trading communities in 60 days. Approach admins as micro-IBs on performance deals.</li>
+          <li>6 whale clients — contact personally within 2 weeks. In-person Pakistan visit for top 3–5 by CBV. Top client: $94K CBV, Bangladesh, active February 2026.</li>
+          <li>Refer-a-friend: payout gated on verified account + minimum deposit + minimum trade count. 30-day fraud review to calibrate thresholds.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="pillar">
+    <div class="pillar-head">
+      <span class="pillar-n">Phase 3</span>
+      <span class="pillar-t">AI Content, Localisation + Conversion Layer</span>
+      <span class="pillar-badge">Weeks 2 – 6 · Ongoing</span>
+    </div>
+    <div class="pillar-body">
+      <div class="pillar-col">
+        <div class="pillar-col-head">AI avatars + local channels</div>
+        <ul>
+          <li>One male, one female AI avatar per country in Urdu, Bangla, Sinhala. Deployed across Telegram, YouTube, and IB networks.</li>
+          <li>Urdu and Bengali Telegram channels live week one. TradingView articles seeded through IB partners. Localised onboarding in all three languages.</li>
+          <li>Content framing: education-led. Withdrawal demos, platform walkthroughs, market commentary — not direct response ads.</li>
+        </ul>
+      </div>
+      <div class="pillar-col">
+        <div class="pillar-col-head">Sales AI + onboarding</div>
+        <ul>
+          <li>ElevenLabs AI agents in Urdu, Bangla, Tamil, Sinhala — reconfigured for South Asian objections and cultural patterns.</li>
+          <li>Lead prioritisation: route high-quality leads without overflow. Electronic TIN verification to reduce KYC drop-off.</li>
+          <li>Core messaging across all channels: halal accounts + Gold + fast withdrawal. Not leverage.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="pillar">
+    <div class="pillar-head">
+      <span class="pillar-n">Phase 4</span>
+      <span class="pillar-t">Paid Acquisition — Amplifier, Gate-Locked</span>
+      <span class="pillar-badge">Weeks 8+ · Budget TBD with senior management</span>
+    </div>
+    <div class="pillar-body">
+      <div class="pillar-col">
+        <div class="pillar-col-head">Channels by market</div>
+        <ul>
+          <li>Pakistan: YouTube and TikTok primary reach. Google Search already showing positive unit economics.</li>
+          <li>Bangladesh: Facebook dominant. Google Search and UAC for app installs.</li>
+          <li>Sri Lanka: Facebook and YouTube.</li>
+        </ul>
+      </div>
+      <div class="pillar-col">
+        <div class="pillar-col-head">Gate conditions — set with senior management</div>
+        <ul>
+          <li>Pakistan: payment acceptance ≥ 60% (currently 43%), CBV target TBD, ≥ 10 active IBs.</li>
+          <li>Bangladesh: bKash/Nagad live, acceptance ≥ 50%, ≥ 5 active IBs.</li>
+          <li>Sri Lanka: acceptance ≥ 35% minimum — fix or exit decision precedes any spend.</li>
+          <li>Proof-first creative only: licence visibility, withdrawal demos, platform walkthrough. Education-framed, not direct response.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-row" style="margin-top:1rem;margin-bottom:2rem;">
+    <div class="ir-label">
+      <div class="ir-label-text">Competitor intelligence</div>
+      <div class="ir-label-title">Landscape, competitive analysis, and attack surface</div>
+    </div>
+    <div class="ir-body">
+      <p style="margin-bottom:0.8rem;">All major competitors operate offshore with no local licences — same structure as us. Competition is won on payments, IB distribution, and messaging.</p>
+      <p style="font-weight:700;margin-bottom:0.3rem;">Three things to match immediately</p>
+      <ul style="margin:0 0 1rem 1.2rem;padding:0;">
+        <li style="margin-bottom:0.4rem;"><strong>Local wallets first.</strong> Exness owns Pakistan on JazzCash/Easypaisa (15-min withdrawals). FP Markets owns Bangladesh on bKash/Nagad/Rocket. Neither closes with ads — only infrastructure.</li>
+        <li style="margin-bottom:0.4rem;"><strong>IBs before paid acquisition.</strong> Telegram/YouTube educator networks dominate. Exness pays daily with tiered dashboards. Match on speed and structure.</li>
+        <li style="margin-bottom:0.4rem;"><strong>Halal + Gold + fast withdrawal — not leverage.</strong> Swap-free accounts are a baseline requirement. Gold is the top-cited instrument in SA trader reviews. Withdrawal proof closes accounts.</li>
+      </ul>
+      <p style="font-weight:700;margin-bottom:0.3rem;">Three weaknesses to exploit</p>
+      <ul style="margin:0 0 0 1.2rem;padding:0;">
+        <li style="margin-bottom:0.4rem;"><strong>Seychelles jurisdiction.</strong> Exness clients have zero compensation fund and no local recourse. Capital.com's regulatory position is a direct attack surface with sophisticated traders.</li>
+        <li style="margin-bottom:0.4rem;"><strong>No TradingView.</strong> Exness is MT4/MT5 only. If Capital.com has TradingView integration, this is a clean switching argument against the highest-ARPU segment.</li>
+        <li><strong>Unlimited leverage cuts both ways.</strong> 1:2000 blown accounts are a known community complaint. Capital.com at 1:500 with negative balance protection reframes our position as the serious trader's choice.</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+<!-- SECTION 5: GO/NO-GO -->
+<!-- SECTION 6: EXECUTION -->
+<section id="execution">
+  <div class="sec-header">
+    <div class="sec-num">06</div>
+    <div class="sec-title">
+      <h2>First 90 Days</h2>
+      <p>Sequenced by dependency. No paid marketing spend scaled until the payments funnel works. Every block has a named output and a decision point.</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-col">
+      <div class="tl-period">Days 1–30</div>
+      <div class="tl-title">Fix Infrastructure First</div>
+      <div class="tl-item">Escalate USDT Pakistan to compliance — request formal review of outdated assessment. Target sign-off within 30 days.</div>
+      <div class="tl-item">Payments war room — redirect Pakistan VISA from Checkout to Credorax immediately</div>
+      <div class="tl-item">Suspend Neteller Pakistan routing — 0.09% success, $373K wasted</div>
+      <div class="tl-item">Initiate PSP conversations: JazzCash, Easypaisa, bKash — onboarding takes time, start now</div>
+      <div class="tl-item">Escalate Pakistan IB block — FATF removed Oct 2022, restriction has no basis</div>
+      <div class="tl-item">Launch Urdu and Bengali Telegram channels — zero cost, week one</div>
+      <div class="tl-item">Contact all 6 whale clients personally — commercial head, not AI</div>
+      <div class="tl-item">Align with Head of Asia and Head of Sales on IB programme structure, USDT escalation, and cohort learnings. Three-day product and payments sprint with regional team.</div>
+      <div class="tl-item">Map top five competitor strategies per market — undercover research (Exness, Pepperstone)</div>
+      <div class="tl-item" style="color:var(--ink-4);font-style:italic;">Sri Lanka (parallel, infrastructure only): Diagnose ECOMMPAY and Neteller — $378K failed volume. No IB or paid activity until acceptance ≥ 35%.</div>
+      <div class="tl-output">Output: USDT escalated formally. Pakistan routing fixed. Bangladesh wallets initiated. Whales contacted. IB block challenged. Zero budget spent.</div>
+    </div>
+    <div class="tl-col">
+      <div class="tl-period">Days 31–60</div>
+      <div class="tl-title">Build Distribution — Pakistan &amp; Bangladesh</div>
+      <div class="tl-item">Fly to Pakistan — meet IBs and HNWI clients in person. Close first IB deals. (AED 3,000)</div>
+      <div class="tl-item">Sign 10+ IBs across Pakistan and Bangladesh on FTD and CBV-linked deals (minimum 5 per month)</div>
+      <div class="tl-item">Identify and approach 20–30 trading Telegram groups and YouTube communities for sponsorship or micro-IB deals</div>
+      <div class="tl-item">Launch refer-a-friend scheme with fraud-protected T&Cs — three-condition payout gate</div>
+      <div class="tl-item">Convert 2–3 whale clients to IB or referral status</div>
+      <div class="tl-item">Launch TradingView articles in Urdu and Bangla</div>
+      <div class="tl-item">Begin AI avatar production — one male, one female per country (four avatars: Pakistan + Bangladesh first)</div>
+      <div class="tl-item">Set up cohort tracking by market, channel, and partner</div>
+      <div class="tl-item" style="color:var(--ink-4);font-style:italic;">Sri Lanka: PSP fix review — go/no-go decision on IB activation based on acceptance movement.</div>
+      <div class="tl-output">Output: 10+ IBs signed (PK + BD, minimum 5 per month). 20+ trading communities engaged. Refer-a-friend live. Avatar content in production. Cohort tracking operational.</div>
+    </div>
+    <div class="tl-col">
+      <div class="tl-period">Days 61–90</div>
+      <div class="tl-title">First Paid Wins — Pakistan &amp; Bangladesh</div>
+      <div class="tl-item">Launch Meta and TikTok campaigns — Pakistan and Bangladesh only, where payments funnel is stable. Google brand search only (direct CFD ads unavailable in all three markets).</div>
+      <div class="tl-item">Measure deposit completion and early trading activation by channel before scaling anything</div>
+      <div class="tl-item">Deploy AI avatars across Telegram, YouTube, and IB networks — Pakistan and Bangladesh</div>
+      <div class="tl-item">Cricket integration conversations — primary cultural touchpoint Pakistan and Bangladesh</div>
+      <div class="tl-item">30-day fraud review of refer-a-friend scheme — calibrate payout thresholds based on data</div>
+      <div class="tl-item">Measure payment acceptance before and after all routing changes</div>
+      <div class="tl-item">Organise HNWI in-person event in Pakistan</div>
+      <div class="tl-item">Submit budget request to leadership — grounded in proven funnel metrics, not projections</div>
+      <div class="tl-item" style="color:var(--ink-4);font-style:italic;">Sri Lanka: activate IB and avatar production only if acceptance gate is confirmed. Otherwise hold.</div>
+      <div class="tl-output">Output: first paid campaigns live in PK + BD where funnel proven. 15+ active IBs. Avatars deployed. Sri Lanka status confirmed. Budget request submitted with evidence.</div>
+    </div>
+  </div>
+</section>
+
+<!-- MILESTONE-GATED PAID ACQUISITION -->
+<section id="paid-gates" style="margin-top:2rem;">
+  <div class="sec-header">
+    <div class="sec-num" style="color:#C9A84C;">→</div>
+    <div class="sec-title">
+      <h2>Milestone-Gated Paid Acquisition</h2>
+      <p>Gates and budget levels to be agreed with senior management before Phase 2 begins.</p>
+    </div>
+  </div>
+
+  <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
+    <thead>
+      <tr style="background:#0F1F3D;color:#FFF;">
+        <th style="padding:0.8rem 1rem;text-align:left;font-weight:600;">Market</th>
+        <th style="padding:0.8rem 1rem;text-align:left;font-weight:600;">Gate 1 — Payments</th>
+        <th style="padding:0.8rem 1rem;text-align:left;font-weight:600;">Gate 2 — CBV</th>
+        <th style="padding:0.8rem 1rem;text-align:left;font-weight:600;">Gate 3 — IB</th>
+        <th style="padding:0.8rem 1rem;text-align:left;font-weight:600;">Channels</th>
+        <th style="padding:0.8rem 1rem;text-align:center;font-weight:600;">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="border-bottom:1px solid #E8E0D5;">
+        <td style="padding:0.9rem 1rem;font-weight:700;color:#0F1F3D;">🇵🇰 Pakistan</td>
+        <td style="padding:0.9rem 1rem;color:#555;">Acceptance ≥ 60% <span style="font-size:0.75rem;color:#999;">(now 43%)</span></td>
+        <td style="padding:0.9rem 1rem;color:#555;">Monthly CBV ≥ TBD<br><span style="font-size:0.75rem;color:#999;">2 months sustained</span></td>
+        <td style="padding:0.9rem 1rem;color:#555;">≥ 10 active IBs <span style="font-size:0.75rem;color:#999;">(now 0)</span></td>
+        <td style="padding:0.9rem 1rem;color:#555;font-size:0.78rem;">Google · Meta · TikTok</td>
+        <td style="padding:0.9rem 1rem;text-align:center;"><span style="background:#FEF3DC;color:#B8860B;padding:0.25rem 0.6rem;border-radius:3px;font-size:0.72rem;font-weight:700;">PRE-GATE</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #E8E0D5;background:#FAFAF8;">
+        <td style="padding:0.9rem 1rem;font-weight:700;color:#0F1F3D;">🇧🇩 Bangladesh</td>
+        <td style="padding:0.9rem 1rem;color:#555;">bKash / Nagad live + acceptance ≥ 50%</td>
+        <td style="padding:0.9rem 1rem;color:#555;">Monthly CBV ≥ TBD<br><span style="font-size:0.75rem;color:#999;">2 months sustained</span></td>
+        <td style="padding:0.9rem 1rem;color:#555;">≥ 5 active IBs</td>
+        <td style="padding:0.9rem 1rem;color:#555;font-size:0.78rem;">Facebook primary</td>
+        <td style="padding:0.9rem 1rem;text-align:center;"><span style="background:#FEF3DC;color:#B8860B;padding:0.25rem 0.6rem;border-radius:3px;font-size:0.72rem;font-weight:700;">PRE-GATE</span></td>
+      </tr>
+      <tr style="border-bottom:1px solid #E8E0D5;">
+        <td style="padding:0.9rem 1rem;font-weight:700;color:#0F1F3D;">🇱🇰 Sri Lanka<br><span style="font-size:0.72rem;font-weight:400;color:#999;">Fix-or-exit by Day 90</span></td>
+        <td style="padding:0.9rem 1rem;color:#555;">Acceptance ≥ 35% <span style="font-size:0.75rem;color:#999;">(now 6%)</span></td>
+        <td style="padding:0.9rem 1rem;color:#555;">Acceptance gate only<br><span style="font-size:0.75rem;color:#999;">minimum viable funnel</span></td>
+        <td style="padding:0.9rem 1rem;color:#555;">Infrastructure confirmed first</td>
+        <td style="padding:0.9rem 1rem;color:#555;font-size:0.78rem;">Google · Meta</td>
+        <td style="padding:0.9rem 1rem;text-align:center;"><span style="background:#F5EAEA;color:#8B1A1A;padding:0.25rem 0.6rem;border-radius:3px;font-size:0.72rem;font-weight:700;">FIX FIRST</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- SECTION 7: ASKS -->
+<section id="asks">
+  <div class="sec-header">
+    <div class="sec-num">07</div>
+    <div class="sec-title">
+      <h2>What Is Required to Execute</h2>
+      <p>These are decision requests, not budget requests. Each one has a named team and a named output. None of them requires new contracts or new budget. They require decisions.</p>
+    </div>
+  </div>
+
+  <!-- MANDATE BLOCK — THE META-ASK -->
+  <div style="background:var(--paper-2);border:1px solid var(--rule);border-left:4px solid var(--blue-mid);border-radius:4px;padding:2.2rem 2.4rem;margin-bottom:2.5rem;">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--blue-mid);margin-bottom:1rem;">The ask that makes all the others possible</div>
+    <div style="font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:400;color:var(--ink);line-height:1.3;margin-bottom:1.2rem;">A named commercial owner for South Asia — with a mandate and escalation authority.</div>
+    <p style="font-size:0.88rem;color:var(--ink-3);line-height:1.75;margin-bottom:1.4rem;">South Asia sits within the broader Asia remit today, but without a dedicated commercial owner with escalation authority over payments, compliance, and product, the constraints in this document remain deprioritised against other teams' roadmaps. Each of the four team asks below requires someone to own the chase, hold the deadline, and escalate when it stalls. The fixes have been known for months. The gap between known and actioned is an ownership problem, not an information problem.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;margin-bottom:1.4rem;">
+      <div style="background:var(--paper);padding:1rem 1.2rem;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-4);margin-bottom:0.5rem;">Role scope</div>
+        <div style="font-size:0.82rem;color:var(--ink-2);line-height:1.65;">Commercial Head, South Asia — Pakistan, Bangladesh, Sri Lanka. Reports directly to the CEO. Peer-level to the LATAM commercial structure. Not a sub-function of an existing regional role.</div>
+      </div>
+      <div style="background:var(--paper);padding:1rem 1.2rem;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-4);margin-bottom:0.5rem;">Profile</div>
+        <div style="font-size:0.82rem;color:var(--ink-2);line-height:1.65;">Ideally from the region — Urdu, Bengali, or South Asian language fluency is a material advantage. IB relationships, HNWI trust, and community credibility in these markets are built in person and in language. This cannot be replicated remotely. Supported by marketing assistance for channel execution and the product and onboarding team for localised flows.</div>
+      </div>
+      <div style="background:var(--paper);padding:1rem 1.2rem;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-4);margin-bottom:0.5rem;">Measured on</div>
+        <div style="font-size:0.82rem;color:var(--ink-2);line-height:1.65;">FTD volume · CBV per cohort · payment acceptance rate · active producing IB count · revenue against $5M CEO-set target.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOUR TEAM DEPENDENCY ASKS -->
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-4);margin-bottom:1.2rem;">Four decisions the commercial owner needs to execute against — all require sign-off from the teams below</div>
+
+  <div class="asks-grid">
+    <div class="ask-card">
+      <div class="ask-team">Payments Team</div>
+      <div class="ask-need">USDT enabled in Pakistan + PSP routing fixed within 30 days</div>
+      <div class="ask-why">USDT has been legalised in Pakistan — the compliance assessment blocking enablement was based on FATF grey list status, which was removed in October 2022. It is outdated and must be formally reviewed. Separately, the PSP routing fix (Checkout to Credorax) requires no new contract and can be done immediately. Combined, these two changes address the majority of the $1.26M declined in Pakistan in 2025. No budget required — this is an internal decision.</div>
+    </div>
+    <div class="ask-card">
+      <div class="ask-team">Compliance Team</div>
+      <div class="ask-need">Pakistan IB programme unblocked, refer-a-friend T&Cs approved, fast-path creative review</div>
+      <div class="ask-why">Pakistan was removed from the FATF grey list in October 2022 — the original basis for the IB restriction. It has no current compliance basis and should be formally lifted. Additionally: refer-a-friend T&Cs need compliance sign-off before launch — the fraud protection framework (three-condition payout gate, monitoring-not-blocking policy) should be reviewed and approved.</div>
+    </div>
+    <div class="ask-card">
+      <div class="ask-team">Product and Onboarding</div>
+      <div class="ask-need">Electronic verification and localised onboarding flows</div>
+      <div class="ask-why">Low verification rate is the named constraint from the Sherry sync (Feb 2026). Electronic verification via TIN matching was deployed for Kazakhstan and worked. Localised onboarding in Urdu, Bangla, and Sinhala directly addresses drop-off at the verification step — the highest-friction point in the current funnel.</div>
+    </div>
+    <div class="ask-card">
+      <div class="ask-team">Partnerships — Oksana</div>
+      <div class="ask-need">Rebuild IB operating model with AI-powered workflows</div>
+      <div class="ask-why">Exness has 360,000 IB partners globally. That gap cannot be closed with manual outreach. Working with Oksana and the partnerships team to build an AI-powered IB engine — automated discovery, multilingual outreach (Urdu/Bangla/Sinhala), onboarding, and performance monitoring — first deployed for South Asia, then rolled out globally. South Asia is the pilot. The infrastructure benefits every region.</div>
+    </div>
+  </div>
+
+  <div class="ruled-heading"><h3>Key risks</h3></div>
+  <table class="risk-table">
+    <thead>
+      <tr><th>Risk</th><th>Description</th><th>Probability</th><th>Mitigation</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Payments remain unfixed</td>
+        <td>Marketing spend flows into a broken funnel. CAC rises without CBV movement. 2025 repeats with higher budget.</td>
+        <td><span class="rh">High</span></td>
+        <td>Gate all spend scaling on acceptance rate thresholds. Payments war room with weekly reporting to commercial head.</td>
+      </tr>
+
+      <tr>
+        <td>FTDs without CBV</td>
+        <td>IB incentive structures attract volume without quality. Bonus hunters inflate FTD count but do not trade.</td>
+        <td><span class="rm">Medium</span></td>
+        <td>Stage payouts against early trading activation, not deposit alone. Monitor first-trade rate by IB from day one.</td>
+      </tr>
+      <tr>
+        <td>Regulatory restriction</td>
+        <td>Bangladesh Bank or CBSL tighten enforcement on offshore broker payments or advertising. Pakistan risk is managed — we already operate there and were not named in the 2022 SBP circular. Bangladesh and Sri Lanka have no documented enforcement history against offshore brokers.</td>
+        <td><span class="rm">Low–Medium</span></td>
+        <td>Education-framed content across all markets. Avoid claiming local licence status. Google Ads unavailable in all three markets — build acquisition through IBs, social, and app channels regardless.</td>
+      </tr>
+      <tr>
+        <td>Refer-a-friend abuse</td>
+        <td>Coordinated abuse of the referral scheme inflates FTD count without genuine trading activity, distorting CBV metrics and wasting payout budget.</td>
+        <td><span class="rm">Medium</span></td>
+        <td>Three-condition payout gate enforced from launch. Anti-fraud monitoring from day one. Restrict payouts on flagged accounts — do not block onboarding. 30-day fraud review to calibrate thresholds before any programme expansion.</td>
+      </tr>
+      <tr>
+        <td>No dedicated South Asia owner</td>
+        <td>South Asia sits within the broader Asia remit today without a dedicated commercial owner. Without someone with escalation authority, the four team asks above remain deprioritised against other teams' roadmaps. Every risk in this table requires cross-team action. Without ownership, none get resolved at pace.</td>
+        <td><span class="rh">High</span></td>
+        <td>The mandate itself is the mitigation. A named commercial owner with escalation authority is the single change that makes the other four asks executable.</td>
+      </tr>
+    </tbody>
+  </table>
+
+</section>
+</div>
+
+<!-- SECTION 9: EXPANSION -->
+<div class="page">
+<section>
+  <div class="sec-header">
+    <div class="sec-num" style="font-size:0.85rem;letter-spacing:0.12em;">APP</div>
+    <div class="sec-title">
+      <h2>Appendix — Round 2 Expansion — Where Next After South Asia</h2>
+      <p>Tableau live data confirms active client bases and CBV generating across 15+ Asia markets. These are not projections — they are verified from mart.dim_users_new as of April 2026.</p>
+    </div>
+  </div>
+
+  <table class="data-table" style="margin-bottom:1rem;">
+    <thead>
+      <tr><th>Market</th><th>2025 Accounts</th><th>2025 CBV</th><th>Avg CBV/Account</th><th>All-Time CBV</th><th>Assessment</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Cambodia</strong></td><td>31,774</td><td><strong>$1,171,230</strong></td><td>$1,541</td><td>$7.2M</td><td><span class="verdict v-scale">Scale priority — highest 2025 CBV in scope</span></td></tr>
+      <tr><td><strong>Taiwan</strong></td><td>3,868</td><td>$335,780</td><td>$2,469</td><td>$1.2M</td><td><span class="verdict v-action">High ARPU sleeper — targeted IB approach warranted</span></td></tr>
+      <tr><td><strong>Thailand</strong></td><td>8,490</td><td>$144,613</td><td>$1,303</td><td>$4.6M</td><td><span class="verdict v-action">Natural Round 2 — active, solid ARPU</span></td></tr>
+      <tr><td><strong>Macau</strong></td><td>761</td><td>$72,974</td><td>$3,475</td><td>$431K</td><td><span class="verdict v-action">Very high ARPU — niche HNWI, monitor</span></td></tr>
+      <tr><td><strong>China</strong></td><td>1,809</td><td>$66,000</td><td>$1,650</td><td>$359K</td><td><span class="verdict v-action">Regulatory complexity — assess separately</span></td></tr>
+      <tr><td><strong>Vietnam</strong></td><td>7,603</td><td>$63,040</td><td>$543</td><td>$1.3M</td><td><span class="verdict v-action">Active but low ARPU — funnel work needed first</span></td></tr>
+      <tr><td><strong>Mongolia</strong></td><td>9,849</td><td>$50,757</td><td>$379</td><td>$1.6M</td><td><span class="verdict v-action">Active — lower priority</span></td></tr>
+      <tr><td><strong>Nepal</strong></td><td>5,648</td><td>$11,971</td><td>$218</td><td>$175K</td><td><span class="verdict v-action">Organic cricket/IB potential — early stage</span></td></tr>
+      <tr><td><strong>Japan</strong></td><td>1,450</td><td>$5,461</td><td>$303</td><td>$969K</td><td><span class="verdict v-action">$969K all-time — organic signal worth watching</span></td></tr>
+      <tr style="color:var(--ink-4);"><td><em>India</em></td><td>11,998</td><td>$24</td><td>—</td><td>$6.1M all-time</td><td style="font-size:12px; color:var(--ink-4);">Regulatory restrictions block paid growth. Organic base only.</td></tr>
+      <tr style="color:var(--ink-4);"><td><em>Hong Kong</em></td><td>16,100</td><td>$3,140,386</td><td>$3,482</td><td>$18.8M all-time</td><td style="font-size:12px; color:var(--ink-4);">Sherry-owned East Asia priority — not South Asia mandate.</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note-box" style="margin-bottom:2rem;">
+    <strong>Source: Tableau live data (mart.dim_users_new), queried April 2026.</strong> Round 2 market figures represent accounts created in 2025 and associated CBV. South Asia figures in this document use FTD-attribution methodology (Excel) to isolate newly acquired client CBV — the correct lens for marketing ROI. Total 2025 CBV from all active traders in the three South Asia markets, verified via mart.rep_spread_capture_new_formula (April 2026): Pakistan $210,502 · Bangladesh $115,410 · Sri Lanka $16,857. The higher totals reflect the existing trader base including whale clients who predate 2025 acquisition activity.
+  </div>
+
+  <div class="insight-row" style="margin-bottom:0.5rem;">
+    <div class="ir-label">
+      <div class="ir-label-text">Cambodia</div>
+      <div class="ir-label-title">The standout Round 2 market</div>
+    </div>
+    <div class="ir-body">
+      Cambodia is generating <strong>$1.17M CBV in 2025 from 31,774 accounts, with $7.2M all-time</strong> and an avg ARPU of $1,541 — all with minimal commercial attention. The South Asia playbook (IBs, USDT, local payments, localised content) applies directly. Khmer-language content, local IB networks, and local payment rails should be the first actions once South Asia infrastructure is proven.
+    </div>
+  </div>
+
+  <div class="insight-row" style="margin-top:0.5rem;">
+    <div class="ir-label">
+      <div class="ir-label-text">Round 2 sequencing</div>
+      <div class="ir-label-title">Cambodia → Thailand → Taiwan → Vietnam</div>
+    </div>
+    <div class="ir-body">
+      Based on Tableau live data: Cambodia is the clear Round 2 priority. Thailand ($144K 2025, $4.6M all-time, $1,303 ARPU) is the natural Round 3 with solid fundamentals. Taiwan ($335K 2025, $2,469 ARPU) is a sleeper worth a targeted IB approach. Vietnam needs funnel work before scaling — active accounts but $543 ARPU signals conversion quality issues. India remains off-limits for paid growth despite $6.1M all-time CBV due to regulatory restrictions.
+    </div>
+  </div>
+
+</section>
+
+<!-- SECTION 10: CRICKET -->
+<section id="cricket">
+  <div class="sec-header">
+    <div class="sec-num">08</div>
+    <div class="sec-title">
+      <h2>Cricket — Brand and Community Opportunity</h2>
+      <p>2.5bn global fans. Concentrated in Pakistan, Bangladesh, Sri Lanka, India, and the UAE diaspora. Competitors are already here.</p>
+    </div>
+  </div>
+
+  <div class="ruled-heading"><h3>Competitor precedent</h3></div>
+
+  <div class="insight-row" style="margin-bottom:0.5rem;">
+    <div class="ir-label">
+      <div class="ir-label-text">STARTRADER</div>
+      <div class="ir-label-title">CFD broker — UAE National Cricket team jersey sponsor</div>
+    </div>
+    <div class="ir-body">
+      STARTRADER (CFD broker, SCA licensed) is the Official Partner on the UAE National Cricket Team's jerseys — DP World Asia Cup 2025. <strong>A direct competitor in our category has already made the move.</strong> Sobha Realty (Dubai-headquartered, same HNWI target audience) became an ICC Global Partner for all men's events from 2025. ICC Global Partners include Emirates, Coca-Cola, DP World, Aramco, IndusInd Bank, Marriott, and Google. <strong>Financial services brands are active at every level.</strong> National team and tournament entry points (PCB, BCB, SLC) sit well below global partner pricing.
+    </div>
+  </div>
+
+  <div class="ruled-heading" style="margin-top:1.5rem;"><h3>Our opportunity — to be scoped once South Asia structure is confirmed</h3></div>
+
+  <div style="background:#F9F7F3;border:1px solid #E0D9CE;border-radius:4px;padding:1.2rem 1.6rem;margin-top:0.5rem;">
+    <ul style="margin:0;padding-left:1.2rem;font-size:0.85rem;color:#2C2C2C;line-height:1.9;">
+      <li><strong>Immediate, zero cost:</strong> Integrate cricket into the IB and community programme — branded content around Pakistan vs India, Asia Cup, Champions Trophy through existing IB Telegram and YouTube channels</li>
+      <li><strong>Medium term:</strong> National team or tournament partnership — PCB, BCB, or SLC at regional broker pricing; T20 World Cup 2026 co-hosted by India and Sri Lanka is the natural activation window</li>
+      <li><strong>Longer term:</strong> HNWI hospitality — ICC event boxes in Dubai and Pakistan as a whale acquisition and IB relationship tool; our 6 existing $10K+ CBV clients are the starting list</li>
+      <li><strong>Budget gate:</strong> Paid cricket sponsorship subject to the same milestone gates as all other paid acquisition — confirmed only after senior management sign-off</li>
+    </ul>
+  </div>
+
+</section>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <div class="closing-label">The Case in Summary</div>
+  <h2>The data is in. The plan is here. Awaiting approval to execute.</h2>
+</div>
+
+<footer>
+  <span class="f-brand">CAPITAL.COM &nbsp;·&nbsp; SOUTH ASIA COMMERCIAL STRATEGY 2026</span>
+  <span class="f-meta">Confidential &nbsp;·&nbsp; April 2026</span>
+</footer>
+
+</body>
+</html>
